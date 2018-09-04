@@ -62,10 +62,6 @@ function setDefaults() {
     echo "EDITOR=${_EDITOR}" >> /etc/environment
     echo "EDITOR=${_EDITOR}" >> /etc/profile
 
-    # default shell
-    # chsh -s /bin/bash
-    chsh -s /bin/zsh
-
     # fix qt5
     echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
 }
