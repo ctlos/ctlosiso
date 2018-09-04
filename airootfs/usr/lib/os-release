@@ -1,0 +1,8 @@
+NAME="Ctlos"
+PRETTY_NAME="Ctlos Linux"
+ID=ctlos
+ID_LIKE=ctloslinux
+ANSI_COLOR="0;35"
+HOME_URL="https://ctlos.github.io"
+SUPPORT_URL="https://ctlos.github.io/contact"
+BUG_REPORT_URL="https://github.com/ctlos/ctlosiso/issues"

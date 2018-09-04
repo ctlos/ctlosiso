@@ -1,0 +1,7 @@
+[Icon Theme]
+Name=Default
+Comment=Default Cursor Theme
+Inherits=capitaine-cursors
+
+[Desktop Entry]
+Type=Application

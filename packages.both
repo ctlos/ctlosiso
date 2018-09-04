@@ -1,0 +1,266 @@
+#!/bin/bash
+#
+# Ctlos Linux https://ctlos.github.io
+#
+#
+
+#Installing basic packages
+accountsservice
+archlinux-appstream-data
+archlinux-keyring
+autoconf
+automake
+b43-fwcutter
+bash
+bind-tools
+binutils
+btrfs-progs
+bzip2
+coreutils
+crda
+cryptsetup
+dcraw
+device-mapper
+diffutils
+dmidecode
+dosfstools
+e2fsprogs
+efibootmgr
+encfs
+ethtool
+exfat-utils
+f2fs-tools
+fakeroot
+ffmpegthumbnailer
+file
+filesystem
+findutils
+gawk
+gcc
+gcc-libs
+gettext
+glibc
+gpm
+grep
+grub
+gsfonts
+gucharmap
+haveged
+hunspell
+inetutils
+intel-ucode
+iproute2
+iputils
+ipw2100-fw
+ipw2200-fw
+jfsutils
+less
+libdvdcss
+libtool
+licenses
+linux
+logrotate
+lvm2
+m4
+make
+man-db
+man-pages
+mc
+mdadm
+memtest86+
+mkinitcpio-nfs-utils
+mlocate
+nano
+nbd
+ntfs-3g
+ntp
+os-prober
+pacman
+patch
+pciutils
+perl
+pkg-config
+pkgfile
+procps-ng
+psmisc
+python-urllib3
+python-xdg
+reiserfsprogs
+rsync
+s-nail
+sed
+shadow
+smartmontools
+sudo
+sysfsutils
+syslinux
+systemd-sysvcompat
+tar
+texinfo
+tlp
+upower
+usb_modeswitch
+usbutils
+util-linux
+wget
+which
+whois
+wireless_tools
+wpa_actiond
+xapps
+xfsprogs
+
+
+nmap
+tcpdump
+testdisk
+openconnect
+openssh
+openvpn
+
+
+
+
+#Installing video driver
+xorg-apps
+xorg-server
+xorg-xinit
+xorg-xkill
+
+mesa
+mesa-vdpau
+intel-tbb
+libva
+libva-mesa-driver
+libva-intel-driver
+libva-vdpau-driver
+xf86-input-evdev
+xf86-input-keyboard
+xf86-input-synaptics
+xf86-input-void
+# xf86-input-libinput
+# xf86-input-mouse
+# xf86-input-vmmouse
+
+xf86-video-amdgpu
+xf86-video-ati
+xf86-video-dummy
+xf86-video-fbdev
+xf86-video-intel
+xf86-video-nouveau
+xf86-video-openchrome
+xf86-video-sisusb
+xf86-video-vesa
+xf86-video-vmware
+xf86-video-voodoo
+
+
+#Installing basic tools
+# gvfs
+# gvfs-afc
+# gvfs-goa
+# gvfs-google
+# gvfs-gphoto2
+# gvfs-mtp
+# gvfs-nfs
+# gvfs-smb
+# ripgrep
+# xsel
+# gzip
+# p7zip
+# unzip
+# unrar
+
+
+#Installing wireless packages
+dialog
+mobile-broadband-provider-info
+modemmanager
+networkmanager
+network-manager-applet
+networkmanager-dispatcher-ntpd
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-pptp
+networkmanager-vpnc
+wpa_supplicant
+
+
+#Installing sound packages
+# alsa-firmware
+# alsa-utils
+# gstreamer
+# gstreamer-vaapi
+# gst-libav
+# gst-plugins-bad
+# gst-plugins-base
+# gst-plugins-good
+# gst-plugins-ugly
+# pulseaudio
+# pulseaudio-alsa
+# pulseaudio-bluetooth
+# pulseaudio-equalizer
+# lib32-alsa-plugins
+
+
+#Installing development tools
+archiso
+arch-install-scripts
+linux-headers
+squashfs-tools
+
+
+#Installing languages
+# go
+# ruby
+# python
+# python2
+# bpython2
+
+
+#Installing fonts
+ttf-dejavu
+
+
+#Installing cli utils
+bash-completion
+zsh
+zsh-syntax-highlighting
+git
+neofetch
+htop
+reflector
+
+# main pkg
+xfce4
+xfce4-xkb-plugin
+xdg-user-dirs-gtk
+lightdm
+lightdm-gtk-greeter
+mousepad
+arc-gtk-theme
+papirus-icon-theme
+gparted
+
+
+# Virtualbox Tools
+virtualbox-guest-modules-arch
+virtualbox-guest-utils
+
+
+#ctlos repo
+ckbcomp
+# calamares-mini
+calamares-net
+mkinitcpio-openswap
+
+yay
+
+oh-my-zsh-git
+zsh-autosuggestions
+
+xsettingsd
+
+ttf-clear-sans
+ttf-roboto-mono
+capitaine-cursors
