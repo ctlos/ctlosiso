@@ -68,17 +68,17 @@ function setDefaults() {
 
     # fix qt5
     echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
+
+    # fix pacman
+    mv -f /etc/skel/.pacman.conf.bak /etc/pacman.conf
+    rm -rf /etc/skel/.pacman.conf.bak
 }
 
-function addCalamares() {
-    dockItem="/home/liveuser/.config/plank/dock1/launchers/Calamares.dockitem"
-    
-    touch $dockItem
-
-    echo "[PlankDockItemPreferences]" >> $dockItem
-    echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
-
-    chown liveuser $dockItem
+function addCalamaresToAutostart() {
+    mkdir /home/liveuser/.config/autostart
+    cp -v /usr/share/applications/calamares.desktop /home/liveuser/.config/autostart/calamares.desktop
+    chown liveuser:wheel /home/liveuser/.config/autostart/calamares.desktop
+    chmod +x /home/liveuser/.config/autostart/calamares.desktop
 }
 
 function fontFix() {
@@ -137,7 +137,7 @@ function enableServices() {
     systemctl enable avahi-daemon.service
     systemctl enable vboxservice.service
     systemctl enable ntpd.service
-    systemctl enable lightdm.service
+    systemctl enable gdm.service
     systemctl enable NetworkManager.service
     systemctl -fq enable NetworkManager-wait-online.service
     systemctl mask systemd-rfkill@.service
@@ -156,7 +156,7 @@ editOrCreateConfigFiles
 configRootUser
 createLiveUser
 setDefaults
-addCalamares
+addCalamaresToAutostart
 fontFix
 fixWifi
 fixPermissions

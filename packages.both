@@ -135,11 +135,11 @@ libva-intel-driver
 libva-vdpau-driver
 xf86-input-evdev
 xf86-input-keyboard
+xf86-input-libinput
+xf86-input-mouse
 xf86-input-synaptics
+xf86-input-vmmouse
 xf86-input-void
-# xf86-input-libinput
-# xf86-input-mouse
-# xf86-input-vmmouse
 
 xf86-video-amdgpu
 xf86-video-ati
@@ -206,7 +206,7 @@ squashfs-tools
 
 #Installing languages
 go
-# ruby
+ruby
 python
 python2
 # bpython2
@@ -236,15 +236,34 @@ ttf-hack
 ttf-roboto
 ttf-liberation
 ttf-ubuntu-font-family
-ttf-font-awesome
+
+
+#Installing budgie
+gdm
+dconf
+gconf
+
+budgie-desktop
+gnome-control-center
+gnome-screensaver
+alacarte
+tilix
+
+dconf-editor
+gnome-tweaks
+
+nautilus
+python-nautilus
+libnautilus-extension
+nautilus-sendto
+seahorse-nautilus
+sushi
+nautilus-share
+
+xdg-user-dirs-gtk
 
 
 #Installing cli utils
-chrpath
-wmctrl
-gtk2-perl
-perl-file-desktopentry
-intltool
 bash-completion
 zsh
 curl
@@ -267,74 +286,47 @@ youtube-dl
 youtube-viewer
 
 
-# main xfce pkg
-# gnome-keyring
-# polkit-gnome
-xdg-user-dirs-gtk
+#Installing common software
+# gnome-disk-utility
+# gnome-screenshot
+gnome-software
+gnome-software-packagekit-plugin
+gnome-usage
+# gnome-system-monitor
+# gnome-todo
+gnome-user-share
+# gnome-weather
+# seahorse
 
-lightdm
-lightdm-gtk-greeter
-lightdm-gtk-greeter-settings
-light-locker
-
-exo
-xfce4-appfinder
-xfce4-battery-plugin
-xfce4-notifyd
-xfce4-panel
-xfce4-power-manager
-xfce4-pulseaudio-plugin
-xfce4-session
-xfce4-settings
-xfce4-terminal
-xfce4-whiskermenu-plugin
-xfce4-xkb-plugin
-xfce4-mpc-plugin
-xfce4-clipman-plugin
-xfconf
-xfdesktop
-xfsprogs
-xfwm4
-plank
-
-gamin
-thunar
-thunar-archive-plugin
-thunar-media-tags-plugin
-thunar-volman
-tumbler
-
-
-# my software
-alacarte
-audacious
 gparted
 chromium
 pepper-flash
-# firefox
-# firefox-i18n-ru
-# flashplugin
-
-atril
+evince
+# catfish
+flatpak
 cherrytree
-flameshot
-galculator-gtk2
+galculator
 gufw
 gimp
+# inkscape
+# telegram-desktop
 transmission-gtk
 viewnior
+klavaro
+file-roller
+# bleachbit
 pavucontrol
-smplayer
-smplayer-themes
+lollypop
+gnome-mpv
 mpv
 simplescreenrecorder
 keepassxc
 veracrypt
 
+
 # Virtualbox Tools
 virtualbox-guest-modules-arch
 virtualbox-guest-utils
-
 
 
 #yaourt
@@ -343,6 +335,8 @@ calamares
 mkinitcpio-openswap
 
 yay
+inxi-git
+
 pamac-aur
 
 oh-my-zsh-git
@@ -353,13 +347,14 @@ ttf-roboto-mono
 
 capitaine-cursors
 
+clipit-gtk3
+# 
+caffeine-ng
+python-ewmh
+# 
+# etcher
 sublime-text-dev
 timeshift
 
 xsettingsd
 qgnomeplatform-git
-
-engrampa-thunar-gtk2
-fsearch-git
-skippy-xd-git
-xfce-polkit-git

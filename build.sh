@@ -3,13 +3,12 @@
 rm -rf /var/cache/pacman/pkg/*
 
 pacman-key --init
-pacman-key --populate
 pacman-key --populate archlinux
 
 set -e -u
 
 iso_name=ctlos
-iso_de=xfce
+iso_de=budgie
 iso_label="CTLOS_$(date +%Y%m)"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live/USB"
@@ -104,8 +103,6 @@ make_setup_mkinitcpio() {
 # Customize installation (airootfs)
 make_customize_airootfs() {
     cp -af ${script_path}/airootfs ${work_dir}/${arch}
-
-    cp ${script_path}/pacman.conf.work_dir ${work_dir}/${arch}/airootfs/etc/pacman.conf
 
     curl -o ${work_dir}/${arch}/airootfs/etc/pacman.d/mirrorlist 'https://www.archlinux.org/mirrorlist/?country=all&protocol=http&use_mirror_status=on'
 

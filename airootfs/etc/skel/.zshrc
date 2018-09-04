@@ -1,8 +1,13 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
+
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
 
 ZSH=/usr/share/oh-my-zsh/
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="refined"
+
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="refined"
 # ZSH_THEME="dracula"
 DISABLE_AUTO_UPDATE="true"
 plugins=(
@@ -22,9 +27,9 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # 	__vte_osc7
 # fi
 
-# if [[ $TILIX_ID ]]; then
-# 	source /etc/profile.d/vte.sh
-# fi
+if [[ $TILIX_ID ]]; then
+	source /etc/profile.d/vte.sh
+fi
 
 export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'subl3'; else echo 'nano'; fi)"
 

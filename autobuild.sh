@@ -4,7 +4,7 @@
 
 USER="st"
 iso_name=ctlos
-iso_de=xfce
+iso_de=budgie
 iso_version=$(date +%Y%m%d)
 
 if [[ $EUID -ne 0 ]]; then
