@@ -1,5 +1,0 @@
-#!/bin/bash
-
-# Обновление grub
-
-grub-mkconfig -o /boot/grub/grub.cfg

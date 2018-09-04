@@ -9,7 +9,7 @@ pacman-key --populate archlinux
 set -e -u
 
 iso_name=ctlos
-iso_de=openbox
+iso_de=xfce
 iso_label="CTLOS_$(date +%Y%m)"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live/USB"

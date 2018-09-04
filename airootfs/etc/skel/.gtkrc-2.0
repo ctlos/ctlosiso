@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/liveuser/.gtkrc-2.0.mine"
-gtk-theme-name="Qogir-dark"
+gtk-theme-name="Arc-dark"
 gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="Clear Sans Medium, Medium 11"
 gtk-cursor-theme-name="capitaine-cursors"

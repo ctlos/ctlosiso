@@ -1,0 +1,68 @@
+favorites=htop.desktop,pamac-manager.desktop,xfce4-terminal.desktop,cherrytree.desktop
+recent=htop.desktop
+button-title=Приложения
+button-icon=view-app-grid-symbolic
+button-single-row=false
+show-button-title=false
+show-button-icon=true
+launcher-show-name=true
+launcher-show-description=false
+launcher-show-tooltip=true
+item-icon-size=1
+hover-switch-category=false
+category-show-name=true
+category-icon-size=0
+load-hierarchy=false
+recent-items-max=10
+favorites-in-recent=true
+display-recent-default=false
+position-search-alternate=true
+position-commands-alternate=true
+position-categories-alternate=true
+menu-width=391
+menu-height=469
+menu-opacity=100
+command-settings=xfce4-settings-manager
+show-command-settings=true
+command-lockscreen=light-locker-command -l
+show-command-lockscreen=true
+command-switchuser=gdmflexiserver
+show-command-switchuser=true
+command-logout=xfce4-session-logout
+show-command-logout=true
+command-menueditor=alacarte
+show-command-menueditor=true
+command-profile=mugshot
+show-command-profile=true
+search-actions=5
+
+[action0]
+name=Man-страницы
+pattern=#
+command=exo-open --launch TerminalEmulator man %s
+regex=false
+
+[action1]
+name=Web-поиск
+pattern=?
+command=exo-open --launch WebBrowser https://duckduckgo.com/?q=%u
+regex=false
+
+[action2]
+name=Википедия
+pattern=!w
+command=exo-open --launch WebBrowser https://en.wikipedia.org/wiki/%u
+regex=false
+
+[action3]
+name=Выполнить в терминале
+pattern=!
+command=exo-open --launch TerminalEmulator %s
+regex=false
+
+[action4]
+name=Открыть URI
+pattern=^(file|http|https):\\/\\/(.*)$
+command=exo-open \\0
+regex=true
+

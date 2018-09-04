@@ -35,6 +35,7 @@ TabActivityColor=#88C0D0
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 DropdownHeight=55
 DropdownPosition=0
-DropdownWidth=70
-DropdownAlwaysShowTabs=FALSE
+DropdownWidth=100
+DropdownOpacity=95
+DropdownToggleFocus=FALSE
 

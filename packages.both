@@ -172,16 +172,11 @@ unrar
 
 
 #Installing wireless packages
-dialog
-mobile-broadband-provider-info
-modemmanager
+net-tools
 networkmanager
 network-manager-applet
-networkmanager-dispatcher-ntpd
-networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
-networkmanager-vpnc
 wpa_supplicant
 
 
@@ -211,9 +206,10 @@ squashfs-tools
 
 #Installing languages
 go
-ruby
+# ruby
 python
 python2
+# bpython2
 
 
 #Installing theme, icons
@@ -251,7 +247,6 @@ perl-file-desktopentry
 intltool
 bash-completion
 zsh
-zsh-syntax-highlighting
 curl
 git
 imagemagick
@@ -272,15 +267,35 @@ youtube-dl
 youtube-viewer
 
 
-# main pkg openbox
+# main xfce pkg
 # gnome-keyring
 # polkit-gnome
-xdg-user-dirs
 xdg-user-dirs-gtk
 
 lightdm
 lightdm-gtk-greeter
 lightdm-gtk-greeter-settings
+light-locker
+
+exo
+xfce4-appfinder
+xfce4-battery-plugin
+xfce4-notifyd
+xfce4-panel
+xfce4-power-manager
+xfce4-pulseaudio-plugin
+xfce4-session
+xfce4-settings
+xfce4-terminal
+xfce4-whiskermenu-plugin
+xfce4-xkb-plugin
+xfce4-mpc-plugin
+xfce4-clipman-plugin
+xfconf
+xfdesktop
+xfsprogs
+xfwm4
+plank
 
 gamin
 thunar
@@ -288,43 +303,29 @@ thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
 tumbler
-compton
-redshift
-xfce4-notifyd
-xfce4-power-manager
-xfce4-terminal
-numlockx
-volumeicon
-plank
-
-# openbox
-gsimplecal
-jgmenu
-lxmenu-data
-nitrogen
-oblogout
-lxappearance-obconf
-obconf
 
 
 # my software
+alacarte
 audacious
 gparted
 chromium
 pepper-flash
+# firefox
+# firefox-i18n-ru
+# flashplugin
 
 atril
-# evince
 cherrytree
-
-flatpak
+flameshot
 galculator-gtk2
 gufw
 gimp
 transmission-gtk
 viewnior
-klavaro
 pavucontrol
+smplayer
+smplayer-themes
 mpv
 simplescreenrecorder
 keepassxc
@@ -335,14 +336,13 @@ virtualbox-guest-modules-arch
 virtualbox-guest-utils
 
 
+
 #yaourt
 ckbcomp
 calamares
 mkinitcpio-openswap
 
 yay
-inxi-git
-
 pamac-aur
 
 oh-my-zsh-git
@@ -353,12 +353,6 @@ ttf-roboto-mono
 
 capitaine-cursors
 
-clipit-gtk3
-# 
-caffeine-ng
-python-ewmh
-#
-# etcher
 sublime-text-dev
 timeshift
 
@@ -367,12 +361,5 @@ qgnomeplatform-git
 
 engrampa-thunar-gtk2
 fsearch-git
-obkey-git
-# 
-obmenu-generator
-perl-linux-desktopfiles
-# 
 skippy-xd-git
-i3lock-fancy-git
 xfce-polkit-git
-tint2-git

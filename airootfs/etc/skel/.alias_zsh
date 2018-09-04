@@ -7,6 +7,11 @@
 # git.io custom url
 # curl -i https://git.io -F "url=https://github.com/creio" -F "code=YOUR_CUSTOM_NAME"
 
+alias zup="source $HOME/.zshrc"
+alias merge="xrdb -merge .Xresources"
+alias vga="lspci -k | grep -A 2 -E '(VGA|3D)'"
+alias tb="nc termbin.com 9999"
+
 # share vbox В локальной машине mkdir vboxshare
 # в виртуалке uid={имя пользователя} git={группа}
 vboxshare () {
@@ -15,19 +20,18 @@ vboxshare () {
 	# sudo mount -t vboxsf -o rw,uid=st,gid=users vboxshare vboxshare
 }
 
-alias tb="nc termbin.com 9999"
-
 # aur pkg
 aget () {
 	curl -fO https://aur.archlinux.org/cgit/aur.git/snapshot/"$1".tar.gz
 }
 
 #alias neo="neofetch"
-alias neo="neofetch --w3m ~/.config/neofetch/neo.png"
+alias neo="neofetch --w3m ~/.config/neofetch/ctl.png"
 # alias neo="neofetch --w3m"
 
 # Погода, не только по городу, но и по месту. Нет привязки к регистру и языку.
 alias wtr='curl -H "Accept-Language: ru" wttr.in/Москва'
+# alias wtr='curl -H "Accept-Language: ru" -s wttr.in/Москва | sed -n "1,17p"'
 wts () {
 	curl -H 'Accept-Language: ru' wttr.in/"$1"
 }
@@ -41,8 +45,8 @@ alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 
 alias ls="ls --color=auto"
-alias ll="ls -alF --color=auto"
-alias la="ls -Ao --color=auto"
+alias ll="ls -alFh --color=auto"
+alias la="ls -a --color=auto"
 alias l="ls -CF --color=auto"
 alias .l="dirs -v"
 
@@ -58,6 +62,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 # alias ....="cd ../../.."
 # alias .....="cd ../../../.."
+alias :q="exit"
 
 gc () {
 	git clone "$1"
@@ -77,29 +82,19 @@ gac () {
 	git add --all
 	git commit -am "$1"
 }
-gap () {
-	git add .
-	git commit -a -m 'auto commit'
-	git push
-}
-gcp () {
-	git add --all
-	git commit -am "$1"
-	git push
-}
 alias gr="git remote"
 alias gf="git fetch"
 alias gpl="git pull"
 alias gp="git push"
 alias gpm="git push origin master"
 alias ghab="chromium http://github.com/ctlos &"
-alias glab="chromium http://gitlab.com/ctlos &"
 
 alias torc="chromium --proxy-server='socks://127.0.0.1:9050' &"
 
-alias yt="youtube-viewer -fs"
+# full screen flags -fs
+alias yt="youtube-viewer"
 ytv () {
-	youtube-viewer -fs "$1"
+	youtube-viewer "$1"
 }
 
 # youtube-dl --ignore-errors -o '~/Видео/youtube/%(playlist)s/%(title)s.%(ext)s' https://www.youtube.com/playlist?list=PL-UzghgfytJQV-JCEtyuttutudMk7
@@ -123,10 +118,14 @@ mp3p () {
 	youtube-dl --ignore-errors -f bestaudio --extract-audio --audio-format mp3 --audio-quality 0 -o '~/Music/youtube/%(playlist)s/%(title)s.%(ext)s' "$1"
 }
 
-alias m="ncmpcpp"
+alias porn="mpv 'http://www.pornhub.com/random'"
+
+alias m="ncmpcpp -S visualizer"
+
 pf () {
 	peerflix "$1" --mpv
 }
+alias rss="newsboat"
 # download web site
 wgetw () {
 	wget -rkx "$1"
@@ -134,6 +133,10 @@ wgetw () {
 iso () {
 	sudo dd bs=4M if=/home/st/files/linux/distr/"$1".iso of=/dev/"$2" status=progress && sync
 }
+
+
+alias -s {mp3,m4a,flac}="mpv"
+alias -s {png,jpg,tiff,bmp}="viewnior"
 
 
 alias st="subl3"
@@ -146,7 +149,9 @@ alias na="nautilus . &"
 alias sna="sudo nautilus ."
 alias h="htop"
 
+alias packey="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys && sudo pacman -Syy"
 alias sp="sudo pacman -S"
+alias spU="sudo pacman -U"
 alias sps="sudo pacman -Ss"
 alias spc="sudo pacman -Sc"
 alias spcc="sudo pacman -Scc"
