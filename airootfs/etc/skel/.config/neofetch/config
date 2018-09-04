@@ -1,39 +1,46 @@
+#!/usr/bin/env bash
+#
+# Neofetch config file
+# https://github.com/dylanaraps/neofetch
+
+# Speed up script by not using unicode
+export LC_ALL=C
+export LANG=C
+
 # See this wiki page for more info:
 # https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
 print_info() {
     #info line_break
     # info title
-    info underline
+    # info underline
     #info underline
 
-    #info function
     info "OS" distro
     #info "Model" model
     info "Kernel" kernel
     info "Packages" packages
-    #info "Uptime" uptime
-    info "Shell" shell
-    info "Terminal" term
-    #info "Resolution" resolution
-    info "DE" de
-    info "WM" wm
-    #info "WM Theme" wm_theme
-    info "Theme" theme
-    info "Icons" icons
-    info "Font" font
-    # info "Terminal Font" term_font
-    info "CPU" cpu
-    info "GPU" gpu
-    info "CPU Usage" cpu_usage
     info "Memory" memory
     info "Disk" disk
-    info "Battery" battery
-    # info "Song" song
-    # info "Local IP" local_ip
-    # info "Public IP" public_ip
+    #info "Uptime" uptime
+    info "Shell" shell
+    #info "Resolution" resolution
+    #info "DE" de
+    info "WM" wm
+    #info "WM Theme" wm_theme
+    info "Terminal" term
+    info "Theme" theme
+    info "Icons" icons
+    #info "CPU" cpu
+    #info "GPU" gpu
+    #info "CPU Usage" cpu_usage
+    #info "Battery" battery
+    info "Font" font
+    info "Terminal Font" term_font
+    info "Song" song
+    #info "Local IP" local_ip
+    #info "Public IP" public_ip
     #info "Users" users
     #info "Install Date" install_date
-    #prin "Weather" "$(curl wttr.in/?0?q?T | awk '/°(C|F)/ {printf $(NF-1) $(NF) " ("a")"} /,/ {a=$0}')"
 
     info line_break
     info cols
@@ -66,7 +73,7 @@ kernel_shorthand="on"
 # Values:   'on', 'off', 'tiny'
 # Flag:     --distro_shorthand
 # Supports: Everything except Windows and Haiku
-distro_shorthand="off"
+distro_shorthand="tiny"
 
 # Show/Hide OS Architecture.
 # Show 'x86_64', 'x86' and etc in 'Distro:' output.
@@ -78,7 +85,7 @@ distro_shorthand="off"
 # Example:
 # on:  'Arch Linux x86_64'
 # off: 'Arch Linux'
-os_arch="on"
+os_arch="off"
 
 
 # Uptime
@@ -95,22 +102,6 @@ os_arch="on"
 # off:  '2 days, 10 hours, 3 minutes'
 # tiny: '2d 10h 3m'
 uptime_shorthand="on"
-
-
-# Packages
-
-
-# Show/Hide Package Manager names.
-#
-# Default: 'tiny'
-# Values:  'on', 'tiny' 'off'
-# Flag:    --package_managers
-#
-# Example:
-# on:   '998 (pacman), 8 (flatpak), 4 (snap)'
-# tiny: '908 (pacman, flatpak, snap)'
-# off:  '908'
-package_managers="on"
 
 
 # Shell
@@ -151,28 +142,19 @@ shell_version="on"
 # NOTE: Any file in '/sys/devices/system/cpu/cpu0/cpufreq' can be used as a value.
 speed_type="bios_limit"
 
-# CPU speed shorthand
+# Shorten the output of the CPU function
 #
 # Default: 'off'
-# Values: 'on', 'off'.
-# Flag:    --speed_shorthand.
-# NOTE: This flag is not supported in systems with CPU speed less than 1 GHz
+# Values:  'on', 'off', 'tiny', 'name', 'speed'
+# Flag:    --cpu_shorthand
 #
 # Example:
 # on:    'i7-6500U (4) @ 3.1GHz'
-# off:   'i7-6500U (4) @ 3.100GHz'
-speed_shorthand="off"
-
-# Enable/Disable CPU brand in output.
-#
-# Default: 'on'
-# Values:  'on', 'off'
-# Flag:    --cpu_brand
-#
-# Example:
-# on:   'Intel i7-6500U'
-# off:  'i7-6500U (4)'
-cpu_brand="on"
+# off:   'Intel i7-6500U (4) @ 3.1GHz'
+# tiny:  'i7-6500U (4)'
+# name:  'Intel i7-6500U (4)'
+# speed: '3.1GHz'
+cpu_shorthand="off"
 
 # CPU Speed
 # Hide/Show CPU speed.
@@ -207,9 +189,7 @@ cpu_cores="logical"
 # Default: 'off'
 # Values:  'C', 'F', 'off'
 # Flag:    --cpu_temp
-# Supports: Linux, BSD
-# NOTE: For FreeBSD and NetBSD-based systems, you'll need to enable
-#       coretemp kernel module. This only supports newer Intel processors.
+# Supports: Linux
 #
 # Example:
 # C:   'Intel i7-6500U (4) @ 3.1GHz [27.2°C]'
@@ -279,7 +259,7 @@ refresh_rate="off"
 # Example:
 # on:  'Numix, Adwaita'
 # off: 'Numix [GTK2], Adwaita [GTK3]'
-gtk_shorthand="off"
+gtk_shorthand="on"
 
 
 # Enable/Disable gtk2 Theme / Icons / Font
@@ -302,7 +282,7 @@ gtk2="on"
 # Example:
 # on:  'Numix [GTK2], Adwaita [GTK3]'
 # off: 'Numix [GTK2]'
-gtk3="on"
+gtk3="off"
 
 
 # IP Address
@@ -314,7 +294,6 @@ gtk3="on"
 # Values:  'url'
 # Flag:    --ip_host
 public_ip_host="http://ident.me"
-
 
 
 # Disk
@@ -342,7 +321,7 @@ disk_show=('/')
 # What to append to the Disk subtitle.
 #
 # Default: 'mount'
-# Values:  'mount', 'name', 'dir'
+# Values:  'mount', 'name'
 # Flag:    --disk_subtitle
 #
 # Example:
@@ -351,72 +330,13 @@ disk_show=('/')
 #
 # mount:  'Disk (/): 74G / 118G (66%)'
 #         'Disk (/mnt/Local Disk): 74G / 118G (66%)'
-#         'Disk (/mnt/Videos): 74G / 118G (66%)'
-#
-# dir:    'Disk (/): 74G / 118G (66%)'
-#         'Disk (Local Disk): 74G / 118G (66%)'
-#         'Disk (Videos): 74G / 118G (66%)'
 disk_subtitle="mount"
 
 
 # Song
 
 
-# Manually specify a music player.
-#
-# Default: 'auto'
-# Values:  'auto', 'player-name'
-# Flag:    --music_player
-#
-# Available values for 'player-name':
-#
-# amarok
-# audacious
-# banshee
-# bluemindo
-# clementine
-# cmus
-# deadbeef
-# deepin-music
-# dragon
-# elisa
-# exaile
-# gnome-music
-# gmusicbrowser
-# Google Play
-# guayadeque
-# iTunes
-# juk
-# lollypop
-# mocp
-# mopidy
-# mpd
-# pogo
-# pragha
-# qmmp
-# quodlibet
-# rhythmbox
-# sayonara
-# smplayer
-# spotify
-# Spotify
-# tomahawk
-# vlc
-# xmms2d
-# yarock
-music_player="auto"
-
-# Format to display song information.
-#
-# Default: '%artist% - %album% - %title%'
-# Values:  '%artist%', '%album%', '%title%'
-# Flag:    --song_format
-#
-# Example:
-# default: 'Song: Jet - Get Born - Sgt Major'
-song_format="%artist% - %album% - %title%"
-
-# Print the Artist, Album and Title on separate lines
+# Print the Artist and Title on separate lines
 #
 # Default: 'off'
 # Values:  'on', 'off'
@@ -424,17 +344,36 @@ song_format="%artist% - %album% - %title%"
 #
 # Example:
 # on:  'Artist: The Fratellis'
-#      'Album: Costello Music'
 #      'Song: Chelsea Dagger'
 #
-# off: 'Song: The Fratellis - Costello Music - Chelsea Dagger'
+# off: 'Song: The Fratellis - Chelsea Dagger'
 song_shorthand="off"
 
-# 'mpc' arguments (specify a host, password etc).
+
+# Install Date
+
+
+# Whether to show the time in the output
 #
-# Default:  ''
-# Example: mpc_args=(-h HOST -P PASSWORD)
-mpc_args=()
+# Default:  'on'
+# Values:   'on', 'off'
+# Flag:     --install_time
+#
+# Example:
+# on:  'Thu 14 Apr 2016 11:50 PM'
+# off: 'Thu 14 Apr 2016'
+install_time="on"
+
+# Set time format in the output
+#
+# Default: '24h'
+# Values:  '12h', '24h'
+# Flag:    --install_time_format
+#
+# Example:
+# 12h: 'Thu 14 Apr 2016 11:50 PM'
+# 24h: 'Thu 14 Apr 2016 23:50'
+install_time_format="12h"
 
 
 # Text Colors
@@ -511,7 +450,7 @@ color_blocks="on"
 # Default:  '3'
 # Values:   'num'
 # Flag:     --block_width
-block_width=3
+block_width=4
 
 # Color block height in lines
 #
@@ -588,13 +527,12 @@ disk_display="off"
 
 # Backend Settings
 
-
 # Image backend.
 #
 # Default:  'ascii'
-# Values:   'ascii', 'caca', 'jp2a', 'iterm2', 'off', 'termpix', 'pixterm', 'tycat', 'w3m'
+# Values:   'ascii', 'caca', 'catimg', 'jp2a', 'iterm2', 'off', 'tycat', 'w3m'
 # Flag:     --backend
-image_backend="ascii"
+image_backend="w3m"
 
 # Image Source
 #
@@ -607,7 +545,7 @@ image_backend="ascii"
 # NOTE: 'auto' will pick the best image source for whatever image backend is used.
 #       In ascii mode, distro ascii art will be used and in an image mode, your
 #       wallpaper will be used.
-image_source="auto"
+image_source=~/.config/neofetch/ctl.png
 
 
 # Ascii Options
@@ -626,7 +564,7 @@ image_source="auto"
 #       Change this to 'Lubuntu', 'Xubuntu', 'Ubuntu-GNOME' or 'Ubuntu-Budgie' to use the flavors.
 # NOTE: Arch, Crux and Gentoo have a smaller logo variant.
 #       Change this to 'arch_small', 'crux_small' or 'gentoo_small' to use the small logos.
-ascii_distro="auto"
+#ascii_distro="arch_old"
 
 # Ascii Colors
 #
@@ -650,15 +588,6 @@ ascii_bold="on"
 
 # Image Options
 
-
-# Image loop
-# Setting this to on will make neofetch redraw the image constantly until
-# Ctrl+C is pressed. This fixes display issues in some terminal emulators.
-#
-# Default:  'off'
-# Values:   'on', 'off'
-# Flag:     --loop
-image_loop="off"
 
 # Thumbnail directory
 #
@@ -692,14 +621,14 @@ crop_offset="center"
 # Values:  'auto', '00px', '00%', 'none'
 # Flags:   --image_size
 #          --size
-image_size="auto"
+image_size="200"
 
-# Gap between image and text
+# Ggap between image and text
 #
 # Default: '3'
 # Values:  'num', '-num'
 # Flag:    --gap
-gap=3
+gap=2
 
 # Image offsets
 # Only works with the w3m backend.
@@ -708,8 +637,8 @@ gap=3
 # Values:  'px'
 # Flags:   --xoffset
 #          --yoffset
-yoffset=50
-xoffset=16
+yoffset=48
+xoffset=32
 
 # Image background color
 # Only works with the w3m backend.
@@ -720,11 +649,66 @@ xoffset=16
 background_color=
 
 
+# Scrot Options
+
+
+# Whether or not to always take a screenshot
+# You can manually take a screenshot with "--scrot" or "-s"
+#
+# Default: 'off'
+# Values:  'on', 'off'
+# Flags:   --scrot
+#          -s
+scrot="off"
+
+# Screenshot Program
+# Neofetch will automatically use whatever screenshot tool
+# is installed on your system.
+#
+# If 'neofetch -v' says that it couldn't find a screenshot
+# tool or you're using a custom tool then you can change
+# the option below to a custom command.
+#
+# Default: 'auto'
+# Values:  'auto' 'cmd -flags'
+# Flag:    --scrot_cmd
+scrot_cmd="auto"
+
+# Screenshot Directory
+# Where to save the screenshots
+#
+# Default: '~/Pictures/'
+# Values:  'dir'
+# Flag:    --scrot_dir
+#
+# Note: Neofetch won't create the directory if it doesn't exist.
+scrot_dir="$HOME/Pictures/"
+
+# Screenshot Filename
+# What to name the screenshots
+#
+# Default: 'neofetch-$(date +%F-%I-%M-%S-${RANDOM}).png'
+# Values:  'string'
+# Flag:    --scrot_name
+scrot_name="neofetch-$(date +%F-%I-%M-%S-${RANDOM}).png"
+
+# Image upload host
+# Where to upload the image.
+#
+# Default: 'teknik'
+# Values:  'imgur', 'teknik'
+# Flag:    --image_host
+#
+# NOTE: If you'd like another image host to be added to Neofetch.
+#       Open an issue on github.
+image_host="teknik"
+
+
 # Misc Options
 
-# Stdout mode
-# Turn off all colors and disables image backend (ASCII/Image).
-# Useful for piping into another command.
-# Default: 'off'
-# Values: 'on', 'off'
-stdout="off"
+
+# Config version.
+#
+# NOTE: Don't change this value, neofetch reads this to determine
+# how to handle backwards compatibility.
+config_version="2.1.0"

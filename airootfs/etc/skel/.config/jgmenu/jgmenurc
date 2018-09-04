@@ -1,0 +1,39 @@
+menu_margin_x     = 0
+menu_margin_y     = 28
+menu_width        = 200
+menu_radius       = 1
+menu_border       = 0
+csv_cmd           = lx
+
+#
+# valid options for menu alignment are:
+#   - horizontal: left, right
+#   - vertical:   top, bottom
+#
+menu_halign       = left
+menu_valign       = top
+
+item_margin_x     = 3
+item_margin_y     = 3
+item_height       = 25
+item_padding_x    = 4
+item_radius       = 1
+item_border       = 0
+
+max_items         = 80
+min_items         = 0
+font              = Clear Sans Medium 11
+icon_size         = 20
+icon_theme        = Papirus
+ignore_xsettings  = 1
+ignore_icon_cache = 1
+show_title        = 1
+
+color_menu_bg     = #373d49 100
+color_menu_fg     = #ffffff 100
+color_norm_bg     = #373d49 100
+color_norm_fg     = #ffffff 100
+color_sel_bg      = #5294e2 100
+color_sel_fg      = #ffffff 100
+color_noprog_fg   = #eeeeee 100
+color_title_bg    = #ffffff 20

@@ -1,8 +1,8 @@
 # DO NOT EDIT! This file will be overwritten by LXAppearance.
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
-include "~/.gtkrc-2.0.mine"
-gtk-theme-name="Ark-dark"
+include "/home/liveuser/.gtkrc-2.0.mine"
+gtk-theme-name="Qogir-dark"
 gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="Clear Sans Medium, Medium 11"
 gtk-cursor-theme-name="capitaine-cursors"

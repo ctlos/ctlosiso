@@ -71,19 +71,21 @@ function setDefaults() {
 }
 
 function addCalamares() {
-    mkdir /home/liveuser/.config/autostart
-    cp -v /usr/share/applications/calamares.desktop /home/liveuser/.config/autostart/calamares.desktop
-    chown liveuser:wheel /home/liveuser/.config/autostart/calamares.desktop
-    chmod +x /home/liveuser/.config/autostart/calamares.desktop
+    dockItem="/home/liveuser/.config/plank/dock1/launchers/Calamares.dockitem"
+    
+    touch $dockItem
+
+    echo "[PlankDockItemPreferences]" >> $dockItem
+    echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
+
+    chown liveuser $dockItem
 }
 
 function fontFix() {
-    # https://wiki.archlinux.org/index.php/font_configuration
     rm -rf /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 }
 
 function fixWifi() {
-    #https://wiki.archlinux.org/index.php/NetworkManager#Configuring_MAC_Address_Randomization
     su -c 'echo "" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "[device]" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "wifi.scan-rand-mac-address=no" >> /etc/NetworkManager/NetworkManager.conf'
@@ -114,9 +116,9 @@ function fixHibernate() {
     sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 }
 
-# function removingPackages() {
-#     pacman -R --noconfirm go
-# }
+function removingPackages() {
+    pacman -R --noconfirm go
+}
 
 function fixHaveged(){
     systemctl start haveged
@@ -159,7 +161,7 @@ fontFix
 fixWifi
 fixPermissions
 fixHibernate
-# removingPackages
+removingPackages
 fixHaveged
 initkeys
 enableServices

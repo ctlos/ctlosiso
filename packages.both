@@ -40,7 +40,6 @@ gcc
 gcc-libs
 gettext
 glibc
-gpm
 grep
 grub
 gsfonts
@@ -65,7 +64,6 @@ m4
 make
 man-db
 man-pages
-mc
 mdadm
 memtest86+
 mkinitcpio-nfs-utils
@@ -107,6 +105,7 @@ which
 whois
 wireless_tools
 wpa_actiond
+x264
 xapps
 xfsprogs
 
@@ -156,20 +155,20 @@ xf86-video-voodoo
 
 
 #Installing basic tools
-# gvfs
-# gvfs-afc
-# gvfs-goa
-# gvfs-google
-# gvfs-gphoto2
-# gvfs-mtp
-# gvfs-nfs
-# gvfs-smb
-# ripgrep
-# xsel
-# gzip
-# p7zip
-# unzip
-# unrar
+gvfs
+gvfs-afc
+gvfs-goa
+gvfs-google
+gvfs-gphoto2
+gvfs-mtp
+gvfs-nfs
+gvfs-smb
+ripgrep
+xsel
+gzip
+p7zip
+unzip
+unrar
 
 
 #Installing wireless packages
@@ -187,20 +186,20 @@ wpa_supplicant
 
 
 #Installing sound packages
-# alsa-firmware
-# alsa-utils
-# gstreamer
-# gstreamer-vaapi
-# gst-libav
-# gst-plugins-bad
-# gst-plugins-base
-# gst-plugins-good
-# gst-plugins-ugly
-# pulseaudio
-# pulseaudio-alsa
-# pulseaudio-bluetooth
-# pulseaudio-equalizer
-# lib32-alsa-plugins
+alsa-firmware
+alsa-utils
+gstreamer
+gstreamer-vaapi
+gst-libav
+gst-plugins-bad
+gst-plugins-base
+gst-plugins-good
+gst-plugins-ugly
+pulseaudio
+pulseaudio-alsa
+pulseaudio-bluetooth
+pulseaudio-equalizer
+lib32-alsa-plugins
 
 
 #Installing development tools
@@ -211,56 +210,169 @@ squashfs-tools
 
 
 #Installing languages
-# go
-# ruby
-# python
-# python2
-# bpython2
+go
+ruby
+python
+python2
+
+
+#Installing theme, icons
+gtk-engines
+gtk-engine-murrine
+gtk3-print-backends
+arc-gtk-theme
+papirus-icon-theme
+qt4
+qt5-styleplugins
+qt5ct
 
 
 #Installing fonts
+xorg-font-util
+xorg-fonts-alias
+xorg-fonts-encodings
+xorg-fonts-misc
+xorg-mkfontdir
+xorg-mkfontscale
+ttf-croscore
 ttf-dejavu
+ttf-hack
+ttf-roboto
+ttf-liberation
+ttf-ubuntu-font-family
+ttf-font-awesome
 
 
 #Installing cli utils
+chrpath
+wmctrl
+gtk2-perl
+perl-file-desktopentry
+intltool
 bash-completion
 zsh
 zsh-syntax-highlighting
+curl
 git
+imagemagick
 neofetch
+w3m
+speedtest-cli
+scrot
 htop
+ranger
 reflector
+rofi
+mpd
+mpc
+ncmpcpp
+ffmpeg
+streamlink
+youtube-dl
+youtube-viewer
 
-# main pkg
-xfce4
-xfce4-xkb-plugin
+
+# main pkg openbox
+# gnome-keyring
+# polkit-gnome
+xdg-user-dirs
 xdg-user-dirs-gtk
+
 lightdm
 lightdm-gtk-greeter
-mousepad
-arc-gtk-theme
-papirus-icon-theme
-gparted
+lightdm-gtk-greeter-settings
 
+gamin
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
+tumbler
+compton
+redshift
+xfce4-notifyd
+xfce4-power-manager
+xfce4-terminal
+numlockx
+volumeicon
+plank
+
+# openbox
+gsimplecal
+jgmenu
+lxmenu-data
+nitrogen
+oblogout
+lxappearance-obconf
+obconf
+
+
+# my software
+audacious
+gparted
+chromium
+pepper-flash
+
+atril
+# evince
+cherrytree
+
+flatpak
+galculator-gtk2
+gufw
+gimp
+transmission-gtk
+viewnior
+klavaro
+pavucontrol
+mpv
+simplescreenrecorder
+keepassxc
+veracrypt
 
 # Virtualbox Tools
 virtualbox-guest-modules-arch
 virtualbox-guest-utils
 
 
-#ctlos repo
+#yaourt
 ckbcomp
-# calamares-mini
-calamares-net
+calamares
 mkinitcpio-openswap
 
 yay
+inxi-git
+
+pamac-aur
 
 oh-my-zsh-git
 zsh-autosuggestions
 
-xsettingsd
-
 ttf-clear-sans
 ttf-roboto-mono
+
 capitaine-cursors
+
+clipit-gtk3
+# 
+caffeine-ng
+python-ewmh
+#
+# etcher
+sublime-text-dev
+timeshift
+
+xsettingsd
+qgnomeplatform-git
+
+engrampa-thunar-gtk2
+fsearch-git
+obkey-git
+# 
+obmenu-generator
+perl-linux-desktopfiles
+# 
+skippy-xd-git
+i3lock-fancy-git
+xfce-polkit-git
+tint2-git
