@@ -57,7 +57,6 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="names-visible" type="array">
         <value type="string" value="апплет networkmanager"/>
-        <value type="string" value="caffeine"/>
         <value type="string" value="pamac-tray"/>
         <value type="string" value="thunar"/>
         <value type="string" value="терминал xfce"/>

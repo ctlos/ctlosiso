@@ -137,9 +137,9 @@ xf86-input-evdev
 xf86-input-keyboard
 xf86-input-synaptics
 xf86-input-void
+xf86-input-mouse
+xf86-input-vmmouse
 # xf86-input-libinput
-# xf86-input-mouse
-# xf86-input-vmmouse
 
 xf86-video-amdgpu
 xf86-video-ati
@@ -205,11 +205,10 @@ squashfs-tools
 
 
 #Installing languages
-go
+# go
 # ruby
 python
 python2
-# bpython2
 
 
 #Installing theme, icons
@@ -224,18 +223,8 @@ qt5ct
 
 
 #Installing fonts
-xorg-font-util
-xorg-fonts-alias
-xorg-fonts-encodings
-xorg-fonts-misc
-xorg-mkfontdir
-xorg-mkfontscale
-ttf-croscore
 ttf-dejavu
-ttf-hack
-ttf-roboto
 ttf-liberation
-ttf-ubuntu-font-family
 ttf-font-awesome
 
 
@@ -262,19 +251,20 @@ mpd
 mpc
 ncmpcpp
 ffmpeg
+ffmpegthumbnailer
+ffmpegthumbs
 streamlink
 youtube-dl
 youtube-viewer
 
 
-# main xfce pkg
-# gnome-keyring
+## main xfce pkg
 # polkit-gnome
+gnome-keyring
 xdg-user-dirs-gtk
 
 lightdm
 lightdm-gtk-greeter
-lightdm-gtk-greeter-settings
 light-locker
 
 exo
