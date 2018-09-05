@@ -58,6 +58,7 @@ libdvdcss
 libtool
 licenses
 linux
+linux-headers
 logrotate
 lvm2
 m4
@@ -205,13 +206,12 @@ lib32-alsa-plugins
 #Installing development tools
 archiso
 arch-install-scripts
-linux-headers
 squashfs-tools
 
 
 #Installing languages
 # go
-ruby
+# ruby
 python
 python2
 
@@ -229,6 +229,7 @@ qt5ct
 
 #Installing fonts
 ttf-dejavu
+ttf-liberation
 ttf-font-awesome
 
 
@@ -263,9 +264,9 @@ youtube-dl
 youtube-viewer
 
 
-# main pkg openbox
-# gnome-keyring
+## main pkg openbox
 # polkit-gnome
+gnome-keyring
 xdg-user-dirs-gtk
 
 lightdm
