@@ -185,7 +185,7 @@ launcher_tooltip = 1
 # Clock
 time1_format = %H:%M
 time2_format = 
-time1_font = Ubuntu Semi-Bold 12
+time1_font = Clear Sans Medium 11
 time1_timezone = 
 time2_timezone = 
 clock_font_color = #aeb4c6 100
@@ -205,8 +205,8 @@ battery_tooltip = 1
 battery_low_status = 20
 battery_low_cmd = notify-send "Battery Low"
 battery_full_cmd = 
-bat1_font = Ubuntu 11
-bat2_font = Ubuntu 0
+bat1_font = Clear Sans Medium 11
+bat2_font = Clear Sans Medium 0
 battery_font_color = #b5b5b5 100
 bat1_format = 
 bat2_format = 
@@ -285,5 +285,4 @@ tooltip_hide_timeout = 0
 tooltip_padding = 10 6
 tooltip_background_id = 6
 tooltip_font_color = #d8d8d8 100
-tooltip_font = Ubuntu 10
-
+tooltip_font = Clear Sans Medium 10
