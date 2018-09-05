@@ -268,7 +268,6 @@ xdg-user-dirs-gtk
 
 lightdm
 lightdm-gtk-greeter
-lightdm-gtk-greeter-settings
 
 gamin
 thunar
