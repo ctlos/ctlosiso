@@ -210,7 +210,7 @@ squashfs-tools
 
 
 #Installing languages
-go
+# go
 ruby
 python
 python2
@@ -228,18 +228,7 @@ qt5ct
 
 
 #Installing fonts
-xorg-font-util
-xorg-fonts-alias
-xorg-fonts-encodings
-xorg-fonts-misc
-xorg-mkfontdir
-xorg-mkfontscale
-ttf-croscore
 ttf-dejavu
-ttf-hack
-ttf-roboto
-ttf-liberation
-ttf-ubuntu-font-family
 ttf-font-awesome
 
 
@@ -275,7 +264,6 @@ youtube-viewer
 # main pkg openbox
 # gnome-keyring
 # polkit-gnome
-xdg-user-dirs
 xdg-user-dirs-gtk
 
 lightdm
@@ -312,18 +300,14 @@ audacious
 gparted
 chromium
 pepper-flash
-
 atril
-# evince
 cherrytree
-
-flatpak
+flameshot
 galculator-gtk2
 gufw
 gimp
 transmission-gtk
 viewnior
-klavaro
 pavucontrol
 mpv
 simplescreenrecorder
@@ -341,8 +325,6 @@ calamares
 mkinitcpio-openswap
 
 yay
-inxi-git
-
 pamac-aur
 
 oh-my-zsh-git
@@ -350,15 +332,9 @@ zsh-autosuggestions
 
 ttf-clear-sans
 ttf-roboto-mono
-
 capitaine-cursors
 
 clipit-gtk3
-# 
-caffeine-ng
-python-ewmh
-#
-# etcher
 sublime-text-dev
 timeshift
 

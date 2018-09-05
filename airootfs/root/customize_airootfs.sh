@@ -62,10 +62,6 @@ function setDefaults() {
     echo "EDITOR=${_EDITOR}" >> /etc/environment
     echo "EDITOR=${_EDITOR}" >> /etc/profile
 
-    # default shell
-    # chsh -s /bin/bash
-    chsh -s /bin/zsh
-
     # fix qt5
     echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
 }
@@ -116,9 +112,9 @@ function fixHibernate() {
     sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 }
 
-function removingPackages() {
-    pacman -R --noconfirm go
-}
+# function removingPackages() {
+#     pacman -R --noconfirm go
+# }
 
 function fixHaveged(){
     systemctl start haveged
@@ -161,7 +157,7 @@ fontFix
 fixWifi
 fixPermissions
 fixHibernate
-removingPackages
+# removingPackages
 fixHaveged
 initkeys
 enableServices
