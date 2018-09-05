@@ -1,5 +1,5 @@
 favorites=htop.desktop,pamac-manager.desktop,xfce4-terminal.desktop,cherrytree.desktop
-recent=htop.desktop
+recent=htop.desktop,pamac-manager.desktop
 button-title=Приложения
 button-icon=view-app-grid-symbolic
 button-single-row=false

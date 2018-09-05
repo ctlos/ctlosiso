@@ -12,9 +12,9 @@
       <property name="plugin-ids" type="array">
         <value type="int" value="4"/>
         <value type="int" value="8"/>
-        <value type="int" value="10"/>
         <value type="int" value="3"/>
         <value type="int" value="15"/>
+        <value type="int" value="10"/>
         <value type="int" value="6"/>
         <value type="int" value="1"/>
         <value type="int" value="7"/>
@@ -74,11 +74,11 @@
       <property name="display-type" type="uint" value="2"/>
       <property name="group-policy" type="uint" value="0"/>
     </property>
-    <property name="plugin-10" type="string" value="screenshooter"/>
     <property name="plugin-1" type="string" value="power-manager-plugin"/>
     <property name="plugin-12" type="string" value="separator">
       <property name="style" type="uint" value="0"/>
       <property name="expand" type="bool" value="false"/>
     </property>
+    <property name="plugin-10" type="string" value="xfce4-clipman-plugin"/>
   </property>
 </channel>
