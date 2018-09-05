@@ -59,6 +59,7 @@ libtool
 licenses
 linux
 linux-headers
+lsb-release
 logrotate
 lvm2
 m4
