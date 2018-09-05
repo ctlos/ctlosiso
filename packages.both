@@ -256,6 +256,8 @@ mpd
 mpc
 ncmpcpp
 ffmpeg
+ffmpegthumbnailer
+ffmpegthumbs
 streamlink
 youtube-dl
 youtube-viewer
