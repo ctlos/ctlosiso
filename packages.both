@@ -58,6 +58,7 @@ libdvdcss
 libtool
 licenses
 linux
+linux-headers
 logrotate
 lvm2
 m4
@@ -200,7 +201,6 @@ lib32-alsa-plugins
 #Installing development tools
 archiso
 arch-install-scripts
-linux-headers
 squashfs-tools
 
 
@@ -340,7 +340,6 @@ zsh-autosuggestions
 
 ttf-clear-sans
 ttf-roboto-mono
-
 capitaine-cursors
 
 sublime-text-dev
