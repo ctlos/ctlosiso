@@ -13,7 +13,7 @@ alias vga="lspci -k | grep -A 2 -E '(VGA|3D)'"
 alias tb="nc termbin.com 9999"
 
 # share vbox В локальной машине mkdir vboxshare
-# в виртуалке uid={имя пользователя} git={группа}
+# в виртуалке uid={имя пользователя} git={группа} узнать, команда: id
 vboxshare () {
 	mkdir vboxshare
 	sudo mount -t vboxsf -o rw,uid=1000,gid=1000 vboxshare vboxshare
@@ -169,8 +169,8 @@ alias ycc="yay -Scc"
 alias yy="yay -Syy"
 alias yu="yay -Syu"
 alias yun="yay -Syu --noconfirm"
-alias yr="yay -Rns"
-alias yrn="yay -Rns --noconfirm"
+alias yr="yay -R"
+alias yrn="yay -R --noconfirm"
 
 # распаковать архив не указывая тип распаковщика
 function ex {
