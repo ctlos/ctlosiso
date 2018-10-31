@@ -54,7 +54,7 @@ function createLiveUser() {
 }
 
 function setDefaults() {
-    export _BROWSER=chromium
+    export _BROWSER=firefox
     echo "BROWSER=/usr/bin/${_BROWSER}" >> /etc/environment
     echo "BROWSER=/usr/bin/${_BROWSER}" >> /etc/profile
 

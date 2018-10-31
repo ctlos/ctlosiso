@@ -251,6 +251,7 @@ rofi
 mpd
 mpc
 ncmpcpp
+newsboat
 ffmpeg
 ffmpegthumbnailer
 ffmpegthumbs
@@ -300,18 +301,18 @@ tumbler
 alacarte
 audacious
 gparted
-chromium
-pepper-flash
-# firefox
-# firefox-i18n-ru
-# flashplugin
+# chromium
+# pepper-flash
+firefox
+firefox-i18n-ru
+flashplugin
 
 atril
 cherrytree
 flameshot
 galculator-gtk2
+mousepad
 gufw
-gimp
 transmission-gtk
 viewnior
 pavucontrol
@@ -333,7 +334,7 @@ ckbcomp
 calamares
 mkinitcpio-openswap
 
-yay
+yay-bin
 pamac-aur
 
 oh-my-zsh-git
@@ -343,8 +344,10 @@ ttf-clear-sans
 ttf-roboto-mono
 capitaine-cursors
 
-sublime-text-dev
 timeshift
+
+mintstick-git
+python2-pyparted
 
 xsettingsd
 qgnomeplatform-git

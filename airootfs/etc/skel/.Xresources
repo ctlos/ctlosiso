@@ -8,7 +8,7 @@ Xft.lcdfilter: lcddefault
 
 
 
-#include ".colors/default"
+#include ".colors/dracula"
 
 
 URxvt.font: xft:Roboto Mono Medium:size=11
@@ -47,22 +47,20 @@ URxvt*transparent:false
 !URxvt*shading: 10
 URxvt*depth: 32
 !URxvt*background: rgba:0000/0000/0200/c800
-URxvt*background: [97]#1E1F29
-
 URxvt.colorUL: #4682B4
 
 
 
 rofi.modi:                           ssh,window,drun,run
 rofi.sidebar-mode:                   false
-rofi.terminal:                       urxvt
+rofi.terminal:                       xfce4-terminal
 rofi.ssh-client:                     ssh
 rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
 rofi.opacity:                        100
 rofi.width:                          25
 rofi.lines:                          7
 rofi.columns:                        1
-rofi.font:                           ClearSansMedium 13
+rofi.font:                           ClearSansMedium 12
 rofi.drun-icon-theme:                Papirus
 !rofi.show-icons:                    true
 rofi.bw:                             10

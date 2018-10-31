@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 #
 # Neofetch config file
 # https://github.com/dylanaraps/neofetch
@@ -12,22 +12,23 @@ export LANG=C
 print_info() {
     #info line_break
     # info title
-    # info underline
+    info underline
     #info underline
 
+    #info function
     info "OS" distro
     #info "Model" model
     info "Kernel" kernel
     info "Packages" packages
-    info "Memory" memory
-    info "Disk" disk
+    #info "Memory" memory
+    # info "Disk" disk
     #info "Uptime" uptime
     info "Shell" shell
+    info "Terminal" term
     #info "Resolution" resolution
-    #info "DE" de
+    info "DE" de
     info "WM" wm
     #info "WM Theme" wm_theme
-    info "Terminal" term
     info "Theme" theme
     info "Icons" icons
     #info "CPU" cpu
@@ -37,10 +38,13 @@ print_info() {
     info "Font" font
     info "Terminal Font" term_font
     info "Song" song
-    #info "Local IP" local_ip
-    #info "Public IP" public_ip
+    info "Local IP" local_ip
+    # info "Public IP" public_ip
     #info "Users" users
     #info "Install Date" install_date
+    #prin "Weather" "$(curl wttr.in/?0?q?T | awk '/°(C|F)/ {printf $(NF-1) $(NF) " ("a")"} /,/ {a=$0}')"
+    # prin "Weather" "$(curl wttr.in/60.04,30.32?0?q?T | awk '/°(C|F)/ {printf $(NF-1) $(NF)}')"
+    prin "Weather" "$(curl wttr.in/?0?q?T | awk '/°(C|F)/ {printf $(NF-1) $(NF)}')"
 
     info line_break
     info cols
@@ -73,7 +77,7 @@ kernel_shorthand="on"
 # Values:   'on', 'off', 'tiny'
 # Flag:     --distro_shorthand
 # Supports: Everything except Windows and Haiku
-distro_shorthand="tiny"
+distro_shorthand="on"
 
 # Show/Hide OS Architecture.
 # Show 'x86_64', 'x86' and etc in 'Distro:' output.
@@ -530,7 +534,7 @@ disk_display="off"
 # Image backend.
 #
 # Default:  'ascii'
-# Values:   'ascii', 'caca', 'catimg', 'jp2a', 'iterm2', 'off', 'tycat', 'w3m'
+# Values:   'ascii', 'caca', 'catimg', 'jp2a', 'iterm2', 'off', 'tycat', 'w3m', 'kitty'
 # Flag:     --backend
 image_backend="w3m"
 
@@ -545,8 +549,8 @@ image_backend="w3m"
 # NOTE: 'auto' will pick the best image source for whatever image backend is used.
 #       In ascii mode, distro ascii art will be used and in an image mode, your
 #       wallpaper will be used.
-image_source=~/.config/neofetch/ctl.png
-
+# image_source=$HOME/.wall/
+image_source=$HOME/.wall/lock.jpg
 
 # Ascii Options
 
@@ -564,7 +568,7 @@ image_source=~/.config/neofetch/ctl.png
 #       Change this to 'Lubuntu', 'Xubuntu', 'Ubuntu-GNOME' or 'Ubuntu-Budgie' to use the flavors.
 # NOTE: Arch, Crux and Gentoo have a smaller logo variant.
 #       Change this to 'arch_small', 'crux_small' or 'gentoo_small' to use the small logos.
-#ascii_distro="arch_old"
+# ascii_distro="auto"
 
 # Ascii Colors
 #
@@ -621,7 +625,7 @@ crop_offset="center"
 # Values:  'auto', '00px', '00%', 'none'
 # Flags:   --image_size
 #          --size
-image_size="200"
+image_size="250"
 
 # Ggap between image and text
 #
@@ -637,8 +641,8 @@ gap=2
 # Values:  'px'
 # Flags:   --xoffset
 #          --yoffset
-yoffset=48
-xoffset=32
+yoffset=0
+xoffset=0
 
 # Image background color
 # Only works with the w3m backend.

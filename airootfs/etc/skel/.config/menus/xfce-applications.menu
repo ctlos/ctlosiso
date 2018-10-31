@@ -43,6 +43,12 @@
 		<Exclude>
 			<Filename>qv4l2.desktop</Filename>
 		</Exclude>
+		<Exclude>
+			<Filename>qvidcap.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>gtk-youtube-viewer.desktop</Filename>
+		</Exclude>
 	</Menu>
 	<Menu>
 		<Name>Development</Name>
@@ -57,6 +63,27 @@
 		</Exclude>
 		<Exclude>
 			<Filename>assistant-qt4.desktop</Filename>
+		</Exclude>
+	</Menu>
+	<Menu>
+		<Name>Settings</Name>
+		<Include>
+			<Filename>qtconfig-qt4.desktop</Filename>
+		</Include>
+	</Menu>
+	<Menu>
+		<Name>Network</Name>
+		<Exclude>
+			<Filename>zenmap.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>zenmap-root.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>bssh.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>bvnc.desktop</Filename>
 		</Exclude>
 	</Menu>
 </Menu>

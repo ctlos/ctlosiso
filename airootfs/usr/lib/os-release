@@ -1,6 +1,6 @@
 NAME="Ctlos"
 PRETTY_NAME="Ctlos Linux"
-ID=ctlos
+ID=18.10
 ID_LIKE=ctloslinux
 ANSI_COLOR="0;35"
 HOME_URL="https://ctlos.github.io"

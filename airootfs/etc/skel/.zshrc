@@ -26,8 +26,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # 	source /etc/profile.d/vte.sh
 # fi
 
-export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'subl3'; else echo 'nano'; fi)"
-
+export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'mousepad'; else echo 'nano'; fi)"
+export BROWSER="firefox"
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 if [ -f ~/.alias_zsh ]; then
