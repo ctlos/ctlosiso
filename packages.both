@@ -320,8 +320,8 @@ smplayer
 smplayer-themes
 mpv
 simplescreenrecorder
-keepassxc
-veracrypt
+# keepassxc
+# veracrypt
 
 # Virtualbox Tools
 virtualbox-guest-modules-arch
