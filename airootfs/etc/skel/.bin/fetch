@@ -21,11 +21,11 @@ elif [[ -e /etc/lsb-release ]] && . /etc/lsb-release 2>/dev/null; then
 fi
 
 # system uptime
-UPT="$(uptime -p)"
-UPT="${UPT/up /}"
-UPT="${UPT/ day?/d}"
-UPT="${UPT/ hour?/h}"
-UPT="${UPT/ minute?/m}"
+# UPT="$(uptime -p)"
+# UPT="${UPT/up /}"
+# UPT="${UPT/ day?/d}"
+# UPT="${UPT/ hour?/h}"
+# UPT="${UPT/ minute?/m}"
 
 # Root /
 ROOT=$(df -h / | awk '/[0-9]%/{print $(NF-1)" | "$(NF-2)}')
@@ -101,6 +101,8 @@ cur_wm() {
 }
 
 clear
+
+ # ${FG6}->$FG   uptime$FG1:  ${FG4}${UPT:-$FB}
 cat <<- EOF
 
  ${FG5}===>$FG ${USR}${FG2}@${FG6}${HOST:-$FB}
@@ -112,10 +114,8 @@ cat <<- EOF
  ${FG6}->$FG   kernel$FG1:  ${FG4}${KERN:-$FB}
  ${FG6}->$FG   distro$FG1:  ${FG4}${DIST:-$FB}
  ${FG6}->$FG   install$FG1: ${FG4}${INST:-$FB}
- ${FG6}->$FG   uptime$FG1:  ${FG4}${UPT:-$FB}
  ${FG6}->$FG   /$FG1:       ${FG4}${ROOT:-$FB}
  ${FG6}->$FG   /home$FG1:   ${FG4}${HOME:-$FB}
-
  ${FG6}->$FG   ram$FG1: ${FG4}${MEM:-$FB}
  ${FG6}->$FG   cpu$FG1: ${FG4}${CPU:-$FB}
 

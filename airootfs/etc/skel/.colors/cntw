@@ -1,0 +1,46 @@
+! made w/ http://terminal.sexy/
+! special
+*.foreground:   #b3bdcb
+*.background:   #111113
+*.cursorColor:  #b3bdcb
+*.border:       #111113
+
+! black
+*.color0:       #111113
+*.color8:       #606163
+
+! red
+*.color1:       #d54a56
+*.color9:       #f66a79
+
+! green
+*.color2:       #84bd3f
+*.color10:      #a4e35a
+
+! yellow
+*.color3:       #cb873d
+*.color11:      #f4aa5c
+
+! blue
+*.color4:       #6f67e6
+*.color12:      #8c86fc
+
+! magenta
+*.color5:       #d753a4
+*.color13:      #ea75bc
+
+! cyan
+*.color6:       #45b791
+*.color14:      #68e0b8
+
+! white
+*.color7:       #aaabad
+*.color15:      #b3bdcb
+
+! cn
+! State:           ´bg´,     ´fg´,     ´bgalt´,  ´hlbg´,   ´hlfg´
+rofi.color-normal: #111113,  #b3bdcb,  #111113,  #111113,  #5a74ca
+rofi.color-urgent: #111113,  #b3bdcb,  #111113,  #111113,  #5a74ca
+rofi.color-active: #111113,  #b3bdcb,  #111113,  #111113,  #5a74ca
+!                  ´background´, ´border´
+rofi.color-window: #111113,      #75444A57

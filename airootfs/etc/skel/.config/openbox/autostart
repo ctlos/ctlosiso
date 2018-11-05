@@ -1,36 +1,20 @@
 nitrogen --restore &
-# feh --randomize --bg-fill ~/Pictures/dark
-# feh --bg-fill ~/Pictures/E0Zl1BM.jpg
 tint2 &
 # tint2 -c ~/.config/tint2/pager.tint2rc &
-# sh ~/.config/polybar/launch.sh &
 # conky &
 #(sleep 10; ~/.bin/start-conkies.sh) &
 plank &
-xset b off
 thunar --daemon &
 compton -b --config ~/.config/compton.conf &
 # compton -b --paint-on-overlay --unredir-if-possible --backend xr_glx_hybrid --vsync drm --glx-swap-method -1 --glx-no-stencil &
 numlockx &
 setxkbmap -layout us,ru -option "grp:alt_shift_toggle,grp_led:scroll" &
 # setxkbmap -layout us,ru -option "grp:win_space_toggle,grp_led:scroll" &
-# /usr/bin/lxpolkit &
-#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce-polkit/xfce-polkit &
-## A volume keys control daemon for Xfce
-xfce4-volumed &
 # xfce4-power-manager &
-## Start xscreensaver
-xscreensaver -no-splash &
 mpd &
-# easystroke &
 # (sleep 1; redshift-gtk) &
-## Clipboard Manager
-(sleep 5; clipit) &
-## I love my wife! Upss typo, I mean wifi
-(sleep 1; nm-applet) &
-## Volume control for systray
-(sleep 1; volumeicon) &
-(sleep 2; jgmenu_run start) &
-# (sleep 5; megasync) &
-#glava &
+clipit &
+nm-applet &
+volumeicon &
+jgmenu_run start &

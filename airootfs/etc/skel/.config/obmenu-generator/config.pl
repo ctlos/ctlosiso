@@ -46,7 +46,7 @@
 =cut
 
 our $CONFIG = {
-  "editor"              => "subl3",
+  "editor"              => "mousepad",
   "force_icon_size"     => 0,
   "generic_fallback"    => 0,
   "gtk_rc_filename"     => "$ENV{HOME}/.gtkrc-2.0",
