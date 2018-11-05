@@ -5,3 +5,81 @@ Xft.rgba: rgb
 Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
+
+
+
+#include ".colors/cn"
+
+!URxvt.font: xft:Iosevka Term:size=9:antialias=true
+
+!URxvt.font: -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1
+!URxvt.boldFont: -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1
+
+URxvt.font: xft:Roboto Mono Medium:size=9
+
+URxvt.letterSpace: 0
+URxvt.antialias: true
+
+URxvt.termname: xterm-256color
+URxvt.iconFile: /usr/share/icons/Papirus/48x48/apps/urxvt.svg
+
+URxvt.pointerBlank: true
+URxvt.saveLines:    5000
+URxvt.scrollBar:    false
+URxvt.cursorBlink:  true
+URxvt.urgentOnBell: true
+URxvt*scrollTtyOutput: true
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+
+URxvt.perl-ext: default,clipboard,url-select,keyboard-select,config-reload
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Control-Up:\033[1;5A
+URxvt.keysym.Control-Down:\033[1;5B
+URxvt.keysym.Control-Left:\033[1;5D
+URxvt.keysym.Control-Right:\033[1;5C
+
+URxvt*geometry: 82x21
+URxvt.internalBorder: 15
+
+URxvt*transparent:false
+!URxvt*shading: 10
+URxvt*depth: 32
+!URxvt.colorUL: #4682B4
+
+
+
+rofi.modi:                           window,drun,run
+rofi.sidebar-mode:                   true
+rofi.terminal:                       urxvt
+rofi.run-command:                    {cmd}
+rofi.run-shell-command:              {terminal} -e {cmd}
+rofi.ssh-client:                     ssh
+rofi.ssh-command:                    {terminal} -e "{ssh-client} {host}"
+rofi.opacity:                        100
+rofi.width:                          25
+rofi.lines:                          7
+rofi.columns:                        1
+rofi.font:                           ClearSansMedium 10
+rofi.drun-icon-theme:                Papirus
+!rofi.show-icons:                    true
+rofi.bw:                             2
+rofi.location:                       0
+rofi.padding:                        20
+rofi.levenshtein-sort:               true
+rofi.case-sensitive:                 false
+rofi.fuzzy:                          false
+rofi.line-margin:                    10
+rofi.separator-style:                none
+rofi.hide-scrollbar:                 true
+rofi.markup-rows:                    false
+rofi.scrollbar-width:                0
+rofi.color-enabled:                  true
