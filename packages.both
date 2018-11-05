@@ -174,11 +174,16 @@ unrar
 
 
 #Installing wireless packages
-net-tools
+dialog
+mobile-broadband-provider-info
+modemmanager
 networkmanager
 network-manager-applet
+networkmanager-dispatcher-ntpd
+networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
+networkmanager-vpnc
 wpa_supplicant
 
 
