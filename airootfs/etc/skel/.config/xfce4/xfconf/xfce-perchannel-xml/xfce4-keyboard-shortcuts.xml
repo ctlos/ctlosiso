@@ -35,7 +35,8 @@
       <property name="&lt;Alt&gt;f" type="string" value="thunar"/>
       <property name="&lt;Alt&gt;t" type="string" value="xfce4-terminal"/>
       <property name="F12" type="string" value="xfce4-terminal --drop-down"/>
-      <property name="Print" type="string" value="xfce4-screenshooter -f"/>
+      <property name="Print" type="string" value="scrot 'scrot_%Y-%m-%d-%S_$wx$h.png' -e 'mv $f ~ ; viewnior ~/$f'"/>
+      <property name="&lt;Super&gt;Print" type="string" value="flameshot gui"/>
       <property name="&lt;Super&gt;a" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="&lt;Super&gt;Tab" type="string" value="skippy-xd"/>
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
