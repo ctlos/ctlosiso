@@ -144,7 +144,10 @@ function enableServices() {
     systemctl mask systemd-rfkill.service
     systemctl mask systemd-rfkill.socket
     systemctl enable pacman-init.service
-    systemctl enable choose-mirror.service
+    # systemctl enable choose-mirror.service
+    systemctl enable vbox-check.service
+    systemctl enable reflector.service
+    systemctl enable reflector.timer
     systemctl set-default graphical.target
 }
 
