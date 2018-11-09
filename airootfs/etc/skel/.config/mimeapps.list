@@ -1,7 +1,0 @@
-[Added Associations]
-application/x-perl=mousepad.desktop;
-text/plain=mousepad.desktop;
-application/x-shellscript=mousepad.desktop;
-
-[Default Applications]
-inode/directory=Thunar.desktop

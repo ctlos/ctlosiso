@@ -329,7 +329,7 @@ virtualbox-guest-modules-arch
 virtualbox-guest-utils
 
 
-#yaourt
+#Aur
 ckbcomp
 calamares
 mkinitcpio-openswap
@@ -364,3 +364,6 @@ skippy-xd-git
 i3lock-fancy-git
 xfce-polkit-git
 tint2-git
+
+# ctlos repo
+openbox-config
