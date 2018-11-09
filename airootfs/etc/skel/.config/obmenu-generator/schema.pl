@@ -41,7 +41,7 @@ our $SCHEMA = [
 
     #          NAME            LABEL                ICON
     {cat => ['utility',     'Инструменты', 'applications-utilities']},
-    {cat => ['development', 'Резработка', 'applications-development']},
+    {cat => ['development', 'Разработка', 'applications-development']},
     {cat => ['education',   'Образование',   'applications-science']},
     {cat => ['game',        'Игры',       'applications-games']},
     {cat => ['graphics',    'Графика',    'applications-graphics']},
