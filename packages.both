@@ -333,7 +333,7 @@ virtualbox-guest-utils
 
 
 
-#yaourt
+#Aur
 ckbcomp
 calamares
 mkinitcpio-openswap
@@ -360,3 +360,6 @@ engrampa-thunar-gtk2
 fsearch-git
 skippy-xd-git
 xfce-polkit-git
+
+# ctlos repo
+xfce-config
