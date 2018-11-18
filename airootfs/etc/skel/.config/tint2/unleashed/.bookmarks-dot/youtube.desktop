@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=YouTube
+Type=Link
+URL=http://youtube.com
+Icon=/home/st/.config/tint2/unleashed/.bookmarks-dot/icons/youtube.png
+Exec=chromium -new-tab http://youtube.com

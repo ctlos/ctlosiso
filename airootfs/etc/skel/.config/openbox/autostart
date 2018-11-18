@@ -1,0 +1,20 @@
+nitrogen --restore &
+tint2 &
+# tint2 -c ~/.config/tint2/pager.tint2rc &
+# conky &
+#(sleep 10; ~/.bin/start-conkies.sh) &
+plank &
+thunar --daemon &
+compton -b --config ~/.config/compton.conf &
+# compton -b --paint-on-overlay --unredir-if-possible --backend xr_glx_hybrid --vsync drm --glx-swap-method -1 --glx-no-stencil &
+numlockx &
+setxkbmap -layout us,ru -option "grp:alt_shift_toggle,grp_led:scroll" &
+# setxkbmap -layout us,ru -option "grp:win_space_toggle,grp_led:scroll" &
+/usr/lib/xfce-polkit/xfce-polkit &
+# xfce4-power-manager &
+mpd &
+# (sleep 1; redshift-gtk) &
+clipit &
+nm-applet &
+volumeicon &
+jgmenu_run start &
