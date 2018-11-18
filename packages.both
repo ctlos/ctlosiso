@@ -298,6 +298,9 @@ oblogout
 lxappearance-obconf
 obconf
 
+# i3
+i3-gaps
+
 
 # my software
 # chromium
@@ -364,6 +367,8 @@ skippy-xd-git
 i3lock-fancy-git
 xfce-polkit-git
 tint2-git
+# i3
+polybar-git
 
 # ctlos repo
 openbox-config
