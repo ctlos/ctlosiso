@@ -300,6 +300,8 @@ obconf
 
 # i3
 i3-gaps
+# dep polybar
+jsoncpp
 
 
 # my software
@@ -312,7 +314,6 @@ flashplugin
 # alacarte
 atril
 audacious
-cherrytree
 flameshot
 galculator-gtk2
 gparted
