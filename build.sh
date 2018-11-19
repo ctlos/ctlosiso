@@ -9,11 +9,11 @@ pacman-key --populate archlinux
 set -e -u
 
 iso_name=ctlos
-iso_de=openbox
+iso_de=openbox-i3
 iso_label="CTLOS_$(date +%Y%m)"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live/USB"
-iso_version=1.0.0_$(date +%Y%m%d)
+iso_version=2.0.0_$(date +%Y%m%d)
 install_dir=arch
 work_dir=work
 out_dir=out

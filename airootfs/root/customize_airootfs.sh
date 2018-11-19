@@ -146,8 +146,8 @@ function enableServices() {
     systemctl enable pacman-init.service
     # systemctl enable choose-mirror.service
     systemctl enable vbox-check.service
-    systemctl enable reflector.service
-    systemctl enable reflector.timer
+    # systemctl enable reflector.service
+    # systemctl enable reflector.timer
     systemctl set-default graphical.target
 }
 

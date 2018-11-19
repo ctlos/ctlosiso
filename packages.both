@@ -282,7 +282,8 @@ thunar-volman
 tumbler
 compton
 redshift
-xfce4-notifyd
+dunst
+# xfce4-notifyd
 xfce4-power-manager
 xfce4-terminal
 numlockx
