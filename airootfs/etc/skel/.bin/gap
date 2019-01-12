@@ -5,14 +5,14 @@ git add .
 
 # Give a comment to the commit if you want
 echo "####################################"
-echo "Write your commit comment!"
+echo "Write your commit comment! $(date +%Y.%m.%d) Update:"
 echo "####################################"
 
 read input
 
 # Committing to the local repository with a message containing the time details and commit text
 
-git commit -a -m "$input"
+git commit -a -m "$(date +%Y.%m.%d) Update $input"
 
 # Push the local files to github
 

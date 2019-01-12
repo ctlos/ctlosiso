@@ -47,12 +47,15 @@ mount /dev/$B_DISK /mnt/boot
 mount /dev/$H_DISK /mnt/home
 swapon /dev/$S_DISK
 
+pacman -Sy --noconfirm --needed reflector
+reflector -c "Russia" -c "Belarus" -c "Ukraine" -c "Poland" -f 20 -l 20 -p https -p http -n 20 --save /etc/pacman.d/mirrorlist --sort rate
+
 pacstrap /mnt base base-devel
 
 cp creio2.sh /mnt/creio2.sh
 chmod u+x /mnt/creio2.sh
 
-genfstab -pU /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 
 # arch-chroot /mnt sh -c "$(curl -fsSL git.io/creio2.sh)"
 arch-chroot /mnt ./creio2.sh

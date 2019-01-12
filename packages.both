@@ -313,6 +313,7 @@ flashplugin
 atril
 audacious
 cherrytree
+file-roller
 flameshot
 galculator-gtk2
 gparted
@@ -353,13 +354,12 @@ timeshift
 mintstick-git
 python2-pyparted
 
-xsettingsd
+xsettingsd-git
 qgnomeplatform-git
 
-engrampa-thunar-gtk2
 fsearch-git
 skippy-xd-git
 xfce-polkit-git
 
-# ctlos repo
+# ctlos repo 
 xfce-config

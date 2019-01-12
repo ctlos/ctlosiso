@@ -36,7 +36,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-session=${1:-openbox}
+session=${1:-xfce}
 # export XDG_CURRENT_DESKTOP=Budgie:GNOME
 # exec budgie-desktop
 

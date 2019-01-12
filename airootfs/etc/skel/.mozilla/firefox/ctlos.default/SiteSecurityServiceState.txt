@@ -1,0 +1,7 @@
+mc.yandex.ru:HSTS	0	17908	1578830779060,1,0,2
+classify-client.services.mozilla.com:HSTS	0	17908	1578830626484,1,1,2
+ctlos.github.io:HSTS	0	17908	1578851728668,1,0,2
+fonts.googleapis.com:HSTS	0	17908	1578830772148,1,0,2
+cdn.jsdelivr.net:HSTS	0	17908	1578830771057,1,1,2
+normandy.cdn.mozilla.net:HPKP	0	17908	1547381026642,1,0,WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18=r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=YLh1dUR9y6Kja30RrAn7JKnbQG/uEtLMkBgFF2Fuihg=sRHdihwgkaib1P1gxX8HFszlD+7/gTfNvuAybgLPNis=
+normandy.cdn.mozilla.net:HSTS	0	17908	1578830626632,1,1,2
