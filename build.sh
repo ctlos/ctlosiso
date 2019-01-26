@@ -10,7 +10,7 @@ set -e -u
 
 iso_name=ctlos
 iso_de=xfce
-iso_label="CTLOS_$(date +%Y%m)"
+iso_label="CTLOS"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live/USB"
 iso_version=1.1.0_$(date +%Y%m%d)
