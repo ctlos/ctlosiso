@@ -59,6 +59,7 @@ libtool
 licenses
 linux
 linux-headers
+linux-firmware
 lsb-release
 logrotate
 lvm2

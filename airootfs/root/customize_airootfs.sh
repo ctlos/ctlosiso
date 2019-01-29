@@ -162,6 +162,6 @@ fixWifi
 fixPermissions
 fixHibernate
 # removingPackages
+enableServices
 fixHaveged
 initkeys
-enableServices
