@@ -10,8 +10,12 @@
 alias sz="source $HOME/.zshrc"
 alias ez="$EDITOR $HOME/.zshrc"
 alias eaz="$EDITOR $HOME/.alias_zsh"
+alias aliases="cat $HOME/.alias_zsh"
+# alias mirrors="sudo reflector -c "Russia" -c "Belarus" -c "Ukraine" -c "Poland" -f 20 -l 20 -p https -p http -n 20 --save /etc/pacman.d/mirrorlist --sort rate"
+alias mirrors="sudo reflector --latest 50 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 alias merge="xrdb -merge $HOME/.Xresources"
 alias vga="lspci -k | grep -A 2 -E '(VGA|3D)'"
+alias upgrub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias iip="curl --max-time 10 -w '\n' http://ident.me"
 alias tb="nc termbin.com 9999"
 
@@ -25,7 +29,6 @@ vboxshare () {
 
 # aur pkg
 aget () {
-	cd ~/.build
 	git clone https://aur.archlinux.org/"$1".git
 	# curl -fO https://aur.archlinux.org/cgit/aur.git/snapshot/"$1".tar.gz
 }
@@ -53,7 +56,8 @@ alias neo="neofetch --w3m ~/.config/neofetch/cn.jpg"
 # alias wtr="curl 'wttr.in/Москва?M&lang=ru' | sed -n '1,17p'"
 # alias wtr="curl 'wttr.in/?M1npQ&lang=ru'"
 wtr () {
-	curl "wttr.in/gomel?M$1npQ&lang=ru"
+	curl "wttr.in/?M$1npQ&lang=ru"
+	# curl "wttr.in/Москва?M$1npQ&lang=ru"
 }
 wts () {
 	curl "wttr.in/$1?M&lang=ru"
@@ -86,6 +90,7 @@ alias ...="cd ../.."
 # alias ....="cd ../../.."
 # alias .....="cd ../../../.."
 alias :q="exit"
+alias ctliso="cd ~/files/github/ctlosiso"
 
 gc () {
 	git clone "$1"
@@ -162,6 +167,7 @@ iso () {
 
 alias -s {mp3,m4a,flac}="mpv"
 alias -s {png,jpg,tiff,bmp}="viewnior"
+alias -s {sh,txt}="nvim"
 
 alias st="$EDITOR"
 alias sst="sudo $EDITOR"
@@ -186,7 +192,6 @@ alias spr="sudo pacman -R"
 
 alias y="yay -S"
 alias yn="yay -S --noconfirm"
-alias ygpg="yay -S --m-arg "--skippgpcheck" --noconfirm"
 alias ys="yay"
 alias ysn="yay --noconfirm"
 alias yc="yay -Sc"
@@ -196,6 +201,7 @@ alias yu="yay -Syu"
 alias yun="yay -Syu --noconfirm"
 alias yr="yay -R"
 alias yrn="yay -R --noconfirm"
+alias ygpg="--mflags '--nocheck --skippgpcheck --noconfirm'"
 
 # распаковать архив не указывая тип распаковщика
 function ex {

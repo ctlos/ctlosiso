@@ -2,11 +2,11 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "$HOME/.gtkrc-2.0.mine"
-gtk-theme-name="Arc-dark"
-gtk-icon-theme-name="Papirus-Dark"
+gtk-theme-name="McOS-MJV-Dark-Nordic"
+gtk-icon-theme-name="Papirus-Dark-nordic-folders"
 gtk-font-name="Clear Sans Medium, Medium 11"
 gtk-cursor-theme-name="capitaine-cursors"
-gtk-cursor-theme-size=18
+gtk-cursor-theme-size=16
 gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR
 gtk-button-images=0

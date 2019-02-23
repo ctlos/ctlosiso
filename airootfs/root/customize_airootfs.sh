@@ -38,11 +38,12 @@ function editOrCreateConfigFiles() {
 
 function configRootUser() {
     usermod -s /usr/bin/zsh root
-    chmod 700 /root
+    cp -aT /etc/skel/ /root/
+    chmod 750 /root
 }
 
 function createLiveUser() {
-    # add groups autologin and nopasswdlogin (for lightdm autologin)
+    # add liveuser
     groupadd -r autologin
     groupadd -r nopasswdlogin
 
@@ -50,7 +51,7 @@ function createLiveUser() {
     id -u $USER &>/dev/null || useradd -m $USER -g users -G "adm,audio,floppy,log,network,rfkill,scanner,storage,optical,autologin,nopasswdlogin,power,wheel" -s /usr/bin/zsh
     passwd -d $USER
     echo "liveuser ALL=(ALL) ALL" >> /etc/sudoers
-    echo 'Live User Created'
+    echo "Live User Created"
 }
 
 function setDefaults() {
@@ -62,30 +63,24 @@ function setDefaults() {
     echo "EDITOR=${_EDITOR}" >> /etc/environment
     echo "EDITOR=${_EDITOR}" >> /etc/profile
 
-    # default shell
-    # chsh -s /bin/bash
-    chsh -s /bin/zsh
-
     # fix qt5
     echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
 }
 
 function addCalamares() {
-    dockItem="/home/liveuser/.config/plank/dock1/launchers/Calamares.dockitem"
-    
-    touch $dockItem
-
-    echo "[PlankDockItemPreferences]" >> $dockItem
-    echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
-
-    chown liveuser $dockItem
+    mkdir -p /home/liveuser/.config/autostart
+    cp -v /usr/share/applications/calamares.desktop /home/liveuser/.config/autostart/calamares.desktop
+    chown liveuser:wheel /home/liveuser/.config/autostart/calamares.desktop
+    chmod +x /home/liveuser/.config/autostart/calamares.desktop
 }
 
 function fontFix() {
+    # https://wiki.archlinux.org/index.php/font_configuration
     rm -rf /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 }
 
 function fixWifi() {
+    #https://wiki.archlinux.org/index.php/NetworkManager#Configuring_MAC_Address_Randomization
     su -c 'echo "" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "[device]" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "wifi.scan-rand-mac-address=no" >> /etc/NetworkManager/NetworkManager.conf'
@@ -162,6 +157,6 @@ fixWifi
 fixPermissions
 fixHibernate
 # removingPackages
-enableServices
 fixHaveged
 initkeys
+enableServices

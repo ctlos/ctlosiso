@@ -60,7 +60,7 @@ rofi.opacity:                        100
 rofi.width:                          25
 rofi.lines:                          7
 rofi.columns:                        1
-rofi.font:                           ClearSansMedium 12
+rofi.font:                           ClearSansMedium 11
 rofi.drun-icon-theme:                Papirus
 !rofi.show-icons:                    true
 rofi.bw:                             10

@@ -1,0 +1,22 @@
+#!/bin/bash
+# requirements:
+# sudo pip install ueberzug
+[[ -z "$1" ]] && echo "Error: image path not specified" && exit 1
+source "`ueberzug library`"
+
+echo -ne "\033[6n"
+read -s -d\[ garbage
+read -s -d R cursor_y
+cursor_y=(${cursor_y//;/ })
+cursor_y=`expr $cursor_y - 1`
+
+tmp=`stty size`
+size_y=`echo $tmp | cut -f1 -d' '`
+size_x=`echo $tmp | cut -f2 -d' '`
+
+max_height=`expr $size_y - $cursor_y`
+
+ImageLayer 0< <(
+    ImageLayer::add [identifier]="example0" [x]="0" [y]="$cursor_y" [max_width]="$size_x" [max_height]="$max_height" [path]="$1"
+    read
+)
