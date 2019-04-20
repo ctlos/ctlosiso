@@ -140,7 +140,6 @@ which
 whois
 wireless_tools
 wireless-regdb
-wpa_actiond
 wvdial
 x264
 xapps
@@ -332,7 +331,6 @@ xfsprogs
 xfwm4
 plank
 
-gamin
 thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
