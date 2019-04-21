@@ -1,13 +1,10 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-USER="liveuser"
-OSNAME="Ctlos"
+set -e -u
 
+isouser="liveuser"
+OSNAME="ctlos"
 
-function umaskFix() {
-    set -e -u
-    umask 022
-}
 
 function localeGen() {
     sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
@@ -30,10 +27,29 @@ function editOrCreateConfigFiles() {
     echo "FONT=cyr-sun16" >> /etc/vconsole.conf
 
     # Hostname
-    echo "ctlos" > /etc/hostname
+    echo "$OSNAME" > /etc/hostname
 
     sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist
     sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
+}
+
+function fixPermissions() {
+    #add missing /media directory
+    mkdir -p /media
+    chmod 755 -R /media
+
+    #fix permissions
+    chown root:root /
+    chown root:root /etc
+    chown root:root /etc/default
+    chown root:root /usr
+    chmod 755 /etc
+
+    #enable sudo
+    chmod 750 /etc/sudoers.d
+    chmod 440 /etc/sudoers.d/g_wheel
+    chown -R root /etc/sudoers.d
+    chmod -R 755 /etc/sudoers.d
 }
 
 function configRootUser() {
@@ -43,14 +59,16 @@ function configRootUser() {
 
 function createLiveUser() {
     # add groups autologin and nopasswdlogin (for lightdm autologin)
-    groupadd -r autologin
-    groupadd -r nopasswdlogin
+    # groupadd -r autologin
+    # groupadd -r nopasswdlogin
 
     # add liveuser
-    id -u $USER &>/dev/null || useradd -m $USER -g users -G "adm,audio,floppy,log,network,rfkill,scanner,storage,optical,autologin,nopasswdlogin,power,wheel" -s /usr/bin/zsh
-    passwd -d $USER
-    echo "liveuser ALL=(ALL) ALL" >> /etc/sudoers
-    echo 'Live User Created'
+    glist="audio,floppy,log,network,rfkill,scanner,storage,optical,power,wheel"
+    if ! id $isouser 2>/dev/null; then
+        useradd -m -g users -G $glist -s /bin/zsh $isouser
+        passwd -d $isouser
+        echo "$isouser ALL=(ALL) ALL" >> /etc/sudoers
+    fi
 }
 
 function setDefaults() {
@@ -71,14 +89,14 @@ function setDefaults() {
 }
 
 function addCalamares() {
-    dockItem="/home/liveuser/.config/plank/dock1/launchers/Calamares.dockitem"
+    dockItem="/home/$isouser/.config/plank/dock1/launchers/Calamares.dockitem"
     
     touch $dockItem
 
     echo "[PlankDockItemPreferences]" >> $dockItem
     echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
 
-    chown liveuser $dockItem
+    chown $isouser $dockItem
 }
 
 function fontFix() {
@@ -89,25 +107,6 @@ function fixWifi() {
     su -c 'echo "" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "[device]" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "wifi.scan-rand-mac-address=no" >> /etc/NetworkManager/NetworkManager.conf'
-}
-
-function fixPermissions() {
-    #add missing /media directory
-    mkdir -p /media
-    chmod 755 -R /media
-
-    #fix permissions
-    chown root:root /
-    chown root:root /etc
-    chown root:root /etc/default
-    chown root:root /usr
-    chmod 755 /etc
-
-    #enable sudo
-    chmod 750 /etc/sudoers.d
-    chmod 440 /etc/sudoers.d/g_wheel
-    chown -R root /etc/sudoers.d
-    chmod -R 755 /etc/sudoers.d
 }
 
 function fixHibernate() {
@@ -134,35 +133,30 @@ function initkeys() {
 }
 
 function enableServices() {
+    systemctl enable pacman-init.service choose-mirror.service
     systemctl enable avahi-daemon.service
     systemctl enable vboxservice.service
     systemctl enable ntpd.service
-    systemctl enable lightdm.service
-    systemctl enable NetworkManager.service
+    systemctl enable sddm.service
     systemctl -fq enable NetworkManager-wait-online.service
     systemctl mask systemd-rfkill@.service
     systemctl mask systemd-rfkill.service
     systemctl mask systemd-rfkill.socket
-    systemctl enable pacman-init.service
-    # systemctl enable choose-mirror.service
     systemctl enable vbox-check.service
-    # systemctl enable reflector.service
-    # systemctl enable reflector.timer
     systemctl set-default graphical.target
 }
 
 
-umaskFix
 localeGen
 setTimeZoneAndClock
 editOrCreateConfigFiles
+fixPermissions
 configRootUser
 createLiveUser
 setDefaults
 addCalamares
 fontFix
 fixWifi
-fixPermissions
 fixHibernate
 # removingPackages
 fixHaveged

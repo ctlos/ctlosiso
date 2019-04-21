@@ -10,19 +10,27 @@ archlinux-appstream-data
 archlinux-keyring
 autoconf
 automake
+b43-firmware
 b43-fwcutter
 bash
 bind-tools
 binutils
 btrfs-progs
 bzip2
+clonezilla
 coreutils
 crda
 cryptsetup
+darkhttpd
 dcraw
+ddrescue
 device-mapper
+dhclient
 diffutils
 dmidecode
+dmraid
+dnsmasq
+dnsutils
 dosfstools
 e2fsprogs
 efibootmgr
@@ -40,11 +48,16 @@ gcc
 gcc-libs
 gettext
 glibc
+gnu-netcat
+gpm
+gptfdisk
 grep
+grml-zsh-config
 grub
 gsfonts
 gucharmap
 haveged
+hdparm
 hunspell
 inetutils
 intel-ucode
@@ -52,45 +65,64 @@ iproute2
 iputils
 ipw2100-fw
 ipw2200-fw
+irssi
 jfsutils
 less
+lftp
 libdvdcss
 libtool
 licenses
 linux
+linux-atm
+linux-firmware
 linux-headers
-lsb-release
 logrotate
+lsb-release
+lsscsi
 lvm2
 m4
 make
 man-db
 man-pages
+mc
 mdadm
 memtest86+
 mkinitcpio-nfs-utils
 mlocate
+mtools
 nano
 nbd
+ndisc6
+nfs-utils
+nilfs-utils
 ntfs-3g
 ntp
 os-prober
 pacman
+partclone
+parted
+partimage
 patch
 pciutils
 perl
 pkg-config
 pkgfile
+ppp
+pptpclient
 procps-ng
 psmisc
 python-urllib3
 python-xdg
+refind-efi
 reiserfsprogs
+rp-pppoe
 rsync
-s-nail
+sdparm
 sed
+sg3_utils
 shadow
 smartmontools
+s-nail
 sudo
 sysfsutils
 syslinux
@@ -102,14 +134,17 @@ upower
 usb_modeswitch
 usbutils
 util-linux
+vpnc
 wget
 which
 whois
 wireless_tools
-wpa_actiond
+wireless-regdb
+wvdial
 x264
 xapps
 xfsprogs
+xl2tpd
 
 
 nmap
@@ -174,6 +209,7 @@ unrar
 
 
 #Installing wireless packages
+broadcom-wl
 dialog
 mobile-broadband-provider-info
 modemmanager
@@ -267,14 +303,17 @@ youtube-viewer
 
 
 ## main pkg openbox
+grub-customizer
 # polkit-gnome
 gnome-keyring
 xdg-user-dirs-gtk
 
-lightdm
-lightdm-gtk-greeter
+# lightdm
+# lightdm-gtk-greeter
+sddm
+qt5-quickcontrols2
+qt5-graphicaleffects
 
-gamin
 thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
@@ -291,6 +330,7 @@ volumeicon
 plank
 
 # openbox
+gxkb
 gsimplecal
 jgmenu
 lxmenu-data
@@ -298,6 +338,7 @@ nitrogen
 oblogout
 lxappearance-obconf
 obconf
+lxrandr
 
 # i3
 i3-gaps
@@ -313,9 +354,8 @@ firefox-i18n-ru
 flashplugin
 
 # alacarte
-atril
-# evince
 audacious
+file-roller
 flameshot
 galculator-gtk2
 gparted
@@ -323,6 +363,7 @@ gufw
 viewnior
 pavucontrol
 smplayer
+smplayer-skins
 smplayer-themes
 mousepad
 mpv
@@ -350,7 +391,7 @@ ttf-clear-sans
 ttf-roboto-mono
 capitaine-cursors
 
-clipit-gtk3
+clipit
 timeshift
 
 mintstick-git
@@ -359,9 +400,10 @@ python2-pyparted
 xsettingsd
 qgnomeplatform-git
 
-engrampa-thunar-gtk2
 fsearch-git
 obkey-git
+
+sddm-config-editor-git
 # 
 obmenu-generator
 perl-linux-desktopfiles

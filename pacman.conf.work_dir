@@ -35,6 +35,7 @@ Color
 # We cannot check disk space from within a chroot environment
 #CheckSpace
 #VerbosePkgLists
+ILoveCandy
 
 # By default, pacman accepts packages signed by keys that its local keyring
 # trusts (see pacman-key and its man page), as well as unsigned packages.

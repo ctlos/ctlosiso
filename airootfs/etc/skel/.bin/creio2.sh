@@ -14,7 +14,7 @@ DISK="sdb"
 sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 pacman -Sy --noconfirm --needed reflector
-reflector -c "Belarus" -c "Russia" -c "Ukraine" -c "Poland" -f 20 -l 20 -p https -p http -n 20 --save /etc/pacman.d/mirrorlist --sort rate
+reflector -c "Russia" -c "Belarus" -c "Ukraine" -c "Poland" -f 20 -l 20 -p https -p http -n 20 --save /etc/pacman.d/mirrorlist --sort rate
 
 
 echo "Arch Linux Virtualbox?"

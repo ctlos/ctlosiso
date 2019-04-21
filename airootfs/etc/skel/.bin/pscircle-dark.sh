@@ -6,7 +6,8 @@
 TIME_INTERVAL=3 # Seconds
 
 # gsettings set org.gnome.desktop.background picture-uri file:///tmp/output.png
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s ~/.pscircle.png
+# xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s ~/.pscircle.png
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVGA-0/workspace0/last-image -s ~/.pscircle.png
 
 output=$HOME/.pscircle.png
 
@@ -15,7 +16,7 @@ while [ 1 ]; do
     pscircle \
 			--output-width=1366 \
 			--output-height=768 \
-			--background-image=$HOME/.wall/wl2.png \
+			--background-image=$HOME/.wall/wl.png \
 			--link-color-min=375143a0 \
 			--link-color-max=375143 \
 			--dot-color-min=7c762f \

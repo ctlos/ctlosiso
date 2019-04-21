@@ -8,6 +8,7 @@ import os
 import shutil
 
 CLEAN_FILES = [
+		'~/hostr/.',
     '~/.bzr.log',
     '~/.cache/babl/',
     '~/.cache/gegl-0.2/',
@@ -18,8 +19,8 @@ CLEAN_FILES = [
     '~/.local/share/gegl-0.2/',
     '~/.local/share/recently-used.xbel',
     '~/.ncmpcpp/error.log',
-    '~/.npm/',
-    '~/.nv/',
+    # '~/.npm/',
+    # '~/.nv/',
     '~/.pki/',
     '~/.pylint.d/',
     '~/.recently-used',

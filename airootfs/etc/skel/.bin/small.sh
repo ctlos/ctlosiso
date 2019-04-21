@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # vars
-colors="$HOME/.bin/colors.sh"
+colors="$HOME/.bin/color"
 w="$(xdotool getdisplaygeometry | awk '{print $2}')"
 h="$(xdotool getdisplaygeometry | awk '{print $1}')"
 refresh="10"
