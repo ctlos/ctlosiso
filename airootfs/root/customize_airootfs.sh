@@ -138,6 +138,7 @@ function enableServices() {
     systemctl enable vboxservice.service
     systemctl enable ntpd.service
     systemctl enable sddm.service
+    systemctl enable NetworkManager.service
     systemctl -fq enable NetworkManager-wait-online.service
     systemctl mask systemd-rfkill@.service
     systemctl mask systemd-rfkill.service
