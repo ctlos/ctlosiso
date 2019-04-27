@@ -10,8 +10,7 @@ archlinux-appstream-data
 archlinux-keyring
 autoconf
 automake
-b43-firmware
-b43-fwcutter
+# b43-fwcutter
 bash
 bind-tools
 binutils
@@ -258,7 +257,7 @@ gtk-engines
 gtk-engine-murrine
 gtk3-print-backends
 arc-gtk-theme
-# papirus-icon-theme
+papirus-icon-theme
 qt4
 qt5-styleplugins
 qt5ct
@@ -278,6 +277,9 @@ perl-file-desktopentry
 intltool
 bash-completion
 zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+fish
 curl
 git
 imagemagick
@@ -307,8 +309,10 @@ youtube-viewer
 gnome-keyring
 xdg-user-dirs-gtk
 
-lightdm
-lightdm-gtk-greeter
+sddm
+qt5-quickcontrols2
+qt5-graphicaleffects
+
 light-locker
 
 exo
@@ -345,24 +349,24 @@ firefox
 firefox-i18n-ru
 flashplugin
 
-# alacarte
-atril
 audacious
-cherrytree
 file-roller
 flameshot
 galculator-gtk2
 gparted
+grub-customizer
 gufw
 viewnior
 pavucontrol
 smplayer
+smplayer-skins
 smplayer-themes
 mousepad
 mpv
 simplescreenrecorder
 keepassxc
 veracrypt
+xreader
 
 # Virtualbox Tools
 virtualbox-guest-modules-arch
@@ -375,15 +379,18 @@ ckbcomp
 calamares
 mkinitcpio-openswap
 
+light-locker-settings
+sddm-config-editor-git
+
 yay-bin
 pamac-aur
 
 oh-my-zsh-git
-zsh-autosuggestions
 
 ttf-clear-sans
 ttf-roboto-mono
 capitaine-cursors
+plata-theme
 
 timeshift
 
@@ -397,7 +404,8 @@ fsearch-git
 skippy-xd-git
 xfce-polkit-git
 
+# broadcom network
+# b43-firmware
+
 # ctlos repo 
 xfce-config
-mcos-mjv-xfce-nordic
-papirus-folders-nordic

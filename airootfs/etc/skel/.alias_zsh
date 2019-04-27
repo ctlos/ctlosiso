@@ -10,14 +10,25 @@
 alias sz="source $HOME/.zshrc"
 alias ez="$EDITOR $HOME/.zshrc"
 alias eaz="$EDITOR $HOME/.alias_zsh"
-alias aliases="cat $HOME/.alias_zsh"
-# alias mirrors="sudo reflector -c "Russia" -c "Belarus" -c "Ukraine" -c "Poland" -f 20 -l 20 -p https -p http -n 20 --save /etc/pacman.d/mirrorlist --sort rate"
-alias mirrors="sudo reflector --latest 50 --protocol http --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+alias mi="micro"
 alias merge="xrdb -merge $HOME/.Xresources"
+alias xcolor="xrdb -query | grep"
 alias vga="lspci -k | grep -A 2 -E '(VGA|3D)'"
 alias upgrub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias iip="curl --max-time 10 -w '\n' http://ident.me"
 alias tb="nc termbin.com 9999"
+
+# fzf
+zzh() {
+	du -a ~/ | awk '{print $2}' | fzf | xargs -r $EDITOR
+}
+zz() {
+	du -a . | awk '{print $2}' | fzf | xargs -r $EDITOR
+}
+
+hcat () {
+	/usr/bin/src-hilite-lesspipe.sh "$1" | less -m -N
+}
 
 # share vbox В локальной машине mkdir vboxshare
 # в виртуалке uid={имя пользователя} git={группа}
@@ -95,8 +106,7 @@ alias ctliso="cd ~/files/github/ctlosiso"
 gc () {
 	git clone "$1"
 }
-gcj () {
-	g
+function gcj () {
 	git clone "$1"
 	cd "$2"
 	$EDITOR .
@@ -167,11 +177,13 @@ iso () {
 
 alias -s {mp3,m4a,flac}="mpv"
 alias -s {png,jpg,tiff,bmp}="viewnior"
-alias -s {sh,txt}="nvim"
+alias -s {conf,txt}="nvim"
 
 alias st="$EDITOR"
 alias sst="sudo $EDITOR"
-alias tm="tmux attach || tmux new"
+alias tm="tmux attach || tmux new -s work"
+alias tmd="tmux detach"
+alias tmk="tmux kill-server"
 alias fm="ranger"
 alias sfm="sudo ranger"
 alias sth="sudo thunar ."
@@ -179,6 +191,8 @@ alias th="thunar . &"
 alias na="nautilus . &"
 alias sna="sudo nautilus ."
 alias h="htop"
+alias vim="nvim"
+alias vi="nvim"
 
 alias packey="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys && sudo pacman -Syy"
 alias sp="sudo pacman -S"
@@ -201,7 +215,8 @@ alias yu="yay -Syu"
 alias yun="yay -Syu --noconfirm"
 alias yr="yay -R"
 alias yrn="yay -R --noconfirm"
-alias ygpg="--mflags '--nocheck --skippgpcheck --noconfirm'"
+alias ygpg="yay --mflags '--nocheck --skippgpcheck --noconfirm'"
+alias ynskip="yay --mflags --skipinteg --noconfirm"
 
 # распаковать архив не указывая тип распаковщика
 function ex {
@@ -237,7 +252,7 @@ fi
 }
 
 # Упаковка в архив командой pk 7z /что/мы/пакуем имя_файла.7z
-pk () {
+function pk () {
 	if [ $1 ] ; then
 		case $1 in
 			tbz)       tar cjvf $2.tar.bz2 $2      ;;

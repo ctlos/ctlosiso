@@ -8,11 +8,11 @@ Xft.lcdfilter: lcddefault
 
 
 
-#include ".colors/dracula"
+#include ".colors/ln"
 
 
-URxvt.font: xft:Roboto Mono Medium:size=11
-!URxvt.font: xft:RobotoMono Nerd Font Mono:size=11
+URxvt.font: xft:Roboto Mono Medium:size=10
+!URxvt.font: xft:RobotoMono Nerd Font Mono:size=10
 !URxvt.letterSpace: -1
 URxvt.iconFile: /usr/share/icons/Papirus/48x48/apps/urxvt.svg
 
@@ -60,7 +60,7 @@ rofi.opacity:                        100
 rofi.width:                          25
 rofi.lines:                          7
 rofi.columns:                        1
-rofi.font:                           ClearSansMedium 11
+rofi.font:                           ClearSansMedium 10
 rofi.drun-icon-theme:                Papirus
 !rofi.show-icons:                    true
 rofi.bw:                             10

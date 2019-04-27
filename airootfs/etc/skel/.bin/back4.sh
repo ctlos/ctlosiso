@@ -14,4 +14,4 @@ hash=`md5sum $name | cut -f1 -d" "`
 
 [[ ! -d $dir/$hash ]] && { mkdir $dir/$hash ; echo "spliting .." ; convert -coalesce $name $dir/$hash/$hash.png ; echo ok ; }
 
-while : ; do for i in ` ls $dir/$hash -v ` ; do xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image -s $dir/$hash/$i ; sleep $speed ; done ; done    
+while : ; do for i in ` ls $dir/$hash -v ` ; do xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVGA-0/workspace0/last-image -s $dir/$hash/$i ; sleep $speed ; done ; done    

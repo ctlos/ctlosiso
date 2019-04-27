@@ -1,9 +1,10 @@
 #!/usr/bin/zsh
 
 ZSH=/usr/share/oh-my-zsh/
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME="refined"
 # ZSH_THEME="dracula"
+ZSH_THEME="af-magic"
 DISABLE_AUTO_UPDATE="true"
 plugins=(
   zsh-syntax-highlighting
@@ -16,6 +17,7 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # if [[ $TERM == xterm-termite ]]; then
 # 	. /etc/profile.d/vte.sh
