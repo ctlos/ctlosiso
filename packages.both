@@ -309,12 +309,11 @@ gnome-keyring
 xdg-user-dirs-gtk
 
 sddm
+qt5-svg
 qt5-quickcontrols2
 qt5-graphicaleffects
 
 light-locker
-
-exo
 xfce4-appfinder
 xfce4-battery-plugin
 xfce4-notifyd
