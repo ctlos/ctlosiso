@@ -10,8 +10,7 @@ archlinux-appstream-data
 archlinux-keyring
 autoconf
 automake
-b43-firmware
-b43-fwcutter
+# b43-fwcutter
 bash
 bind-tools
 binutils
@@ -258,7 +257,7 @@ gtk-engine-murrine
 gtk3-print-backends
 arc-gtk-theme
 papirus-icon-theme
-qt4
+# qt4
 qt5-styleplugins
 qt5ct
 
@@ -267,6 +266,7 @@ qt5ct
 ttf-dejavu
 ttf-liberation
 ttf-font-awesome
+ttf-roboto
 
 
 #Installing cli utils
@@ -277,6 +277,7 @@ perl-file-desktopentry
 intltool
 bash-completion
 zsh
+zsh-autosuggestions
 zsh-syntax-highlighting
 curl
 git
@@ -299,6 +300,7 @@ ffmpegthumbs
 streamlink
 youtube-dl
 youtube-viewer
+tor
 
 
 ## main pkg openbox
@@ -307,9 +309,8 @@ grub-customizer
 gnome-keyring
 xdg-user-dirs-gtk
 
-# lightdm
-# lightdm-gtk-greeter
 sddm
+qt5-svg
 qt5-quickcontrols2
 qt5-graphicaleffects
 
@@ -352,12 +353,13 @@ firefox
 firefox-i18n-ru
 flashplugin
 
-# alacarte
 audacious
+catfish
 file-roller
 flameshot
 galculator-gtk2
 gparted
+gnome-disk-utility
 gufw
 viewnior
 pavucontrol
@@ -384,7 +386,6 @@ yay-bin
 pamac-aur
 
 oh-my-zsh-git
-zsh-autosuggestions
 
 ttf-clear-sans
 ttf-roboto-mono
@@ -399,7 +400,6 @@ python2-pyparted
 xsettingsd
 qgnomeplatform-git
 
-fsearch-git
 obkey-git
 
 sddm-config-editor-git

@@ -9,18 +9,17 @@ qt_conf="$HOME/.config/qt5ct/qt5ct.conf"
 PREF_LIGHT_THEME="ll"
 PREF_LIGHT_DECO="ll"
 PREF_LIGHT_BG="$HOME/.wall/wl1.jpg"
-PREF_LIGHT_ICO="Newaita"
+PREF_LIGHT_ICO="ll-ico"
 
-sublime_theme_light="Boxy Yesterday"
-sublime_colorscheme_light="Packages\\/Boxy Theme\\/schemes\\/Boxy Yesterday.tmTheme"
-
+sublime_theme_light="Spacegray Light"
+sublime_colorscheme_light="Packages\\/User\\/Boxy Yesterday.tmTheme"
 # preferences for dark theme mode
 PREF_DARK_THEME="ln"
 PREF_DARK_DECO="ln"
 PREF_DARK_BG="$HOME/.wall/wl.jpg"
-PREF_DARK_ICO="Newaita-dark"
+PREF_DARK_ICO="ln-ico"
 
-sublime_theme_dark="Boxy Tomorrow"
+sublime_theme_dark="Spacegray"
 sublime_colorscheme_dark="Packages\\/User\\/ln.tmTheme"
 
 

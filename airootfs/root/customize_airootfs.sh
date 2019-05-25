@@ -62,7 +62,7 @@ function createLiveUser() {
     # groupadd -r autologin
     # groupadd -r nopasswdlogin
 
-    # add liveuser
+    ## add liveuser
     glist="audio,floppy,log,network,rfkill,scanner,storage,optical,power,wheel"
     if ! id $isouser 2>/dev/null; then
         useradd -m -g users -G $glist -s /bin/zsh $isouser

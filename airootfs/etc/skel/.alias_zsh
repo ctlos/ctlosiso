@@ -18,6 +18,11 @@ alias upgrub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias iip="curl --max-time 10 -w '\n' http://ident.me"
 alias tb="nc termbin.com 9999"
 
+alias pkglist="LANG=C pacman -Sl | awk '/\[installed\]$/ {print $2}' > ~/.pkglist.txt"
+alias aurlist="pacman -Qqm > ~/.aurlist.txt"
+
+alias run="dmenu_run -i -x 30 -y 30 -l 10 -w 400 -p 'Search:' -fn 'Clear Sans Medium-13' -nb '#141c21' -nf '#93a1a1' -sb '#5a74ca' -sf '#fff'"
+
 # fzf
 zzh() {
 	du -a ~/ | awk '{print $2}' | fzf | xargs -r $EDITOR
@@ -57,7 +62,8 @@ abuild () {
 	rm -rf ~/.build/$1
 }
 
-#alias neo="neofetch"
+
+alias neofetch="neofetch --ascii ~/.config/neofetch/tux"
 alias neo="neofetch --w3m ~/.config/neofetch/cn.jpg"
 # alias neo="neofetch --kitty ~/.config/neofetch/cn.jpg"
 # alias neo="neofetch --w3m"
@@ -89,7 +95,7 @@ alias l="ls -CF --color=auto"
 alias .l="dirs -v"
 
 alias mk="mkdir"
-mkj () {
+mkcd () {
 	mkdir -p "$1"
 	cd "$1"
 }
@@ -101,7 +107,14 @@ alias ...="cd ../.."
 # alias ....="cd ../../.."
 # alias .....="cd ../../../.."
 alias :q="exit"
-alias ctliso="cd ~/files/github/ctlosiso"
+alias gh="cd /media/files/github"
+alias ctliso="cd /media/files/github/ctlosiso"
+alias wiki="cd /media/files/github/wiki"
+alias ghc="cd /media/files/github/creio"
+alias ghcd="cd /media/files/github/creio/dots"
+#
+alias gl="cd /media/files/gitlab"
+alias glc="cd /media/files/gitlab/creio"
 
 gc () {
 	git clone "$1"
@@ -109,11 +122,11 @@ gc () {
 function gcj () {
 	git clone "$1"
 	cd "$2"
-	$EDITOR .
+	# $EDITOR .
 }
 alias gi="git init"
 alias gs="git status"
-alias gl="git log --stat --pretty=oneline --graph --date=short"
+alias glog="git log --stat --pretty=oneline --graph --date=short"
 alias gg="gitg &"
 alias gad="git add --all"
 gac () {
@@ -178,9 +191,10 @@ iso () {
 alias -s {mp3,m4a,flac}="mpv"
 alias -s {png,jpg,tiff,bmp}="viewnior"
 alias -s {conf,txt}="nvim"
+# alias {aurman,pikaur,trizen,yaourt}="yay"
 
-alias st="$EDITOR"
-alias sst="sudo $EDITOR"
+alias st="subl3"
+alias sst="sudo subl3"
 alias tm="tmux attach || tmux new -s work"
 alias tmd="tmux detach"
 alias tmk="tmux kill-server"
@@ -191,8 +205,7 @@ alias th="thunar . &"
 alias na="nautilus . &"
 alias sna="sudo nautilus ."
 alias h="htop"
-alias vim="nvim"
-alias vi="nvim"
+alias {v,vi,vim}="nvim"
 
 alias packey="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys && sudo pacman -Syy"
 alias sp="sudo pacman -S"
@@ -217,6 +230,12 @@ alias yr="yay -R"
 alias yrn="yay -R --noconfirm"
 alias ygpg="yay --mflags '--nocheck --skippgpcheck --noconfirm'"
 alias ynskip="yay --mflags --skipinteg --noconfirm"
+
+# Python
+alias ve="virtualenv ve"
+alias vea="source ve/bin/activate"
+alias ved="deactivate"
+alias pipr="pip install -r requirements.txt"
 
 # распаковать архив не указывая тип распаковщика
 function ex {

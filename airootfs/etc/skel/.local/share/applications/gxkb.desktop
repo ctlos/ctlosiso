@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=gxkb
+Comment=Keyboard switcher
+Comment[ru]=Переключатель раскладки
+Comment[uk]=Індикатор розкладки клавіатури
+Exec=gxkb
+Icon=gxkb
+Terminal=false
+Type=Application
+Categories=Application;Utility;
+NoDisplay=true

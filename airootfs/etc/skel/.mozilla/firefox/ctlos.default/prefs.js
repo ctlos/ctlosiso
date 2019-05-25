@@ -63,4 +63,3 @@ user_pref("browser.shell.checkDefaultBrowser", true);
 user_pref("browser.shell.didSkipDefaultBrowserCheckOnFirstRun", true);
 user_pref("browser.tabs.drawInTitlebar", true);
 user_pref("network.trr.mode", 5);
-
