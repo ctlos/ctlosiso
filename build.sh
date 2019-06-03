@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# 
 rm -rf /var/cache/pacman/pkg/*
 
 pacman-key --init
