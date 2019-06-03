@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #### autostarting applications bspwm
-setxkbmap -layout us,ru -option "grp:win_space_toggle,grp_led:scroll" &
+setxkbmap -layout us,ru -option "grp:alt_shift_toggle,grp_led:scroll" &
 compton -b --config ~/.config/compton.conf &
 hsetroot -center /usr/share/wall/wl3.jpg &
 $HOME/.config/bspwm/polybar/launch.sh &
