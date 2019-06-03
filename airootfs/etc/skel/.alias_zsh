@@ -17,11 +17,21 @@ alias vga="lspci -k | grep -A 2 -E '(VGA|3D)'"
 alias upgrub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias iip="curl --max-time 10 -w '\n' http://ident.me"
 alias tb="nc termbin.com 9999"
+alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 
-alias pkglist="LANG=C pacman -Sl | awk '/\[installed\]$/ {print $2}' > ~/.pkglist.txt"
-alias aurlist="pacman -Qqm > ~/.aurlist.txt"
+alias pkglist="pacman -Qneq > ~/.pkglist.txt"
+alias aurlist="pacman -Qmeq > ~/.aurlist.txt"
 
 alias run="dmenu_run -i -x 30 -y 30 -l 10 -w 400 -p 'Search:' -fn 'Clear Sans Medium-13' -nb '#141c21' -nf '#93a1a1' -sb '#5a74ca' -sf '#fff'"
+
+# blur img: blur 4 .wall/wl3.jpg blur.jpg
+function blur() {
+	convert -filter Gaussian -blur 0x$1 $2 $3
+}
+
+function tbg() {
+	urxvt -bg '[0]red' -b 0 -depth 32 +sb -name urxvt_bg &
+}
 
 # fzf
 zzh() {
@@ -47,6 +57,9 @@ vboxshare () {
 aget () {
 	git clone https://aur.archlinux.org/"$1".git
 	# curl -fO https://aur.archlinux.org/cgit/aur.git/snapshot/"$1".tar.gz
+	cd $1
+	makepkg -s
+	cd ..
 }
 
 # build and install pkg from aur
@@ -62,8 +75,7 @@ abuild () {
 	rm -rf ~/.build/$1
 }
 
-
-alias neofetch="neofetch --ascii ~/.config/neofetch/tux"
+alias neoa="neofetch --ascii ~/.config/neofetch/tux"
 alias neo="neofetch --w3m ~/.config/neofetch/cn.jpg"
 # alias neo="neofetch --kitty ~/.config/neofetch/cn.jpg"
 # alias neo="neofetch --w3m"
@@ -73,8 +85,8 @@ alias neo="neofetch --w3m ~/.config/neofetch/cn.jpg"
 # alias wtr="curl 'wttr.in/Москва?M&lang=ru' | sed -n '1,17p'"
 # alias wtr="curl 'wttr.in/?M1npQ&lang=ru'"
 wtr () {
-	curl "wttr.in/?M$1npQ&lang=ru"
-	# curl "wttr.in/Москва?M$1npQ&lang=ru"
+	# curl "wttr.in/?M$1npQ&lang=ru"
+	curl "wttr.in/Gomel?M$1npQ&lang=ru"
 }
 wts () {
 	curl "wttr.in/$1?M&lang=ru"
@@ -106,7 +118,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 # alias ....="cd ../../.."
 # alias .....="cd ../../../.."
-alias :q="exit"
+alias q="exit"
 alias gh="cd /media/files/github"
 alias ctliso="cd /media/files/github/ctlosiso"
 alias wiki="cd /media/files/github/wiki"

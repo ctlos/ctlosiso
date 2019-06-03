@@ -1,149 +1,56 @@
 #!/bin/bash
 #
 # Ctlos Linux https://ctlos.github.io
-#
-#
 
 #Installing basic packages
-accountsservice
-archlinux-appstream-data
-archlinux-keyring
-autoconf
-automake
-# b43-fwcutter
-bash
-bind-tools
-binutils
+base
+base-devel
 btrfs-progs
-bzip2
-clonezilla
-coreutils
-crda
-cryptsetup
-darkhttpd
-dcraw
-ddrescue
-device-mapper
-dhclient
-diffutils
 dmidecode
-dmraid
-dnsmasq
-dnsutils
 dosfstools
 e2fsprogs
 efibootmgr
-encfs
-ethtool
 exfat-utils
 f2fs-tools
 fakeroot
-ffmpegthumbnailer
-file
-filesystem
 findutils
-gawk
-gcc
-gcc-libs
-gettext
-glibc
-gnu-netcat
-gpm
 gptfdisk
 grep
 grub
-gsfonts
-gucharmap
 haveged
 hdparm
-hunspell
-inetutils
 intel-ucode
-iproute2
-iputils
 ipw2100-fw
 ipw2200-fw
-irssi
-jfsutils
 less
-lftp
-libdvdcss
-libtool
-licenses
 linux
 linux-atm
 linux-firmware
 linux-headers
-logrotate
 lsb-release
-lsscsi
 lvm2
-m4
-make
-man-db
-man-pages
-mc
-mdadm
 memtest86+
-mkinitcpio-nfs-utils
-mlocate
-mtools
-nano
-nbd
-ndisc6
-nfs-utils
-nilfs-utils
 ntfs-3g
-ntp
 os-prober
-pacman
-partclone
-parted
-partimage
-patch
-pciutils
-perl
-pkg-config
-pkgfile
-ppp
-pptpclient
-procps-ng
-psmisc
-python-urllib3
-python-xdg
 refind-efi
 reiserfsprogs
-rp-pppoe
 rsync
-sdparm
-sed
-sg3_utils
 shadow
 smartmontools
-s-nail
-sudo
-sysfsutils
 syslinux
 systemd-sysvcompat
 tar
-texinfo
 tlp
 upower
 usb_modeswitch
 usbutils
 util-linux
-vpnc
 wget
-which
-whois
 wireless_tools
 wireless-regdb
 wvdial
 x264
-xapps
 xfsprogs
-xl2tpd
-
 
 nmap
 tcpdump
@@ -153,9 +60,7 @@ openssh
 openvpn
 
 
-
-
-#Installing video driver
+#Installing xorg driver
 xorg-apps
 xorg-server
 xorg-xinit
@@ -205,7 +110,6 @@ p7zip
 unzip
 unrar
 
-
 #Installing wireless packages
 broadcom-wl
 dialog
@@ -220,7 +124,6 @@ networkmanager-pptp
 networkmanager-vpnc
 wpa_supplicant
 
-
 #Installing sound packages
 alsa-firmware
 alsa-utils
@@ -234,22 +137,7 @@ gst-plugins-ugly
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
-pulseaudio-equalizer
 lib32-alsa-plugins
-
-
-#Installing development tools
-archiso
-arch-install-scripts
-squashfs-tools
-
-
-#Installing languages
-# go
-# ruby
-python
-python2
-
 
 #Installing theme, icons
 gtk-engines
@@ -257,34 +145,34 @@ gtk-engine-murrine
 gtk3-print-backends
 arc-gtk-theme
 papirus-icon-theme
-# qt4
 qt5-styleplugins
 qt5ct
 
-
 #Installing fonts
-ttf-dejavu
-ttf-liberation
 ttf-font-awesome
 ttf-roboto
-
+# noto-fonts-emoji
 
 #Installing cli utils
 chrpath
 wmctrl
+slop
 gtk2-perl
 perl-file-desktopentry
 intltool
 bash-completion
+hsetroot
+syntax-highlighting
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
+fzf
+fzf-extras
 curl
 git
 imagemagick
 neofetch
 w3m
-speedtest-cli
 scrot
 htop
 ranger
@@ -294,6 +182,7 @@ mpd
 mpc
 ncmpcpp
 newsboat
+tmux
 ffmpeg
 ffmpegthumbnailer
 ffmpegthumbs
@@ -301,11 +190,9 @@ streamlink
 youtube-dl
 youtube-viewer
 tor
+privoxy
 
-
-## main pkg openbox
-grub-customizer
-# polkit-gnome
+## main pkg
 gnome-keyring
 xdg-user-dirs-gtk
 
@@ -322,97 +209,74 @@ tumbler
 compton
 redshift
 dunst
-# xfce4-notifyd
 xfce4-power-manager
-xfce4-terminal
 numlockx
-volumeicon
-plank
+udiskie
+unclutter
 
-# openbox
-gxkb
+urxvt-perls
+
+# bspwm pkg
+bspwm
+sxhkd
+# dep polybar
+jsoncpp
 gsimplecal
 jgmenu
 lxmenu-data
-nitrogen
-oblogout
-lxappearance-obconf
-obconf
+lxappearance
 lxrandr
-
-# i3
-i3-gaps
-# dep polybar
-jsoncpp
 
 
 # my software
-# chromium
-# pepper-flash
-firefox
-firefox-i18n-ru
-flashplugin
-
+chromium
+pepper-flash
+# 
 audacious
-catfish
 file-roller
 flameshot
 galculator-gtk2
 gparted
-gnome-disk-utility
 gufw
 viewnior
 pavucontrol
-smplayer
-smplayer-skins
-smplayer-themes
-mousepad
 mpv
 simplescreenrecorder
+# telegram-desktop
 keepassxc
 veracrypt
+xreader
 
 # Virtualbox Tools
 virtualbox-guest-modules-arch
 virtualbox-guest-utils
 
-
-#Aur
+#Aur pkg
 ckbcomp
 calamares
 mkinitcpio-openswap
-
+# 
 yay-bin
-pamac-aur
-
+rxvt-unicode-patched
+fzf-extras
 oh-my-zsh-git
-
+zsh-fast-syntax-highlighting-git
 ttf-clear-sans
-ttf-roboto-mono
-capitaine-cursors
-
+ttf-nerd-fonts-hack-complete-git
+cava
+# rofi-greenclip
 clipit
+micro-bin
+suru-plus-git
+capitaine-cursors
 timeshift
-
-mintstick-git
-python2-pyparted
-
 xsettingsd
 qgnomeplatform-git
-
-obkey-git
-
-sddm-config-editor-git
-# 
-obmenu-generator
-perl-linux-desktopfiles
-# 
 skippy-xd-git
 i3lock-fancy-git
 xfce-polkit-git
 tint2-git
-# i3
 polybar-git
 
 # ctlos repo
-openbox-config
+bspwmrc

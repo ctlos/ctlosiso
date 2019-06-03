@@ -80,24 +80,19 @@ function setDefaults() {
     echo "EDITOR=${_EDITOR}" >> /etc/environment
     echo "EDITOR=${_EDITOR}" >> /etc/profile
 
-    # default shell
-    # chsh -s /bin/bash
-    # chsh -s /bin/zsh
-
-    # fix qt5
     echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
 }
 
-function addCalamares() {
-    dockItem="/home/$isouser/.config/plank/dock1/launchers/Calamares.dockitem"
+# function addCalamares() {
+#     dockItem="/home/$isouser/.config/plank/dock1/launchers/Calamares.dockitem"
     
-    touch $dockItem
+#     touch $dockItem
 
-    echo "[PlankDockItemPreferences]" >> $dockItem
-    echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
+#     echo "[PlankDockItemPreferences]" >> $dockItem
+#     echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
 
-    chown $isouser $dockItem
-}
+#     chown $isouser $dockItem
+# }
 
 function fontFix() {
     rm -rf /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
@@ -115,10 +110,6 @@ function fixHibernate() {
     sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 }
 
-# function removingPackages() {
-#     pacman -R --noconfirm go
-# }
-
 function fixHaveged(){
     systemctl start haveged
     systemctl enable haveged
@@ -134,6 +125,7 @@ function initkeys() {
 
 function enableServices() {
     systemctl enable pacman-init.service choose-mirror.service
+    systemctl enable xdg-user-dirs-update.service
     systemctl enable avahi-daemon.service
     systemctl enable vboxservice.service
     systemctl enable ntpd.service
@@ -155,11 +147,10 @@ fixPermissions
 configRootUser
 createLiveUser
 setDefaults
-addCalamares
+# addCalamares
 fontFix
 fixWifi
 fixHibernate
-# removingPackages
 fixHaveged
 initkeys
 enableServices

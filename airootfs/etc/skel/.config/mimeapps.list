@@ -1,0 +1,7 @@
+[Added Associations]
+application/x-perl=micro.desktop;
+text/plain=micro.desktop;
+application/x-shellscript=micro.desktop;
+
+[Default Applications]
+inode/directory=Thunar.desktop

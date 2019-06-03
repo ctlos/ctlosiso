@@ -90,4 +90,4 @@ Include = /etc/pacman.d/mirrorlist
 #[ctlos_repo]
 #SigLevel = Optional TrustAll
 # SigLevel = Never
-#Server = file:///home/st/files/ctlos/ctlos_repo/$arch
+#Server = file:///media/files/ctlos/ctlos_repo/$arch

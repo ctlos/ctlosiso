@@ -1,0 +1,25 @@
+[
+	{
+		"Name": "fmt",
+		"Description": "A multi-language formatting plugin for Micro",
+		"Tags": [
+			"beautifying",
+			"beautifier",
+			"beautify",
+			"formatter",
+			"formatting",
+			"multi-language",
+			"pretty-printer",
+			"prettifier"
+		],
+		"Versions": [
+			{
+				"Version": "3.2.0",
+				"Url": "https://github.com/sum01/fmt-micro/archive/v3.2.0.zip",
+				"Require": {
+					"micro": ">=1.3.0"
+				}
+			}
+		]
+	}
+]
