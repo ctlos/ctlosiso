@@ -257,15 +257,14 @@ gtk-engine-murrine
 gtk3-print-backends
 arc-gtk-theme
 papirus-icon-theme
-qt4
 qt5-styleplugins
 qt5ct
 
 
 #Installing fonts
-ttf-dejavu
-ttf-liberation
 ttf-font-awesome
+ttf-roboto
+# noto-fonts-emoji
 
 
 #Installing cli utils
@@ -278,7 +277,7 @@ bash-completion
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
-fish
+fzf
 curl
 git
 imagemagick
@@ -288,6 +287,7 @@ speedtest-cli
 scrot
 htop
 ranger
+tmux
 highlight
 reflector
 rofi
@@ -304,8 +304,8 @@ youtube-viewer
 
 
 ## main xfce pkg
-# polkit-gnome
 gnome-keyring
+lxqt-policykit
 xdg-user-dirs-gtk
 
 sddm
@@ -313,7 +313,6 @@ qt5-svg
 qt5-quickcontrols2
 qt5-graphicaleffects
 
-light-locker
 xfce4-appfinder
 xfce4-battery-plugin
 xfce4-notifyd
@@ -354,17 +353,19 @@ galculator-gtk2
 gparted
 grub-customizer
 gufw
-viewnior
+mousepad
+mpv
 pavucontrol
+redshift
 smplayer
 smplayer-skins
 smplayer-themes
-mousepad
-mpv
 simplescreenrecorder
 keepassxc
 veracrypt
+viewnior
 xreader
+udiskie
 
 # Virtualbox Tools
 virtualbox-guest-modules-arch
@@ -377,18 +378,21 @@ ckbcomp
 calamares
 mkinitcpio-openswap
 
-light-locker-settings
 sddm-config-editor-git
 
 yay-bin
 pamac-aur
 
+fzf-extras
 oh-my-zsh-git
+zsh-fast-syntax-highlighting-git
+micro-bin
 
 ttf-clear-sans
-ttf-roboto-mono
+ttf-nerd-fonts-hack-complete-git
 capitaine-cursors
-plata-theme
+suru-plus-git
+cava
 
 timeshift
 
@@ -398,12 +402,12 @@ python2-pyparted
 xsettingsd-git
 qgnomeplatform-git
 
-fsearch-git
 skippy-xd-git
-xfce-polkit-git
+i3lock-fancy-git
+xfce4-windowck-plugin
 
 # broadcom network
 # b43-firmware
 
 # ctlos repo 
-xfce-config
+xfcerc

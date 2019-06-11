@@ -3,7 +3,6 @@
 rm -rf /var/cache/pacman/pkg/*
 
 pacman-key --init
-pacman-key --populate
 pacman-key --populate archlinux
 
 set -e -u
@@ -13,7 +12,7 @@ iso_de=xfce
 iso_label="CTLOS"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live/USB"
-iso_version=1.3.0_$(date +%Y%m%d)
+iso_version=1.4.0_$(date +%Y%m%d)
 install_dir=arch
 work_dir=work
 out_dir=out

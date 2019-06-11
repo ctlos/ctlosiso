@@ -134,6 +134,7 @@ function initkeys() {
 
 function enableServices() {
     systemctl enable pacman-init.service choose-mirror.service
+    systemctl enable xdg-user-dirs-update.service
     systemctl enable avahi-daemon.service
     systemctl enable vboxservice.service
     systemctl enable ntpd.service

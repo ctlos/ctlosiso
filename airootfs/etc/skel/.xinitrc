@@ -8,9 +8,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
-
     xrdb -merge $sysresources
-
 fi
 
 if [ -f $sysmodmap ]; then
@@ -18,16 +16,12 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
-
     xrdb -merge "$userresources"
-
 fi
 
 if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
-
-# start some nice programs
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
@@ -36,35 +30,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-session=${1:-xfce}
-# export XDG_CURRENT_DESKTOP=Budgie:GNOME
-# exec budgie-desktop
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-case $session in
-    awesome       ) exec awesome;;
-    bspwm         ) exec bspwm;;
-    catwm         ) exec catwm;;
-    cinnamon      ) exec cinnamon-session;;
-    dwm           ) exec dwm;;
-    enlightenment ) exec enlightenment_start;;
-    ede           ) exec startede;;
-    evilwm        ) exec evilwm;;
-    fluxbox       ) exec startfluxbox;;
-    gnome         ) exec gnome-session;;
-    gnome-classic ) exec gnome-session --session=gnome-classic;;
-    i3            ) exec i3;;
-    icewm         ) exec icewm-session;;
-    jwm           ) exec jwm;;
-    kde           ) exec startkde;;
-    mate          ) exec mate-session;;
-    monster       ) exec monsterwm;;
-    notion        ) exec notion;;
-    openbox       ) exec openbox-session;;
-    lxde          ) exec startlxde;;
-    swm           ) exec swm;;
-    unity         ) exec unity;;
-    xfce          ) exec startxfce4;;
-    xmonad        ) exec xmonad;;
-    # No known session, try to run it as command
-    *) exec $1;;
-esac
+xset b off
+xsetroot -cursor_name left_ptr &
+# xset +fp /usr/share/fonts/local &
+# xset +fp /usr/share/fonts/artwiz-fonts &
+# xset +fp /usr/share/fonts/misc &
+# xset +fp /usr/share/fonts/bitmap &
+# xset +fp ~/.fonts &
+# xset fp rehash &
+# fc-cache -fv &
+
+exec startxfce4
