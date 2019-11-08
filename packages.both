@@ -8,9 +8,12 @@
 accountsservice
 archlinux-appstream-data
 archlinux-keyring
+arch-install-scripts
 autoconf
 automake
-# b43-fwcutter
+b43-fwcutter
+base
+base-devel
 bash
 bind-tools
 binutils
@@ -149,6 +152,7 @@ nmap
 tcpdump
 testdisk
 openconnect
+openresolv
 openssh
 openvpn
 
@@ -157,9 +161,13 @@ openvpn
 
 #Installing video driver
 xorg-apps
+xorg-fonts
 xorg-server
+xorg-server-common
 xorg-xinit
 xorg-xkill
+xorg-xrdb
+xorg-xinput
 
 mesa
 mesa-vdpau
@@ -175,7 +183,6 @@ xf86-input-void
 xf86-input-mouse
 xf86-input-vmmouse
 # xf86-input-libinput
-
 xf86-video-amdgpu
 xf86-video-ati
 xf86-video-dummy
@@ -211,6 +218,7 @@ broadcom-wl
 dialog
 mobile-broadband-provider-info
 modemmanager
+net-tools
 networkmanager
 network-manager-applet
 networkmanager-dispatcher-ntpd
@@ -236,6 +244,9 @@ pulseaudio-alsa
 pulseaudio-bluetooth
 pulseaudio-equalizer
 lib32-alsa-plugins
+libcdio
+libdvdread
+libdvdnav
 
 
 #Installing development tools
@@ -254,11 +265,12 @@ python2
 #Installing theme, icons
 gtk-engines
 gtk-engine-murrine
-gtk3-print-backends
-arc-gtk-theme
-papirus-icon-theme
 qt5-styleplugins
 qt5ct
+xsettingsd
+arc-gtk-theme
+papirus-icon-theme
+capitaine-cursors
 
 
 #Installing fonts
@@ -347,9 +359,10 @@ firefox-i18n-ru
 flashplugin
 
 audacious
+alacarte
 file-roller
 flameshot
-galculator-gtk2
+galculator
 gparted
 grub-customizer
 gufw
@@ -374,8 +387,8 @@ virtualbox-guest-utils
 
 
 # Aur
-ckbcomp
 calamares
+ckbcomp
 mkinitcpio-openswap
 
 sddm-config-editor-git
@@ -386,20 +399,22 @@ pamac-aur
 fzf-extras
 oh-my-zsh-git
 zsh-fast-syntax-highlighting-git
-micro-bin
 
 ttf-clear-sans
 ttf-nerd-fonts-hack-complete-git
-capitaine-cursors
 suru-plus-git
 cava
 
 timeshift
 
-mintstick-git
+# mintstick depen
+# repo
+python2-dbus
+python2-xapp
+# aur
 python2-pyparted
+mintstick-git
 
-xsettingsd-git
 qgnomeplatform-git
 
 skippy-xd-git
@@ -407,7 +422,7 @@ i3lock-fancy-git
 xfce4-windowck-plugin
 
 # broadcom network
-# b43-firmware
+b43-firmware
 
-# ctlos repo 
+# ctlos repo
 xfcerc

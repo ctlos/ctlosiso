@@ -5,10 +5,10 @@
 USER="st"
 iso_name=ctlos
 iso_de=xfce
-iso_version=1.4.0_$(date +%Y%m%d)
+iso_version=1.5.0_$(date +%Y%m%d)
 
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root"
    exit 1
 fi
 

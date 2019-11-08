@@ -12,7 +12,7 @@ iso_de=xfce
 iso_label="CTLOS"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live/USB"
-iso_version=1.4.0_$(date +%Y%m%d)
+iso_version=1.5.0_$(date +%Y%m%d)
 install_dir=arch
 work_dir=work
 out_dir=out
@@ -103,7 +103,7 @@ make_setup_mkinitcpio() {
 make_customize_airootfs() {
     cp -af ${script_path}/airootfs ${work_dir}/x86_64
 
-    cp ${script_path}/pacman.conf.work_dir ${work_dir}/x86_64/airootfs/etc/pacman.conf
+    cp ${script_path}/pacman.conf.work ${work_dir}/x86_64/airootfs/etc/pacman.conf
 
     curl -o ${work_dir}/x86_64/airootfs/etc/pacman.d/mirrorlist 'https://www.archlinux.org/mirrorlist/?country=all&protocol=http&use_mirror_status=on'
 
@@ -229,7 +229,7 @@ make_prepare() {
 make_iso() {
     out_filename="${iso_name}_${iso_de}_${iso_version}.iso"
     mkarchiso ${verbose} -w "${work_dir}" -D "${install_dir}" -L "${iso_label}" -P "${iso_publisher}" -A "${iso_application}" -o "${out_dir}" iso $out_filename
-    
+
     echo "finished!"
 }
 
