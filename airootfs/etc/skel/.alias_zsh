@@ -62,8 +62,8 @@ abuild () {
 	rm -rf ~/.build/$1
 }
 
-
-alias neofetch="neofetch --ascii ~/.config/neofetch/tux"
+alias neofetch="neofetch --ascii ~/.config/neofetch/mario"
+alias neoa="neofetch --ascii ~/.config/neofetch/flower"
 alias neo="neofetch --w3m ~/.config/neofetch/cn.jpg"
 # alias neo="neofetch --kitty ~/.config/neofetch/cn.jpg"
 # alias neo="neofetch --w3m"
@@ -205,7 +205,7 @@ alias th="thunar . &"
 alias na="nautilus . &"
 alias sna="sudo nautilus ."
 alias h="htop"
-alias {v,vi,vim}="nvim"
+# alias {v,vi,vim}="nvim"
 
 alias packey="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys && sudo pacman -Syy"
 alias sp="sudo pacman -S"

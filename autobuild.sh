@@ -4,11 +4,11 @@
 
 USER="st"
 iso_name=ctlos
-iso_de=openbox-i3
-iso_version=2.2_$(date +%Y%m%d)
+iso_de=i3
+iso_version=1.0.0_$(date +%Y%m%d)
 
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root"
    exit 1
 fi
 

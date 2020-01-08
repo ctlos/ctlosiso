@@ -9,11 +9,11 @@ pacman-key --populate archlinux
 set -e -u
 
 iso_name=ctlos
-iso_de=openbox-i3
+iso_de=i3
 iso_label="CTLOS"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live/USB"
-iso_version=2.2_$(date +%Y%m%d)
+iso_version=1.0.0_$(date +%Y%m%d)
 install_dir=arch
 work_dir=work
 out_dir=out
@@ -230,7 +230,7 @@ make_prepare() {
 make_iso() {
     out_filename="${iso_name}_${iso_de}_${iso_version}.iso"
     mkarchiso ${verbose} -w "${work_dir}" -D "${install_dir}" -L "${iso_label}" -P "${iso_publisher}" -A "${iso_application}" -o "${out_dir}" iso $out_filename
-    
+
     echo "finished!"
 }
 

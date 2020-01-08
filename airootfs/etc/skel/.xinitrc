@@ -36,35 +36,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-session=${1:-openbox}
 # export XDG_CURRENT_DESKTOP=Budgie:GNOME
 # exec budgie-desktop
 
-case $session in
-    awesome       ) exec awesome;;
-    bspwm         ) exec bspwm;;
-    catwm         ) exec catwm;;
-    cinnamon      ) exec cinnamon-session;;
-    dwm           ) exec dwm;;
-    enlightenment ) exec enlightenment_start;;
-    ede           ) exec startede;;
-    evilwm        ) exec evilwm;;
-    fluxbox       ) exec startfluxbox;;
-    gnome         ) exec gnome-session;;
-    gnome-classic ) exec gnome-session --session=gnome-classic;;
-    i3            ) exec i3;;
-    icewm         ) exec icewm-session;;
-    jwm           ) exec jwm;;
-    kde           ) exec startkde;;
-    mate          ) exec mate-session;;
-    monster       ) exec monsterwm;;
-    notion        ) exec notion;;
-    openbox       ) exec openbox-session;;
-    lxde          ) exec startlxde;;
-    swm           ) exec swm;;
-    unity         ) exec unity;;
-    xfce          ) exec startxfce4;;
-    xmonad        ) exec xmonad;;
-    # No known session, try to run it as command
-    *) exec $1;;
-esac
+exec i3

@@ -90,7 +90,7 @@ function setDefaults() {
 
 function addCalamares() {
     dockItem="/home/$isouser/.config/plank/dock1/launchers/Calamares.dockitem"
-    
+
     touch $dockItem
 
     echo "[PlankDockItemPreferences]" >> $dockItem
@@ -133,9 +133,10 @@ function initkeys() {
 }
 
 function enableServices() {
-    systemctl enable pacman-init.service choose-mirror.service
+    # systemctl enable pacman-init.service choose-mirror.service
     systemctl enable avahi-daemon.service
-    systemctl enable vboxservice.service
+    systemctl enable avahi-daemon.socket
+    # systemctl enable vboxservice.service
     systemctl enable ntpd.service
     systemctl enable sddm.service
     systemctl enable NetworkManager.service
