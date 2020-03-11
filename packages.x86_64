@@ -283,6 +283,7 @@ ttf-roboto-mono
 
 
 #Installing cli utils
+cronie
 chrpath
 wmctrl
 gtk2-perl

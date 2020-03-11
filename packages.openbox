@@ -36,10 +36,10 @@ gxkb
 gsimplecal
 jgmenu
 lxmenu-data
+lxappearance
 nitrogen
 obconf
-# lxrandr
-xfce4-settings
+lxrandr
 
 # my software
 # chromium
@@ -77,6 +77,7 @@ yay-bin
 pamac-aur-git
 
 oh-my-zsh-git
+zsh-fast-syntax-highlighting-git
 
 ttf-clear-sans
 nerd-fonts-hack
@@ -85,6 +86,7 @@ cava
 clipit
 timeshift
 imagewriter
+inxi
 
 qgnomeplatform-git
 
@@ -102,4 +104,6 @@ tint2-git
 
 # ctlos repo
 ctlos-keyring
+ctlos-welcome
 openbox-config
+ctl-theme

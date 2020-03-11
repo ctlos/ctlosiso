@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 include "/home/liveuser/.gtkrc-2.0.mine"
-gtk-theme-name="dui"
+gtk-theme-name="ctl-dark"
 gtk-icon-theme-name="dui-ico"
 gtk-font-name="Clear Sans Medium, Medium 10"
 gtk-cursor-theme-name="capitaine-cursors"
