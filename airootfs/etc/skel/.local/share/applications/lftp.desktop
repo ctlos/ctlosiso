@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=lftp
+Icon=lftp-icon
+Type=Application
+Terminal=true
+Exec=lftp
+Categories=Network;
+NoDisplay=true

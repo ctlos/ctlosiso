@@ -136,7 +136,9 @@ clean_backup_dirs() {
     if [[ ${PREV_BACKUPS[*]} ]] && sub_choice "Perform clean backup (wipe BASE_DIR)" "${R}$BASE_DIR${N}"; then
         for dir in "${PREV_BACKUPS[@]}"; do
             if [[ -d $dir ]] && sub_choice "Wipe all files in /$(basename "$dir")" "${R}$dir${N}"; then
-                rm -rf$V "$dir"
+                cd "$dir"
+                git rm -r -f .
+                # rm -rf$V "$dir"
                 [[ $V ]] && sleep 0.5
             fi
         done
@@ -148,7 +150,7 @@ commit_changes() {
         if sub_choice "Commit and push changes to REPO" "${R}$REPO${N}"; then
 
             printf "\nEnter commit message below, an example has been provided\n\n> "
-            read -e -i "$(date +%a-%D) Update" -r comment
+            read -e -i "$(date +%Y.%m.%d) Update " -r comment
 
             if grep -wq '[a-zA-Z0-9]*' <<< "$comment"; then
                 cd "$BASE_DIR/" || return 1

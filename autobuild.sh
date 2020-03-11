@@ -4,12 +4,12 @@
 
 USER="st"
 iso_name=ctlos
-iso_de=mini
-iso_version=$(date +%Y%m%d)
+iso_de=$1
+iso_version=1.0.0_$(date +%Y%m%d)
 
 if [[ $EUID -ne 0 ]]; then
-  	echo "This script must be run as root" 
-		exit 1
+   echo "This script must be run as root"
+   exit 1
 fi
 
 ISO="${iso_name}_${iso_de}_${iso_version}.iso"
