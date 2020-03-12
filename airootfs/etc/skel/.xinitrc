@@ -39,4 +39,4 @@ fi
 # export XDG_CURRENT_DESKTOP=Budgie:GNOME
 # exec budgie-desktop
 
-exec openbox-session
+# exec openbox-session
