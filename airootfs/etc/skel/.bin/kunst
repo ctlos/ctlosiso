@@ -8,9 +8,11 @@
 
 
 VERSION=1.2.3
-COVER=/tmp/kunst.jpg
+COVER=/tmp/kunst.png
 MUSIC_DIR=~/Music/
 SIZE=250x250
+X=50
+Y=50
 
 
 show_help() {
@@ -24,6 +26,8 @@ show_help() {
 	echo "optional arguments:"
 	echo "   -h, --help            show this help message and exit"
 	echo "   --size                what size to display the album art in"
+	echo "   --x                   X"
+	echo "   --y                   Y"
 	echo "   --music_dir           the music directory which MPD plays from"
 	echo "   --silent              dont show the output"
 	echo "   --version             show the version of kunst you are using"
@@ -31,7 +35,7 @@ show_help() {
 
 
 # Parse the arguments
-options=$(getopt -o h --long size:,music_dir:,version,silent,help -- "$@")
+options=$(getopt -o h --long size:,x:,y:,music_dir:,version,silent,help -- "$@")
 eval set -- "$options"
 
 while true; do
@@ -39,6 +43,14 @@ while true; do
         --size)
             shift;
             SIZE=$1
+            ;;
+        --x)
+            shift;
+            X=$1
+            ;;
+        --y)
+            shift;
+            Y=$1
             ;;
         --music_dir)
             shift;
@@ -125,6 +137,8 @@ update_cover() {
 	# Get the status of the previous command
 	STATUS=$?
 
+	killall n30f
+
 	# Check if the file has a embbeded album art
 	if [ $STATUS -eq 0 ];then
         if [ ! $SILENT ];then 
@@ -175,7 +189,6 @@ pre_exit() {
     # exit kunst, an error will be shown
     # from kill and we dont want that
 	kill -9 $(cat /tmp/kunst.pid) &> /dev/null
- 
 }
 
 main() {
@@ -186,6 +199,8 @@ main() {
 	while true; do
 
 		update_cover
+		notify-send "Now Playing ♫" "$(mpc current)" &
+		n30f -x $X -y $Y $COVER -t Kunst -c "killall n30f" &
 
 		if [ $ARTLESS == true ];then
 			# Dhange the path to COVER because the music note
@@ -206,8 +221,10 @@ main() {
 			FIRST_RUN=false
 
 			# Display the album art using sxiv
-			sxiv -g $SIZE -b $COVER -N "Kunst" &
-			
+			# sxiv -g $SIZE -b $COVER -N "Kunst" &
+
+			notify-send "Now Playing ♫" "$(mpc current)" &
+			n30f -x $X -y $Y $COVER -t Kunst -c "killall n30f" &
 			# Save the process ID so that we can kill
 			# sxiv when the user exits the script
 			echo $! >/tmp/kunst.pid

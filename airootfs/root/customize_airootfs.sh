@@ -53,7 +53,7 @@ function fixPermissions() {
 }
 
 function configRootUser() {
-    usermod -s /usr/bin/bash root
+    usermod -s /usr/bin/zsh root
     chmod 700 /root
 }
 
@@ -62,7 +62,7 @@ function createLiveUser() {
     # groupadd -r autologin
     # groupadd -r nopasswdlogin
 
-    # add liveuser
+    ## add liveuser
     glist="audio,floppy,log,network,rfkill,scanner,storage,optical,power,wheel"
     if ! id $isouser 2>/dev/null; then
         useradd -m -g users -G $glist -s /bin/zsh $isouser
@@ -90,7 +90,7 @@ function setDefaults() {
 
 function addCalamares() {
     dockItem="/home/$isouser/.config/plank/dock1/launchers/Calamares.dockitem"
-    
+
     touch $dockItem
 
     echo "[PlankDockItemPreferences]" >> $dockItem
@@ -128,25 +128,28 @@ function fixHaveged(){
 
 function initkeys() {
     pacman-key --init
-    pacman-key --populate archlinux
-    pacman -Syy --noconfirm
+    pacman-key --populate archlinux ctlos
+    # pacman-key --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 98F76D97B786E6A3
+    # pacman-key --keyserver hkps://hkps.pool.sks-keyservers.net:443 --recv-keys 98F76D97B786E6A3
+    # pacman-key --keyserver keys.gnupg.net --recv-keys 98F76D97B786E6A3
+    # pacman-key --lsign-key 98F76D97B786E6A3
+    pacman -Sy --noconfirm
 }
 
 function enableServices() {
     systemctl enable pacman-init.service choose-mirror.service
-    systemctl enable xdg-user-dirs-update.service
     systemctl enable avahi-daemon.service
     systemctl enable vboxservice.service
-    systemctl enable ntpd.service
+    systemctl enable systemd-networkd.service
+    systemctl enable systemd-resolved.service
+    systemctl enable systemd-timesyncd
     systemctl enable sddm.service
-    systemctl enable NetworkManager.service
-    systemctl -fq enable NetworkManager-wait-online.service
-    systemctl mask systemd-rfkill@.service
-    systemctl mask systemd-rfkill.service
-    systemctl mask systemd-rfkill.socket
     systemctl enable vbox-check.service
+    systemctl -fq enable NetworkManager.service
+    systemctl mask systemd-rfkill@.service
     systemctl set-default graphical.target
 }
+
 
 
 localeGen
