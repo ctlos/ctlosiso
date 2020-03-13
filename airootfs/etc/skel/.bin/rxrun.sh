@@ -26,7 +26,7 @@ tmux select-pane -t 3
 tmux send-keys "ranger" C-m
 # 
 tmux new-window -t $SESSION:3 -n 'edit'
-tmux send-keys "nvim" C-m
+tmux send-keys "micro" C-m
 tmux split-window -h
 tmux resize-pane -R 40
 tmux select-pane -t 2

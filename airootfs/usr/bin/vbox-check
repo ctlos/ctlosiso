@@ -4,6 +4,6 @@ result=$(systemd-detect-virt)
 if [ $result = "none" ];
 	then
 	rm /etc/xdg/autostart/vboxclient.desktop
-	pacman -Rns virtualbox-guest-utils virtualbox-guest-modules-arch --noconfirm
+	pacman -Rsn virtualbox-guest-utils virtualbox-guest-modules-arch --noconfirm
 	systemctl disable vbox-check.service
 fi

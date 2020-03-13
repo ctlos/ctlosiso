@@ -10,7 +10,7 @@ rofi.width:                          25
 rofi.lines:                          7
 rofi.columns:                        1
 rofi.font:                           ClearSansMedium 9
-rofi.drun-icon-theme:                Suru++
+rofi.drun-icon-theme:                dui-ico
 rofi.show-icons:                     true
 rofi.bw:                             10
 rofi.location:                       0

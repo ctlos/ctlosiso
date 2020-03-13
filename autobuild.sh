@@ -4,11 +4,11 @@
 
 USER="st"
 iso_name=ctlos
-iso_de=bspwm
-iso_version=0.0.1_$(date +%Y%m%d)
+iso_de=$1
+iso_version=$2_$(date +%Y%m%d)
 
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root"
    exit 1
 fi
 

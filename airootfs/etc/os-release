@@ -1,8 +1,0 @@
-NAME="CtlosLinux"
-ID=CtlosLinux
-ID_LIKE="arch"
-VERSION_ID=0.0.1
-ANSI_COLOR="0;35"
-HOME_URL="https://ctlos.github.io"
-SUPPORT_URL="https://ctlos.github.io/contact"
-BUG_REPORT_URL="https://github.com/ctlos/ctlosiso/issues"

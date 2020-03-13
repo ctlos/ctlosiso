@@ -8,7 +8,7 @@ Xft.lcdfilter: lcddefault
 
 
 
-#include ".colors/sn"
+#include ".colors/materia"
 !URxvt.font: -*-rissole-*
 
 URxvt.font: xft:Hack Nerd Font Mono:size=9
@@ -34,7 +34,7 @@ URxvt*scrollTtyOutput: true
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
-URxvt.perl-ext: default,clipboard,url-select,keyboard-select,config-reload
+URxvt.perl-ext: default,clipboard,url-select,keyboard-select
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-select.launcher: /usr/bin/xdg-open
 URxvt.url-select.underline: true
