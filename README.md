@@ -6,6 +6,13 @@ Home: https://ctlos.github.io
 
 [Подробная статья в wiki](https://ctlos.github.io/wiki/other/ctlosiso/).
 
+Установить пакеты для сборки.
+
+```bash
+sudo pacman -S git arch-install-scripts
+yay -S archiso
+```
+
 Можно клонировать определенную ветку, с нужным de/wm (xfce/budgie/bspwm/i3).
 
 ```sh
