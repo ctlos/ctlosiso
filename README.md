@@ -1,3 +1,5 @@
+# Ctlos Linux iso
+
 Home: https://ctlos.github.io
 
 [![GitHub All Releases](https://img.shields.io/github/downloads/ctlos/ctlosiso/total.svg)](https://ctlos.github.io/get)
@@ -9,25 +11,12 @@ Home: https://ctlos.github.io
 Установить пакеты для сборки.
 
 ```bash
-sudo pacman -S git arch-install-scripts
-yay -S archiso
+yay -S git arch-install-scripts archiso --noconfirm
 ```
 
-Можно клонировать определенную ветку, с нужным de/wm (xfce/budgie/bspwm/i3).
-
-```sh
-git clone -b xfce git@github.com:ctlos/ctlosiso.git
-```
-
-Первым параметром указываем de/wm, вторым версию(любую), иначе не отработает.
+Первым параметром указываем de/wm, ориентир файл packages.openbox(de/wm). Вторым версию(любую), иначе не отработает.
 
 В скрипте `autobuild.sh` измените переменную `USER`, на ваше имя пользователя `st`.
-
-```sh
-git clone https://github.com/ctlos/ctlosiso
-cd ctlosiso
-sudo ./autobuild.sh openbox 1.7.0
-```
 
 Измените список пакетов.
 
@@ -41,3 +30,22 @@ sudo ./autobuild.sh openbox 1.7.0
 - Часть конфигов залетает в систему, через пакеты ctlos, например [openbox-config](https://github.com/ctlos/openbox-config)
 - Основной скрипт генерации `/airootfs/root/customize_airootfs.sh`.
 - Готовый образ и хэши создаются в данной директории `/out`.
+
+```sh
+git clone https://github.com/ctlos/ctlosiso
+cd ctlosiso
+chmod a+x {autobuild.sh,build.sh}
+sudo ./autobuild.sh openbox 1.7.0
+```
+
+Можно клонировать определенную ветку, с нужным de/wm (xfce,bspwm).
+
+```sh
+git clone -b xfce git@github.com:ctlos/ctlosiso.git
+```
+
+Получить удаленную ветку и переключиться на неё.
+
+```sh
+git checkout -b bspwm origin/bspwm
+```
