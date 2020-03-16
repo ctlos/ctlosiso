@@ -74,7 +74,7 @@ abuild () {
   rm -rf ~/.build/$1
 }
 
-alias neofetch="neofetch --ascii ~/.config/neofetch/ctlm"
+alias neofetch="neofetch --ascii ~/.config/neofetch/ctlos"
 alias neo="neofetch --w3m ~/.config/neofetch/cn.jpg"
 # alias neo="neofetch --kitty ~/.config/neofetch/cn.jpg"
 # alias neo="neofetch --w3m"
