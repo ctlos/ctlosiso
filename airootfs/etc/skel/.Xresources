@@ -8,7 +8,7 @@ Xft.lcdfilter: lcddefault
 
 
 
-#include ".colors/materia"
+#include ".colors/2dark"
 !URxvt.font: -*-rissole-*
 
 URxvt.font: xft:Hack Nerd Font Mono:size=9
