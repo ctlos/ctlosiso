@@ -7,7 +7,6 @@
 # grub-customizer
 # polkit-gnome
 gnome-keyring
-lxqt-policykit
 xdg-user-dirs-gtk
 xsettingsd
 
@@ -94,6 +93,7 @@ tint2-git
 polybar-git
 pfetch-git
 gotop-bin
+xfce-polkit-git
 
 # ctlos repo
 ctlos-keyring
