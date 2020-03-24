@@ -38,7 +38,7 @@ chmod a+x {autobuild.sh,build.sh}
 sudo ./autobuild.sh openbox 1.7.0
 ```
 
-Можно клонировать определенную ветку, с нужным de/wm (xfce).
+Можно клонировать определенную ветку, с нужным de/wm (xfce/bspwm).
 
 ```sh
 git clone -b xfce git@github.com:ctlos/ctlosiso.git
