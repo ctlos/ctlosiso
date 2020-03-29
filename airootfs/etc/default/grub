@@ -54,4 +54,4 @@ GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT="true"
 
 # Uncomment to make grub show themes
-GRUB_THEME="/usr/share/grub/themes/Stylish/theme.txt"
+GRUB_THEME="/usr/share/grub/themes/crimson/theme.txt"

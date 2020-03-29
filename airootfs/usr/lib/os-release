@@ -1,10 +1,12 @@
-NAME="Ctlos Linux"
+NAME="Ctlos"
 PRETTY_NAME="Ctlos Linux"
-ID=ctlos
+ID=Ctlos
+ID_LIKE="arch"
+VERSION_ID=0.2_20200329
 BUILD_ID=rolling
-ANSI_COLOR="0;35"
+ANSI_COLOR="0;36"
 HOME_URL="https://ctlos.github.io"
 DOCUMENTATION_URL="https://ctlos.github.io/wiki"
 SUPPORT_URL="https://ctlos.github.io/contact"
 BUG_REPORT_URL="https://github.com/ctlos/ctlosiso/issues"
-LOGO=ctloslinux
+LOGO=ctlos

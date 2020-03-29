@@ -34,7 +34,7 @@ yay -S git arch-install-scripts archiso --noconfirm
 ```sh
 git clone https://github.com/ctlos/ctlosiso
 cd ctlosiso
-chmod a+x {autobuild.sh,build.sh}
+chmod +x {autobuild.sh,build.sh,chroot.sh}
 sudo ./autobuild.sh openbox 1.7.0
 ```
 

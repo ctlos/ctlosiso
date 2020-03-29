@@ -117,18 +117,20 @@ function fixHaveged(){
     rm -fr /etc/pacman.d/gnupg
 }
 
-function initkeys() {
-    pacman-key --init
-    pacman-key --populate archlinux ctlos
-    # pacman-key --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 98F76D97B786E6A3
-    # pacman-key --keyserver hkps://hkps.pool.sks-keyservers.net:443 --recv-keys 98F76D97B786E6A3
-    # pacman-key --keyserver keys.gnupg.net --recv-keys 98F76D97B786E6A3
-    # pacman-key --lsign-key 98F76D97B786E6A3
-    pacman -Syy --noconfirm
-}
+# function initkeys() {
+#     pacman-key --init
+#     # pacman-key --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 98F76D97B786E6A3
+#     # pacman-key --keyserver hkps://hkps.pool.sks-keyservers.net:443 --recv-keys 98F76D97B786E6A3
+#     pacman-key --keyserver keys.gnupg.net --recv-keys 98F76D97B786E6A3
+#     pacman-key --lsign-key 98F76D97B786E6A3
+#     pacman-key --populate archlinux
+#     pacman-key --populate ctlos
+#     pacman -Syy --noconfirm
+# }
 
 function enableServices() {
-    systemctl enable pacman-init.service choose-mirror.service
+    # systemctl enable pacman-init.service
+    systemctl enable choose-mirror.service
     systemctl enable avahi-daemon.service
     systemctl enable vboxservice.service
     systemctl enable systemd-networkd.service
@@ -136,6 +138,9 @@ function enableServices() {
     systemctl enable systemd-timesyncd
     systemctl enable sddm.service
     systemctl enable vbox-check.service
+    systemctl enable xdg-user-dirs-update.service
+    systemctl enable reflector.service
+    # systemctl enable reflector.timer
     systemctl -fq enable NetworkManager.service
     systemctl mask systemd-rfkill@.service
     systemctl set-default graphical.target
@@ -154,5 +159,5 @@ fontFix
 fixWifi
 fixHibernate
 fixHaveged
-initkeys
+# initkeys
 enableServices

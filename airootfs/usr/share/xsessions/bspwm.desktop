@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=bspwm
-Comment=Binary space partitioning window manager
-Exec=bspwm_start
-Type=Application
