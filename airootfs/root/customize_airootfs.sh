@@ -6,18 +6,18 @@ isouser="liveuser"
 OSNAME="ctlos"
 
 
-function localeGen() {
+localeGen() {
     sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
     sed -i "s/#\(ru_RU\.UTF-8\)/\1/" /etc/locale.gen
     locale-gen
 }
 
-function setTimeZoneAndClock() {
+setTimeZoneAndClock() {
     ln -sf /usr/share/zoneinfo/UTC /etc/localtime
     hwclock --systohc --utc
 }
 
-function editOrCreateConfigFiles() {
+editOrCreateConfigFiles() {
     # Locale
     echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
     echo "LC_COLLATE=C" >> /etc/locale.conf
@@ -33,7 +33,7 @@ function editOrCreateConfigFiles() {
     sed -i 's/#\(Storage=\)auto/\1volatile/' /etc/systemd/journald.conf
 }
 
-function fixPermissions() {
+fixPermissions() {
     #add missing /media directory
     mkdir -p /media
     chmod 755 -R /media
@@ -52,12 +52,12 @@ function fixPermissions() {
     chmod -R 755 /etc/sudoers.d
 }
 
-function configRootUser() {
+configRootUser() {
     usermod -s /usr/bin/zsh root
     chmod 700 /root
 }
 
-function createLiveUser() {
+createLiveUser() {
     # add groups autologin and nopasswdlogin (for lightdm autologin)
     # groupadd -r autologin
     # groupadd -r nopasswdlogin
@@ -71,7 +71,7 @@ function createLiveUser() {
     fi
 }
 
-function setDefaults() {
+setDefaults() {
     export _BROWSER=firefox
     echo "BROWSER=/usr/bin/${_BROWSER}" >> /etc/environment
     echo "BROWSER=/usr/bin/${_BROWSER}" >> /etc/profile
@@ -83,41 +83,41 @@ function setDefaults() {
     echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
 }
 
-# function addCalamares() {
-#     dockItem="/home/$isouser/.config/plank/dock1/launchers/Calamares.dockitem"
+addCalamares() {
+    dockItem="/home/$isouser/.config/plank/dock1/launchers/Calamares.dockitem"
 
-#     touch $dockItem
+    touch $dockItem
 
-#     echo "[PlankDockItemPreferences]" >> $dockItem
-#     echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
+    echo "[PlankDockItemPreferences]" >> $dockItem
+    echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
 
-#     chown $isouser $dockItem
-# }
+    chown $isouser $dockItem
+}
 
-function fontFix() {
+fontFix() {
     rm -rf /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 }
 
-function fixWifi() {
+fixWifi() {
     su -c 'echo "" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "[device]" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "wifi.scan-rand-mac-address=no" >> /etc/NetworkManager/NetworkManager.conf'
 }
 
-function fixHibernate() {
+fixHibernate() {
     sed -i 's/#\(HandleSuspendKey=\)suspend/\1ignore/' /etc/systemd/logind.conf
     sed -i 's/#\(HandleHibernateKey=\)hibernate/\1ignore/' /etc/systemd/logind.conf
     sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 }
 
-function fixHaveged(){
+fixHaveged(){
     systemctl start haveged
     systemctl enable haveged
 
     rm -fr /etc/pacman.d/gnupg
 }
 
-# function initkeys() {
+# initkeys() {
 #     pacman-key --init
 #     # pacman-key --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 98F76D97B786E6A3
 #     # pacman-key --keyserver hkps://hkps.pool.sks-keyservers.net:443 --recv-keys 98F76D97B786E6A3
@@ -128,7 +128,7 @@ function fixHaveged(){
 #     pacman -Syy --noconfirm
 # }
 
-function enableServices() {
+enableServices() {
     # systemctl enable pacman-init.service
     systemctl enable choose-mirror.service
     systemctl enable avahi-daemon.service

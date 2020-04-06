@@ -295,6 +295,13 @@ qt5-quickcontrols2
 qt5-graphicaleffects
 
 ## software
+audacious
+gparted
+gufw
+mpv
+simplescreenrecorder
+keepassxc
+veracrypt
 # chromium
 # pepper-flash
 firefox
@@ -303,6 +310,8 @@ flashplugin
 ## ctlos repo
 # aur
 yay-bin
+inxi
+i3lock-fancy-git
 fzf-extras
 oh-my-zsh-git
 zsh-fast-syntax-highlighting-git
@@ -315,7 +324,7 @@ straw-viewer-git
 
 gotop-bin
 timeshift
-imagewriter
+pamac-aur-git
 
 qgnomeplatform-git
 
