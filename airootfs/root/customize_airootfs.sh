@@ -83,17 +83,6 @@ setDefaults() {
     echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
 }
 
-addCalamares() {
-    dockItem="/home/$isouser/.config/plank/dock1/launchers/Calamares.dockitem"
-
-    touch $dockItem
-
-    echo "[PlankDockItemPreferences]" >> $dockItem
-    echo "Launcher=file:///usr/share/applications/calamares.desktop" >> $dockItem
-
-    chown $isouser $dockItem
-}
-
 fontFix() {
     rm -rf /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 }
@@ -154,7 +143,6 @@ fixPermissions
 configRootUser
 createLiveUser
 setDefaults
-# addCalamares
 fontFix
 fixWifi
 fixHibernate

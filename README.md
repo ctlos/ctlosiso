@@ -27,7 +27,7 @@ yay -S git arch-install-scripts archiso --noconfirm
 
 - Конфиги системы в `/airootfs` это будущий корень.
 - Конфиги пользователя в `/airootfs/etc/skel`.
-- Часть конфигов залетает в систему, через пакеты ctlos, например [openbox-config](https://github.com/ctlos/openbox-config)
+- Часть конфигов залетает в систему, через пакеты ctlos, например [ctlos-openbox-skel](https://github.com/ctlos/ctlos-openbox-skel)
 - Основной скрипт генерации `/airootfs/root/customize_airootfs.sh`.
 - Готовый образ и хэши создаются в данной директории `/out`.
 
