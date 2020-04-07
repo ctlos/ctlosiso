@@ -2,73 +2,16 @@
 #
 # Ctlos Linux https://ctlos.github.io
 
-
-## pkg
-# polkit-gnome
-gnome-keyring
-thunar
-thunar-archive-plugin
-thunar-media-tags-plugin
-thunar-volman
-tumbler
-picom
-redshift
-dunst
-xfce4-power-manager
-unclutter
-urxvt-perls
-xsettingsd
-udisks2
-udiskie
-
-## bspwm pkg
-bspwm
-sxhkd
-# dep polybar
-jsoncpp
-gsimplecal
-jgmenu
-lxmenu-data
-lxappearance
-lxrandr
-nitrogen
-network-manager-applet
-
-# software
-audacious
-catfish
-file-roller
-flameshot
-galculator
-gparted
-gufw
-viewnior
-pavucontrol
-mousepad
-mpv
-simplescreenrecorder
-keepassxc
-veracrypt
-xreader
-
-gnome-disk-utility
-
+gnome-multi-writer
+smplayer
+smplayer-skins
+smplayer-themes
 
 ### ctlos repo
-#Aur
-ckbcomp
+## Aur
 calamares
+ckbcomp
 mkinitcpio-openswap
-#
-# rofi-greenclip
-clipit
-micro-bin
-skippy-xd-git
-i3lock-fancy-git
-tint2-git
-polybar-git
-rxvt-unicode-patched
-xfce-polkit-git
 
-# ctlos pkg
+## Ctlos pkg
 ctlos-bspwm-skel
