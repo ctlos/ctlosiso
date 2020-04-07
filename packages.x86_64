@@ -4,22 +4,17 @@
 #
 #
 
-#Installing basic packages
+## basic
+base
+base-devel
+
 accountsservice
 archlinux-appstream-data
 archlinux-keyring
-autoconf
-automake
 b43-fwcutter
-base
-base-devel
-bash
 bind-tools
-binutils
 btrfs-progs
-bzip2
 clonezilla
-coreutils
 crda
 cryptsetup
 darkhttpd
@@ -39,20 +34,9 @@ encfs
 ethtool
 exfat-utils
 f2fs-tools
-fakeroot
-ffmpegthumbnailer
-file
-filesystem
-findutils
-gawk
-gcc
-gcc-libs
-gettext
-glibc
 gnu-netcat
 gpm
 gptfdisk
-grep
 grub
 gsfonts
 gucharmap
@@ -60,9 +44,6 @@ haveged
 hdparm
 hunspell
 inetutils
-intel-ucode
-iproute2
-iputils
 ipw2100-fw
 ipw2200-fw
 irssi
@@ -70,18 +51,14 @@ jfsutils
 less
 lftp
 libdvdcss
-libtool
-licenses
 linux
-linux-atm
-linux-firmware
 linux-headers
+linux-firmware
+linux-atm
 logrotate
 lsb-release
 lsscsi
 lvm2
-m4
-make
 man-db
 man-pages
 mc
@@ -98,14 +75,11 @@ nilfs-utils
 ntfs-3g
 ntp
 os-prober
-pacman
 partclone
 parted
 partimage
-patch
 pciutils
 perl
-pkg-config
 pkgfile
 ppp
 pptpclient
@@ -118,25 +92,18 @@ reiserfsprogs
 rp-pppoe
 rsync
 sdparm
-sed
 sg3_utils
-shadow
 smartmontools
 s-nail
-sudo
 sysfsutils
 syslinux
-systemd-sysvcompat
-tar
-texinfo
+testdisk
 tlp
 upower
 usb_modeswitch
 usbutils
-util-linux
 vpnc
 wget
-which
 whois
 wireless_tools
 wireless-regdb
@@ -147,18 +114,8 @@ xfsprogs
 xl2tpd
 
 
-nmap
-tcpdump
-testdisk
-openconnect
-openresolv
-openssh
-openvpn
 
-
-
-
-#Installing video driver
+## video & xorg
 xorg-apps
 xorg-fonts
 xorg-server
@@ -176,10 +133,10 @@ libva-mesa-driver
 libva-intel-driver
 libva-vdpau-driver
 xf86-input-evdev
-xf86-input-synaptics
+xf86-input-libinput
+# xf86-input-synaptics
 xf86-input-void
 xf86-input-vmmouse
-# xf86-input-libinput
 xf86-video-amdgpu
 xf86-video-ati
 xf86-video-dummy
@@ -193,7 +150,7 @@ xf86-video-vmware
 xf86-video-voodoo
 
 
-#Installing basic tools
+## fs
 gvfs
 gvfs-afc
 gvfs-goa
@@ -202,6 +159,8 @@ gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
 gvfs-smb
+mtpfs
+
 ripgrep
 xsel
 gzip
@@ -210,23 +169,31 @@ unzip
 unrar
 
 
-#Installing wireless packages
+## wireless
 broadcom-wl
 dialog
-mobile-broadband-provider-info
-modemmanager
+netctl
 net-tools
 networkmanager
-network-manager-applet
 networkmanager-dispatcher-ntpd
 networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
+mobile-broadband-provider-info
+modemmanager
 wpa_supplicant
 
+geoip
+nmap
+tcpdump
+openconnect
+openresolv
+openssh
+openvpn
 
-#Installing sound packages
+
+## sound
 alsa-firmware
 alsa-utils
 gstreamer
@@ -246,43 +213,43 @@ libdvdread
 libdvdnav
 
 
-#Installing development tools
+## dev tools
 archiso
 arch-install-scripts
 squashfs-tools
 
 
-#Installing languages
+## prog lang
 # go
 # ruby
 python
 python2
 
 
-# Virtualbox Tools
+## Virt Tools
 virtualbox-guest-modules-arch
 virtualbox-guest-utils
 
 
-#Installing theme, icons
+## theme, icons
 gtk-engines
 gtk-engine-murrine
 qt5-styleplugins
 qt5ct
-xsettingsd
 arc-gtk-theme
 papirus-icon-theme
 capitaine-cursors
+xdg-user-dirs
 
 
-#Installing fonts
+## fonts
 ttf-font-awesome
 ttf-roboto
 ttf-roboto-mono
 # noto-fonts-emoji
 
 
-#Installing cli utils
+## utils
 cronie
 chrpath
 wmctrl
@@ -293,13 +260,15 @@ bash-completion
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
+tmux
 curl
 git
 imagemagick
 neofetch
+numlockx
 w3m
-speedtest-cli
 scrot
+slop
 htop
 ranger
 reflector
@@ -308,10 +277,64 @@ mpd
 mpc
 ncmpcpp
 newsboat
+mediainfo
 ffmpeg
 ffmpegthumbnailer
 ffmpegthumbs
 streamlink
 youtube-dl
-youtube-viewer
 tor
+privoxy
+xdotool
+
+
+## pkg
+sddm
+qt5-svg
+qt5-quickcontrols2
+qt5-graphicaleffects
+
+## software
+audacious
+gparted
+gufw
+mpv
+simplescreenrecorder
+keepassxc
+veracrypt
+# chromium
+# pepper-flash
+firefox
+firefox-i18n-ru
+flashplugin
+
+## ctlos repo
+# aur
+yay-bin
+inxi
+i3lock-fancy-git
+fzf-extras
+oh-my-zsh-git
+zsh-fast-syntax-highlighting-git
+pfetch-git
+ttf-clear-sans
+nerd-fonts-hack
+uw-ttyp0-font
+cava
+straw-viewer-git
+
+gotop-bin
+timeshift
+pamac-aur-git
+
+qgnomeplatform-git
+
+# ctlos pkg
+ctlos-base-skel
+ctlos-keyring
+ctlos-welcome
+ctl-themes
+ui-themes
+ui-ico
+ctlos-grub-themes
+ctlos-sddm-themes
