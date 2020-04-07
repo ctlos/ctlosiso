@@ -1,0 +1,11 @@
+[Unit]
+Description=Pacman mirrorlist update
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/systemd/scripts/reflector.sh
+
+[Install]
+RequiredBy=multi-user.target

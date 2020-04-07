@@ -16,7 +16,7 @@ yay -S git arch-install-scripts archiso --noconfirm
 
 Первым параметром указываем de/wm, ориентир файл packages.openbox(de/wm). Вторым версию(любую), иначе не отработает.
 
-В скрипте `autobuild.sh` измените переменную `USER`, на ваше имя пользователя `st`.
+В скрипте `autobuild.sh` измените переменную `USER`, на ваше имя пользователя `st`, или оставьте `$(whoami)`.
 
 Измените список пакетов.
 
@@ -27,18 +27,18 @@ yay -S git arch-install-scripts archiso --noconfirm
 
 - Конфиги системы в `/airootfs` это будущий корень.
 - Конфиги пользователя в `/airootfs/etc/skel`.
-- Часть конфигов залетает в систему, через пакеты ctlos, например [openbox-config](https://github.com/ctlos/openbox-config)
+- Часть конфигов залетает в систему, через пакеты ctlos, например [ctlos-openbox-skel](https://github.com/ctlos/ctlos-openbox-skel)
 - Основной скрипт генерации `/airootfs/root/customize_airootfs.sh`.
 - Готовый образ и хэши создаются в данной директории `/out`.
 
 ```sh
 git clone https://github.com/ctlos/ctlosiso
 cd ctlosiso
-chmod a+x {autobuild.sh,build.sh}
+chmod +x {autobuild.sh,build.sh,chroot.sh,mkarchiso}
 sudo ./autobuild.sh openbox 1.7.0
 ```
 
-Можно клонировать определенную ветку, с нужным de/wm (xfce,bspwm).
+Можно клонировать определенную ветку, с нужным de/wm (xfce/bspwm).
 
 ```sh
 git clone -b xfce git@github.com:ctlos/ctlosiso.git
