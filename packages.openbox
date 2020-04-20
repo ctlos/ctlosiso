@@ -2,6 +2,7 @@
 #
 # Ctlos Linux https://ctlos.github.io
 
+catfish
 gnome-multi-writer
 smplayer
 smplayer-skins
@@ -12,6 +13,10 @@ smplayer-themes
 calamares
 ckbcomp
 mkinitcpio-openswap
+
+micro-bin
+pamac-aur
+# pamac-aur-git
 
 ## Ctlos pkg
 ctlos-openbox-skel

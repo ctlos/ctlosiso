@@ -4,7 +4,7 @@ Documentation=man:xdg-user-dirs-update(1)
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/xdg-user-dirs-update --force
+ExecStart=/usr/bin/xdg-user-dirs-gtk-update --force
 
 [Install]
 WantedBy=default.target

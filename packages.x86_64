@@ -227,7 +227,7 @@ python2
 
 
 ## Virt Tools
-virtualbox-guest-modules-arch
+virtualbox-guest-dkms
 virtualbox-guest-utils
 
 
@@ -239,14 +239,14 @@ qt5ct
 arc-gtk-theme
 papirus-icon-theme
 capitaine-cursors
-xdg-user-dirs
+xdg-user-dirs-gtk
 
 
 ## fonts
 ttf-font-awesome
 ttf-roboto
 ttf-roboto-mono
-# noto-fonts-emoji
+noto-fonts-emoji
 
 
 ## utils
@@ -286,6 +286,7 @@ youtube-dl
 tor
 privoxy
 xdotool
+yad
 
 
 ## pkg
@@ -325,7 +326,6 @@ straw-viewer-git
 
 gotop-bin
 timeshift
-pamac-aur-git
 
 qgnomeplatform-git
 
