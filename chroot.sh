@@ -13,7 +13,7 @@ pacman-key --add /usr/share/pacman/keyrings/ctlos.gpg
 pacman-key --lsign-key 50417293016B25BED7249D8398F76D97B786E6A3
 pacman-key --populate archlinux ctlos
 pacman-key --refresh-keys
-reflector --verbose -a1 -f10 -l70 -phttps --sort rate --save /etc/pacman.d/mirrorlist
+reflector --verbose -a1 -f10 -l70 -p https -p http --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syy"
 }
 

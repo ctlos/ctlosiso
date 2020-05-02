@@ -1,6 +1,6 @@
 #!/bin/bash
 
-reflector --verbose -a1 -f10 -l70 -phttps --sort rate --save /etc/pacman.d/mirrorlist
+reflector -a1 -f10 -l70 -p https -p http --sort rate --save /etc/pacman.d/mirrorlist
 
 # IP='127.0.0.1'
 # REFLECTOR='/usr/bin/reflector --protocol https --latest 12 --sort rate --save /etc/pacman.d/mirrorlist --country'
