@@ -40,7 +40,7 @@ check_sums() {
 
 run_qemu()
 {
-  qemu-system-x86_64 -m 2048 -cdrom $ISO
+  qemu-system-x86_64 -m 2G -boot d -enable-kvm -cdrom $ISO
 }
 
 build_iso

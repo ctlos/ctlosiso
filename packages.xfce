@@ -12,5 +12,7 @@ calamares-net
 ckbcomp
 mkinitcpio-openswap
 
+qogir-icon-theme-git
+
 ## Ctlos pkg
 ctlos-xfce-skel

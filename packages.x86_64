@@ -234,7 +234,6 @@ virtualbox-guest-utils
 ## theme, icons
 gtk-engines
 gtk-engine-murrine
-qt5-styleplugins
 qt5ct
 arc-gtk-theme
 papirus-icon-theme
@@ -329,6 +328,7 @@ gotop-bin
 timeshift
 pamac-aur
 
+qt5-styleplugins
 qgnomeplatform-git
 
 # ctlos pkg
