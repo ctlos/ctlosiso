@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
 
 set -e -u
+
+# Warning: customize_airootfs.sh is deprecated! Support for it will be removed in a future archiso version.
 
 isouser="liveuser"
 OSNAME="ctlos"
 
+CreateConfigFiles() {
+    # time
+    ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+    hwclock --systohc --utc
 
-localeGen() {
+    # locale gen
     sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
     sed -i "s/#\(ru_RU\.UTF-8\)/\1/" /etc/locale.gen
     locale-gen
-}
 
-setTimeZoneAndClock() {
-    ln -sf /usr/share/zoneinfo/UTC /etc/localtime
-    hwclock --systohc --utc
-}
-
-editOrCreateConfigFiles() {
     # Locale
     echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
     echo "LC_COLLATE=C" >> /etc/locale.conf
@@ -39,17 +40,17 @@ fixPermissions() {
     chmod 755 -R /media
 
     #fix permissions
-    chown root:root /
-    chown root:root /etc
-    chown root:root /etc/default
-    chown root:root /usr
-    chmod 755 /etc
-
-    #enable sudo
-    chmod 750 /etc/sudoers.d
-    chmod 440 /etc/sudoers.d/g_wheel
-    chown -R root /etc/sudoers.d
-    chmod -R 755 /etc/sudoers.d
+    # chown root:root /
+    # chown root:root /etc
+    # chown root:root /etc/default
+    # chown root:root /usr
+    # chmod 755 /etc/sudoers.d
+    # chmod 440 /etc/sudoers.d/g_wheel
+    # chown 0 /etc/sudoers.d
+    # chown 0 /etc/sudoers.d/g_wheel
+    # chown root:root /etc/sudoers.d
+    # chown root:root /etc/sudoers.d/g_wheel
+    # chmod 755 /etc
 }
 
 configRootUser() {
@@ -65,8 +66,7 @@ createLiveUser() {
     ## add liveuser
     glist="audio,floppy,log,network,rfkill,scanner,storage,optical,power,wheel"
     if ! id $isouser 2>/dev/null; then
-        useradd -m -g users -G $glist -s /bin/zsh $isouser
-        passwd -d $isouser
+        useradd -m -p "" -c "Liveuser" -g users -G $glist -s /usr/bin/zsh $isouser
         echo "$isouser ALL=(ALL) ALL" >> /etc/sudoers
     fi
 }
@@ -88,22 +88,9 @@ fontFix() {
 }
 
 fixWifi() {
-    su -c 'echo "" >> /etc/NetworkManager/NetworkManager.conf'
+    su -c 'echo "" > /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "[device]" >> /etc/NetworkManager/NetworkManager.conf'
     su -c 'echo "wifi.scan-rand-mac-address=no" >> /etc/NetworkManager/NetworkManager.conf'
-}
-
-fixHibernate() {
-    sed -i 's/#\(HandleSuspendKey=\)suspend/\1ignore/' /etc/systemd/logind.conf
-    sed -i 's/#\(HandleHibernateKey=\)hibernate/\1ignore/' /etc/systemd/logind.conf
-    sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
-}
-
-fixHaveged(){
-    systemctl start haveged
-    systemctl enable haveged
-
-    rm -fr /etc/pacman.d/gnupg
 }
 
 # initkeys() {
@@ -118,34 +105,29 @@ fixHaveged(){
 # }
 
 enableServices() {
+    systemctl enable haveged.service
     # systemctl enable pacman-init.service
-    systemctl enable choose-mirror.service
-    systemctl enable avahi-daemon.service
-    systemctl enable vboxservice.service
-    systemctl enable systemd-networkd.service
-    systemctl enable systemd-resolved.service
-    systemctl enable systemd-timesyncd
-    systemctl enable sddm.service
+    # systemctl enable choose-mirror.service
     systemctl enable vbox-check.service
+    systemctl enable vboxservice.service
+    systemctl enable sddm.service
+    # systemctl enable avahi-daemon.service
+    # systemctl enable systemd-networkd.service
+    # systemctl enable systemd-resolved.service
+    # systemctl enable systemd-networkd-wait-online.service
+    systemctl enable systemd-timesyncd.service
+    systemctl enable NetworkManager.service
+    # systemctl enable reflector.service
     systemctl enable xdg-user-dirs-update.service
-    systemctl enable reflector.service
-    # systemctl enable reflector.timer
-    systemctl -fq enable NetworkManager.service
-    systemctl mask systemd-rfkill@.service
-    systemctl set-default graphical.target
+    # systemctl set-default graphical.target
 }
 
-
-localeGen
-setTimeZoneAndClock
-editOrCreateConfigFiles
+CreateConfigFiles
 fixPermissions
 configRootUser
 createLiveUser
 setDefaults
 fontFix
 fixWifi
-fixHibernate
-fixHaveged
 # initkeys
 enableServices

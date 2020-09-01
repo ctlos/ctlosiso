@@ -1,118 +1,103 @@
 #!/bin/bash
 #
 # Ctlos Linux https://ctlos.github.io
-#
-#
 
-## basic
+amd-ucode
+appstream
+archlinux-appstream-data
+arch-install-scripts
+b43-fwcutter
 base
 base-devel
-
-accountsservice
-archlinux-appstream-data
-archlinux-keyring
-b43-fwcutter
 bind-tools
+broadcom-wl
 btrfs-progs
 clonezilla
 crda
-cryptsetup
 darkhttpd
-dcraw
 ddrescue
-device-mapper
 dhclient
+dhcpcd
 diffutils
-dmidecode
 dmraid
 dnsmasq
-dnsutils
 dosfstools
-e2fsprogs
+edk2-shell
 efibootmgr
-encfs
 ethtool
-exfat-utils
+exfatprogs
 f2fs-tools
+fsarchiver
 gnu-netcat
 gpm
 gptfdisk
 grub
-gsfonts
-gucharmap
 haveged
 hdparm
-hunspell
-inetutils
+intel-ucode
 ipw2100-fw
 ipw2200-fw
 irssi
+iwd
 jfsutils
-less
 lftp
-libdvdcss
 linux
+linux-atm
 linux-headers
 linux-firmware
-linux-atm
-logrotate
 lsb-release
 lsscsi
 lvm2
+lynx
 man-db
 man-pages
 mc
 mdadm
 memtest86+
+mkinitcpio
+mkinitcpio-archiso
 mkinitcpio-nfs-utils
-mlocate
 mtools
 nano
 nbd
 ndisc6
 nfs-utils
 nilfs-utils
+nmap
 ntfs-3g
-ntp
-os-prober
+nvme-cli
+openconnect
+openssh
+openvpn
+# os-prober
 partclone
 parted
 partimage
-pciutils
-perl
-pkgfile
 ppp
 pptpclient
-procps-ng
-psmisc
-python-urllib3
-python-xdg
-refind-efi
+reflector
 reiserfsprogs
 rp-pppoe
 rsync
 sdparm
 sg3_utils
 smartmontools
-s-nail
-sysfsutils
+sudo
 syslinux
+systemd-resolvconf
+tcpdump
+# terminus-font
 testdisk
-tlp
-upower
 usb_modeswitch
 usbutils
 vpnc
-wget
-whois
-wireless_tools
 wireless-regdb
+wireless_tools
+wpa_supplicant
 wvdial
-x264
-xapps
 xfsprogs
 xl2tpd
-
+zsh
 
 
 ## video & xorg
@@ -132,6 +117,7 @@ libva
 libva-mesa-driver
 libva-intel-driver
 libva-vdpau-driver
+xf86-input-elographics
 xf86-input-evdev
 xf86-input-libinput
 # xf86-input-synaptics
@@ -160,9 +146,6 @@ gvfs-mtp
 gvfs-nfs
 gvfs-smb
 mtpfs
-
-ripgrep
-xsel
 gzip
 p7zip
 unzip
@@ -170,27 +153,20 @@ unrar
 
 
 ## wireless
-broadcom-wl
+# avahi
+nss-mdns
 dialog
 netctl
 net-tools
 networkmanager
-networkmanager-dispatcher-ntpd
 networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
 mobile-broadband-provider-info
 modemmanager
-wpa_supplicant
-
 geoip
-nmap
-tcpdump
-openconnect
 openresolv
-openssh
-openvpn
 
 
 ## sound
@@ -213,45 +189,39 @@ libdvdread
 libdvdnav
 
 
-## dev tools
-archiso
-arch-install-scripts
-squashfs-tools
-
-
 ## prog lang
 # go
 # ruby
-python
-python2
+# python2
 
 
 ## Virt Tools
-virtualbox-guest-modules-arch
+# virtualbox-guest-dkms
 virtualbox-guest-utils
 
 
 ## theme, icons
 gtk-engines
 gtk-engine-murrine
-qt5-styleplugins
 qt5ct
 arc-gtk-theme
 papirus-icon-theme
 capitaine-cursors
-xdg-user-dirs
+xdg-user-dirs-gtk
 
 
 ## fonts
 ttf-font-awesome
 ttf-roboto
 ttf-roboto-mono
-# noto-fonts-emoji
+noto-fonts-emoji
 
 
 ## utils
+gnome-keyring
 cronie
 chrpath
+expac
 wmctrl
 gtk2-perl
 perl-file-desktopentry
@@ -273,6 +243,8 @@ htop
 ranger
 reflector
 rofi
+ripgrep
+syntax-highlighting
 mpd
 mpc
 ncmpcpp
@@ -286,6 +258,8 @@ youtube-dl
 tor
 privoxy
 xdotool
+xsel
+yad
 
 
 ## pkg
@@ -308,11 +282,12 @@ firefox
 firefox-i18n-ru
 flashplugin
 
+
+
 ## ctlos repo
 # aur
 yay-bin
 inxi
-i3lock-fancy-git
 fzf-extras
 oh-my-zsh-git
 zsh-fast-syntax-highlighting-git
@@ -323,18 +298,44 @@ uw-ttyp0-font
 cava
 straw-viewer-git
 
+qogir-icon-theme-git
+
 gotop-bin
 timeshift
-pamac-aur-git
+pamac-aur
 
+qt5-styleplugins
 qgnomeplatform-git
+
+# garuda-settings-manager-git
+# garuda-settings-manager-notifier-git
+
+networkmanager-l2tp
 
 # ctlos pkg
 ctlos-base-skel
 ctlos-keyring
+ctlos-mirrorlist
 ctlos-welcome
-ctl-themes
-ui-themes
+ctlcli
+# ctl-themes
+# ui-themes
 ui-ico
+# ctlos-korla-icon
 ctlos-grub-themes
 ctlos-sddm-themes
+
+
+##### bspwm
+smplayer
+smplayer-skins
+smplayer-themes
+
+### ctlos repo
+## Aur
+calamares
+ckbcomp
+mkinitcpio-openswap
+
+## Ctlos pkg
+ctlos-bspwm-skel

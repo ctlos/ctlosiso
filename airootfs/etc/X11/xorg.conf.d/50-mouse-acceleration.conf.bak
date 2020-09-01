@@ -1,0 +1,8 @@
+Section "InputClass"
+  Identifier "libinput pointer catchall"
+  MatchDevicePath "/dev/input/event*"
+  Driver "libinput"
+  MatchIsPointer "yes"
+  Option "AccelProfile" "flat"
+  Option "AccelSpeed" "0.6"
+EndSection

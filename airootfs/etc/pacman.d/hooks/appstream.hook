@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = archlinux-appstream-data
+
+[Action]
+Description = Fix pamac
+When = PostTransaction
+Depends = appstream
+Exec = /bin/sh -c "zcat /usr/share/app-info/xmls/community.xml.gz | sed 's|<em>||g;s|<\/em>||g;' | gzip > '/tmp/new.xml.gz'; mv /tmp/new.xml.gz /usr/share/app-info/xmls/community.xml.gz; appstreamcli refresh-cache --force"
