@@ -15,7 +15,16 @@ clean_iso(){
   find /usr/lib/initcpio -name archiso* -type f -exec rm '{}' \;
 }
 
+fix_conf() {
+    sed -i 's/#\(HandleSuspendKey=\)ignore/\1suspend/' /etc/systemd/logind.conf.d/do-not-suspend.conf
+    sed -i 's/#\(HandleHibernateKey=\)ignore/\1hibernate/' /etc/systemd/logind.conf.d/do-not-suspend.conf
+    sed -i 's/#\(HandleLidSwitch=\)ignore/\1suspend/' /etc/systemd/logind.conf.d/do-not-suspend.conf
+
+    sed -i 's/#\(Storage=\)volatile/\1auto/' /etc/systemd/journald.conf.d/volatile-storage.conf
+}
+
 clean_iso
+fix_conf
 
 # for i in `ls /home/`; do rm -rf /home/$i/.config/* || exit 0; done
 # pacman -Rs exo --noconfirm

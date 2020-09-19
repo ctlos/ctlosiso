@@ -12,12 +12,12 @@ base-devel
 bind-tools
 broadcom-wl
 btrfs-progs
-clonezilla
+# clonezilla
 crda
 darkhttpd
 ddrescue
 dhclient
-dhcpcd
+# dhcpcd
 diffutils
 dmraid
 dnsmasq
@@ -27,7 +27,7 @@ efibootmgr
 ethtool
 exfatprogs
 f2fs-tools
-fsarchiver
+# fsarchiver
 gnu-netcat
 gpm
 gptfdisk
@@ -40,9 +40,9 @@ ipw2200-fw
 irssi
 iwd
 jfsutils
-lftp
+# lftp
 linux
-linux-atm
+# linux-atm
 linux-headers
 linux-firmware
 lsb-release
@@ -154,9 +154,10 @@ unrar
 
 ## wireless
 # avahi
-nss-mdns
+# openresolv
+# nss-mdns
+# netctl
 dialog
-netctl
 net-tools
 networkmanager
 networkmanager-openconnect
@@ -166,7 +167,6 @@ networkmanager-vpnc
 mobile-broadband-provider-info
 modemmanager
 geoip
-openresolv
 
 
 ## sound
@@ -196,7 +196,7 @@ libdvdnav
 
 
 ## Virt Tools
-# virtualbox-guest-dkms
+virtualbox-guest-dkms
 virtualbox-guest-utils
 
 
@@ -230,7 +230,9 @@ bash-completion
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting
+bmon
 tmux
+pv
 curl
 git
 imagemagick
@@ -280,7 +282,8 @@ veracrypt
 # pepper-flash
 firefox
 firefox-i18n-ru
-flashplugin
+# flashplugin
+telegram-desktop
 
 
 
@@ -322,7 +325,7 @@ ctlcli
 # ui-themes
 ui-ico
 # ctlos-korla-icon
-ctlos-grub-themes
+# ctlos-grub-themes
 ctlos-sddm-themes
 
 

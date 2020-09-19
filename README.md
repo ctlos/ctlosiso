@@ -16,15 +16,11 @@ Home: https://ctlos.github.io
 yay -S git arch-install-scripts archiso --noconfirm
 ```
 
-Первым параметром указываем de/wm, ориентир файл packages.openbox(de/wm). Вторым версию(любую), иначе не отработает.
-
-В скрипте `autobuild.sh` измените переменную `USER`, на ваше имя пользователя `st`.
-
 Измените список пакетов.
 
 - Основные пакеты: packages.x86_64
 
-В `pacman.conf` указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo), соответственно пакеты беруться и отсюда `x86_64`.
+В `pacman.conf` указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo/tree/dev), соответственно пакеты беруться и отсюда `x86_64`.
 
 - Конфиги системы в `/airootfs` это будущий корень.
 - Конфиги пользователя в `/airootfs/etc/skel`.
@@ -36,13 +32,16 @@ yay -S git arch-install-scripts archiso --noconfirm
 git clone https://github.com/ctlos/ctlosiso
 cd ctlosiso
 chmod +x {autobuild.sh,chroot.sh,mkarchiso}
+
+# Передаем аргумент de/wm_версия, можно любой, иначе не отработает.
+
 sudo ./autobuild.sh bspwm_1.7.0
 ```
 
 Можно клонировать определенную ветку, с нужным de/wm (xfce/bspwm).
 
 ```sh
-git clone -b xfce git@github.com:ctlos/ctlosiso.git
+git clone -b bspwm git@github.com:ctlos/ctlosiso.git
 ```
 
 Получить удаленную ветку и переключиться на неё.
