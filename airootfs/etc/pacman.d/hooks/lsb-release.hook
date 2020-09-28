@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = lsb-release
+
+[Action]
+Description = Add Ctlos Linux specifc config.
+When = PostTransaction
+Exec = /bin/sh -c "sed -i -e 's,DISTRIB_ID=.*,DISTRIB_ID=Ctlos,' -e 's,DISTRIB_RELEASE=.*,DISTRIB_RELEASE=Rolling,' -e 's,DISTRIB_CODENAME=.*,DISTRIB_CODENAME=Anon,' -e 's,DISTRIB_DESCRIPTION=.*,DISTRIB_DESCRIPTION=\"Ctlos Linux\",' /etc/lsb-release"
