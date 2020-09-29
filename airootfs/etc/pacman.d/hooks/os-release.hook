@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = filesystem
+
+[Action]
+Description = Add Ctlos specifc config.
+When = PostTransaction
+Exec = /bin/sh -c "sed -i -e 's,NAME=.*,NAME=\"Ctlos Linux\",' -e 's,PRETTY_NAME=.*,PRETTY_NAME=\"Ctlos Linux\",' -e 's,ID=.*,ID=ctlos,' -e 's,ID_LIKE=.*,ID_LIKE=arch,' -e 's,BUILD_ID=.*,BUILD_ID=rolling,' -e 's,HOME_URL=.*,HOME_URL=\"https://ctlos.github.io\",' -e 's,DOCUMENTATION_URL=.*,DOCUMENTATION_URL=\"https://ctlos.github.io/wiki\",' -e 's,SUPPORT_URL=.*,SUPPORT_URL=\"https://forum.ctlos.ru\",' -e 's,BUG_REPORT_URL=.*,BUG_REPORT_URL=\"https://github.com/ctlos/ctlosiso/issues\",' -e 's,LOGO=.*,LOGO=ctlos,' /usr/lib/os-release"

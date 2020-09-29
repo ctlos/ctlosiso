@@ -6,42 +6,48 @@ Home: https://ctlos.github.io
 
 ## Создание(build) iso
 
-[Подробная статья в wiki](https://ctlos.github.io/wiki/other/ctlosiso/).
+- [Подробная статья в Ctlos Wiki](https://ctlos.github.io/wiki/other/ctlosiso/)
+- [Wiki Arch Linux](https://wiki.archlinux.org/index.php/archiso)
+- [Archiso Repo](https://gitlab.archlinux.org/archlinux/archiso)
 
 Установить пакеты для сборки.
 
 ```bash
-yay -S git arch-install-scripts archiso --noconfirm
+yay -S git archiso mkinitcpio-archiso --noconfirm --needed
 ```
-
-Первым параметром указываем de/wm, ориентир файл packages.openbox(de/wm). Вторым версию(любую), иначе не отработает.
-
-В скрипте `autobuild.sh` измените переменную `USER`, на ваше имя пользователя `st`, или оставьте `$(whoami)`.
 
 Измените список пакетов.
 
-- Основные пакеты: packages.x86_64
-- Пакеты относяшиеся к openbox: packages.openbox
+- Основные пакеты: `packages.x86_64`
 
-В `pacman.conf` указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo), соответственно пакеты беруться и отсюда `x86_64`.
+В `pacman.conf` указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo/tree/dev), соответственно пакеты беруться и отсюда `x86_64`.
 
 - Конфиги системы в `/airootfs` это будущий корень.
 - Конфиги пользователя в `/airootfs/etc/skel`.
-- Часть конфигов залетает в систему, через пакеты ctlos, например [ctlos-openbox-skel](https://github.com/ctlos/ctlos-openbox-skel)
+- Часть конфигов залетает в систему, через пакеты ctlos, например [ctlos-bspwm-skel](https://github.com/ctlos/ctlos-bspwm-skel)
 - Основной скрипт генерации `/airootfs/root/customize_airootfs.sh`.
 - Готовый образ и хэши создаются в данной директории `/out`.
+- Скрипт `mkarchiso` это немного измененный стандартный скрипт из `archiso`, добавлено выполнение скрипта `chroot.sh` перед сжатием `mksquashfs`.
+- Скрипт `autobuild.sh` дополнительная обертка над `mkarchiso`.
+
+Мастер(master) ветка по умолчанию, в ней xfce.
 
 ```sh
-git clone https://github.com/ctlos/ctlosiso
+git clone --depth=1 https://github.com/ctlos/ctlosiso
 cd ctlosiso
-chmod +x {autobuild.sh,build.sh,chroot.sh,mkarchiso}
-sudo ./autobuild.sh openbox 1.7.0
+
+# делаем скрипты исполняемыми
+chmod +x {autobuild.sh,chroot.sh,mkarchiso}
+
+# Передаем аргумент de/wm_версия, можно любой, иначе не отработает.
+
+sudo ./autobuild.sh xfce_1.10.0
 ```
 
-Можно клонировать определенную ветку, с нужным de/wm (xfce/bspwm).
+Можно клонировать определенную ветку, с нужным de/wm (openbox/bspwm).
 
 ```sh
-git clone -b xfce git@github.com:ctlos/ctlosiso.git
+git clone -b bspwm --depth=1 https://github.com/ctlos/ctlosiso
 ```
 
 Получить удаленную ветку и переключиться на неё.

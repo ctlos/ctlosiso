@@ -1,0 +1,15 @@
+         .
+        /|\
+       //|\\
+      ///|\\\
+     ////|\\\\
+    /////|\\\\\
+   //////|\\\\\\
+  /////// \\\\\\\
+ ///////   \\\\\\\
+///////     \\\\\\\
+      """""""
+
+LOL.
+For Wi-Fi, authenticate to the wireless network using the [35miwctl[0m utility.
+Ethernet and Wi-Fi connections using DHCP should work automatically.
