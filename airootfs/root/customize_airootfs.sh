@@ -57,7 +57,7 @@ createLiveUser() {
   # groupadd -r nopasswdlogin
 
   ## add liveuser
-  glist="audio,floppy,log,network,rfkill,scanner,storage,optical,power,wheel"
+  glist="audio,log,network,scanner,storage,power,wheel"
   if ! id $isouser 2>/dev/null; then
     useradd -m -p "" -c "Liveuser" -g users -G $glist -s /usr/bin/zsh $isouser
     echo "$isouser ALL=(ALL) ALL" >> /etc/sudoers

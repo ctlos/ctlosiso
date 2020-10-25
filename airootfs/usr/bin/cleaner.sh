@@ -13,7 +13,7 @@ clean_iso()
   )
   local i
   for i in ${files_rm[*]}; do rm -rf $i; done
-  find /usr/lib/initcpio -name archiso* -type f -exec rm '{}' \;
+  find /usr/lib/initcpio -name "archiso*" -type f -exec rm '{}' \;
 }
 
 fix_conf()

@@ -18,7 +18,7 @@ yay -S git archiso mkinitcpio-archiso --noconfirm --needed
 
 Измените список пакетов.
 
-- Основные пакеты: `packages.x86_64`
+- Пакеты: `packages.x86_64`
 
 В `pacman.conf` указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo/tree/dev), соответственно пакеты беруться и отсюда `x86_64`.
 

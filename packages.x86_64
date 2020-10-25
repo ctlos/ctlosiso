@@ -313,15 +313,10 @@ qogir-icon-theme-git
 qt5-styleplugins
 qgnomeplatform-git
 
-# garuda-settings-manager-git
-# garuda-settings-manager-notifier-git
-
 networkmanager-l2tp
 
 ## calamares install
 calamares-net
-ckbcomp
-mkinitcpio-openswap
 
 # ctlos pkg
 ctlos-base-skel
