@@ -28,6 +28,7 @@ yay -S git archiso mkinitcpio-archiso --noconfirm --needed
 - Основной скрипт генерации `/airootfs/root/customize_airootfs.sh`.
 - Готовый образ и хэши создаются в данной директории `/out`.
 - Скрипт `mkarchiso` это немного измененный стандартный скрипт из `archiso`, добавлено выполнение скрипта `chroot.sh` перед сжатием `mksquashfs`.
+- Скрипт `/airootfs/usr/local/bin/cleaner.sh` выполняется во время установки в установщике [calamares](https://github.com/ctlos/calamares/blob/net/src/modules/shellprocess/shellprocess.conf), удаление некоторых файлов и каталогов.
 - Скрипт `autobuild.sh` дополнительная обертка над `mkarchiso`.
 
 Мастер(master) ветка по умолчанию, в ней xfce.
@@ -44,14 +45,8 @@ chmod +x {autobuild.sh,chroot.sh,mkarchiso}
 sudo ./autobuild.sh xfce_1.10.0
 ```
 
-Можно клонировать определенную ветку, с нужным de/wm (openbox/bspwm).
+Получить удаленную ветку и переключиться на неё(не обязательно). Список веток меняется и не факт, что в них рабочий код.
 
 ```sh
-git clone -b bspwm --depth=1 https://github.com/ctlos/ctlosiso
-```
-
-Получить удаленную ветку и переключиться на неё.
-
-```sh
-git checkout -b bspwm origin/bspwm
+git checkout -b dev origin/dev
 ```

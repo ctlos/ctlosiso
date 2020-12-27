@@ -319,10 +319,14 @@ networkmanager-l2tp
 calamares-net
 
 # ctlos pkg
+ctlcli
 ctlos-base-skel
 ctlos-keyring
 ctlos-mirrorlist
 ctlos-welcome
 ctlos-sddm-themes
-ctlcli
-ctlos-xfce-skel
+ctl-themes
+ui-themes
+ui-ico
+# ctlos-korla-icon
+# ctlos-grub-themes
