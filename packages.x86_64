@@ -2,8 +2,10 @@
 #
 # Ctlos Linux https://ctlos.github.io
 
+# sed '/^[[:blank:]]*#.*/d;s/#.*//;/^[[:blank:]]*$/d' packages.x86_64
+
 amd-ucode
-appstream
+# appstream
 archlinux-appstream-data
 arch-install-scripts
 b43-fwcutter
@@ -28,7 +30,7 @@ ethtool
 exfatprogs
 f2fs-tools
 # fsarchiver
-gnu-netcat
+# gnu-netcat
 gpm
 gptfdisk
 grub
@@ -37,7 +39,7 @@ hdparm
 intel-ucode
 ipw2100-fw
 ipw2200-fw
-irssi
+# irssi
 iwd
 jfsutils
 # lftp
@@ -48,11 +50,11 @@ linux-firmware
 lsb-release
 lsscsi
 lvm2
-lynx
-man-db
-man-pages
-mc
-mdadm
+# lynx
+# man-db
+# man-pages
+# mc
+# mdadm
 memtest86+
 mkinitcpio
 mkinitcpio-archiso
@@ -63,12 +65,12 @@ nbd
 ndisc6
 nfs-utils
 nilfs-utils
-nmap
+# nmap
 ntfs-3g
 nvme-cli
 openconnect
 openssh
-openvpn
+# openvpn
 # os-prober
 partclone
 parted
@@ -85,7 +87,7 @@ smartmontools
 sudo
 syslinux
 systemd-resolvconf
-tcpdump
+# tcpdump
 # terminus-font
 testdisk
 usb_modeswitch
@@ -182,7 +184,7 @@ gst-plugins-ugly
 pulseaudio
 pulseaudio-alsa
 pulseaudio-bluetooth
-pulseaudio-equalizer
+# pulseaudio-equalizer
 lib32-alsa-plugins
 libcdio
 libdvdread
@@ -204,6 +206,7 @@ virtualbox-guest-utils
 gtk-engines
 gtk-engine-murrine
 qt5ct
+# kvantum-qt5
 arc-gtk-theme
 papirus-icon-theme
 capitaine-cursors
@@ -212,6 +215,9 @@ xdg-user-dirs-gtk
 
 ## fonts
 ttf-font-awesome
+ttf-dejavu
+ttf-opensans
+ttf-ubuntu-font-family
 ttf-roboto
 ttf-roboto-mono
 noto-fonts-emoji
@@ -227,10 +233,7 @@ gtk2-perl
 perl-file-desktopentry
 intltool
 bash-completion
-zsh
 zsh-autosuggestions
-zsh-syntax-highlighting
-bmon
 tmux
 pv
 curl
@@ -243,7 +246,6 @@ scrot
 slop
 htop
 ranger
-reflector
 rofi
 ripgrep
 syntax-highlighting
@@ -255,7 +257,7 @@ mediainfo
 ffmpeg
 ffmpegthumbnailer
 ffmpegthumbs
-streamlink
+# streamlink
 youtube-dl
 tor
 privoxy
@@ -297,12 +299,10 @@ inxi
 fzf-extras
 oh-my-zsh-git
 zsh-fast-syntax-highlighting-git
-pfetch-git
 ttf-clear-sans
 nerd-fonts-hack
-uw-ttyp0-font
+otb-uw_ttyp0
 cava
-straw-viewer-git
 
 gotop-bin
 timeshift
@@ -313,27 +313,22 @@ qogir-icon-theme-git
 qt5-styleplugins
 qgnomeplatform-git
 
-# garuda-settings-manager-git
-# garuda-settings-manager-notifier-git
-
 networkmanager-l2tp
 
 ## calamares install
-calamares
-ckbcomp
-mkinitcpio-openswap
+calamares-dev
 
 # ctlos pkg
+ctlcli
 ctlos-base-skel
 ctlos-keyring
 ctlos-mirrorlist
 ctlos-welcome
-ctlcli
-# ctl-themes
-# ui-themes
+ctlos-sddm-themes
+ctl-themes
+ui-themes
 ui-ico
 # ctlos-korla-icon
 # ctlos-grub-themes
-ctlos-sddm-themes
 
-ctlos-frankenwm-skel
+ctlos-xfwm-skel

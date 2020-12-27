@@ -52,7 +52,7 @@ issue_sed
 # echo 'GRUB_DISABLE_SUBMENU=y' >> /etc/default/grub
 # wget https://github.com/ctlos/ctlos-sh/raw/master/cleaner.sh
 # chmod +x cleaner.sh
-# mv cleaner.sh /usr/bin/
+# mv cleaner.sh /usr/local/bin/
 LOL
 
 chmod +x ${work_dir}/settings.sh

@@ -1,10 +1,18 @@
 #!/bin/bash
 #
 result=$(systemd-detect-virt)
-if [ $result = "none" ];
-  then
-  # systemctl disable vboxservice.service
+
+del_vbox() {
+  systemctl disable vboxservice.service
   rm /etc/xdg/autostart/vboxclient.desktop
   pacman -Rsn virtualbox-guest-utils virtualbox-guest-dkms --noconfirm
   systemctl disable vbox-check.service
+}
+
+if [ $result = "oracle" ]; then
+  systemctl enable --now vboxservice.service
+elif [ $result = "vmware" ]; then
+  del_vbox
+else
+  del_vbox
 fi
