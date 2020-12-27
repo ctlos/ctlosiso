@@ -3,60 +3,32 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set -e -u
-
-# Warning: customize_airootfs.sh is deprecated! Support for it will be removed in a future archiso version.
-
 isouser="liveuser"
 OSNAME="ctlos"
 
-CreateConfigFiles() {
-  # time
+_conf() {
   ln -sf /usr/share/zoneinfo/UTC /etc/localtime
   hwclock --systohc --utc
-
-  # locale gen
   sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
   sed -i "s/#\(ru_RU\.UTF-8\)/\1/" /etc/locale.gen
   locale-gen
-
-  # Locale
   echo "LANG=ru_RU.UTF-8" > /etc/locale.conf
   echo "LC_COLLATE=C" >> /etc/locale.conf
-
-  # Vconsole
   echo "KEYMAP=ru" > /etc/vconsole.conf
   echo "FONT=cyr-sun16" >> /etc/vconsole.conf
-
-  # Hostname
   echo "$OSNAME" > /etc/hostname
-
-  sed -i "s/#Server/Server/g" /etc/pacman.d/mirrorlist
 }
 
-fixPermissions() {
-  #add missing /media directory
+_perm() {
   mkdir -p /media
   chmod 755 -R /media
-
-  #fix permissions
-  # chown root:root /
-  # chown root:root /etc
-  # chown root:root /etc/default
-  # chown root:root /usr
-  # chmod 755 /etc
 }
 
-configRootUser() {
+_root() {
   usermod -s /usr/bin/zsh root
-  chmod 700 /root
 }
 
-createLiveUser() {
-  # add groups autologin and nopasswdlogin (for lightdm autologin)
-  # groupadd -r autologin
-  # groupadd -r nopasswdlogin
-
-  ## add liveuser
+_liveuser() {
   glist="audio,log,network,scanner,storage,power,wheel"
   if ! id $isouser 2>/dev/null; then
     useradd -m -p "" -c "Liveuser" -g users -G $glist -s /usr/bin/zsh $isouser
@@ -64,34 +36,31 @@ createLiveUser() {
   fi
 }
 
-setDefaults() {
+_default() {
   export _BROWSER=firefox
   echo "BROWSER=/usr/bin/${_BROWSER}" >> /etc/environment
   echo "BROWSER=/usr/bin/${_BROWSER}" >> /etc/profile
-
   export _EDITOR=nano
   echo "EDITOR=${_EDITOR}" >> /etc/environment
   echo "EDITOR=${_EDITOR}" >> /etc/profile
-
   echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
 }
 
-fontFix() {
+_font() {
   rm -rf /etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 }
 
-fixConf() {
+_nm() {
   echo "" > /etc/NetworkManager/NetworkManager.conf
   echo "[device]" >> /etc/NetworkManager/NetworkManager.conf
   echo "wifi.scan-rand-mac-address=no" >> /etc/NetworkManager/NetworkManager.conf
-
   echo "" >> /etc/NetworkManager/NetworkManager.conf
   echo "[main]" >> /etc/NetworkManager/NetworkManager.conf
   echo "dhcp=dhclient" >> /etc/NetworkManager/NetworkManager.conf
   echo "dns=systemd-resolved" >> /etc/NetworkManager/NetworkManager.conf
 }
 
-# initkeys() {
+# _keys() {
 #   pacman-key --init
 #   # pacman-key --keyserver hkp://pool.sks-keyservers.net:80 --recv-keys 98F76D97B786E6A3
 #   # pacman-key --keyserver hkps://hkps.pool.sks-keyservers.net:443 --recv-keys 98F76D97B786E6A3
@@ -101,30 +70,30 @@ fixConf() {
 #   pacman -Syy --noconfirm
 # }
 
-enableServices() {
-  systemctl -fq enable NetworkManager.service
+_serv() {
+  # systemctl -fq enable NetworkManager.service
   systemctl mask systemd-rfkill@.service
   systemctl enable haveged.service
   systemctl enable pacman-init.service
   systemctl enable choose-mirror.service
   systemctl enable vbox-check.service
-  systemctl enable vboxservice.service
   # systemctl enable avahi-daemon.service
   systemctl enable systemd-networkd.service
   systemctl enable systemd-resolved.service
   systemctl enable systemd-timesyncd.service
+  systemctl enable NetworkManager.service
+  # systemctl enable iwd.service
   systemctl enable reflector.service
   systemctl enable sddm.service
-  # systemctl enable xdg-user-dirs-update.service
   systemctl set-default graphical.target
 }
 
-CreateConfigFiles
-fixPermissions
-configRootUser
-createLiveUser
-setDefaults
-fontFix
-fixConf
-# initkeys
-enableServices
+_conf
+_perm
+_root
+_liveuser
+_default
+_font
+_nm
+# _keys
+_serv

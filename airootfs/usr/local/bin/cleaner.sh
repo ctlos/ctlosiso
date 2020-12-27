@@ -6,9 +6,7 @@ clean_iso()
     /var/lib/NetworkManager/NetworkManager.state
     /etc/systemd/system/{choose-mirror.service,pacman-init.service,etc-pacman.d-gnupg.mount}
     /usr/local/bin/{choose-mirror,Installation_guide}
-    /etc/ctlos-mkinitcpio.conf
     /etc/initcpio
-    /etc/udev/rules.d/81-dhcpcd.rules
     /root/{.automated_script.sh,.zlogin}
   )
   local i
@@ -32,4 +30,4 @@ fix_conf
 
 # for i in `ls /home/`; do rm -rf /home/$i/.config/* || exit 0; done
 # pacman -Rs exo --noconfirm
-rm /usr/bin/cleaner.sh
+rm /usr/local/bin/cleaner.sh
