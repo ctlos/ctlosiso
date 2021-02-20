@@ -1,7 +1,6 @@
 #!/bin/bash
 
-clean_iso()
-{
+clean_iso() {
   local files_rm=(
     /var/lib/NetworkManager/NetworkManager.state
     /etc/systemd/system/{choose-mirror.service,pacman-init.service,etc-pacman.d-gnupg.mount}
@@ -14,8 +13,7 @@ clean_iso()
   find /usr/lib/initcpio -name "archiso*" -type f -exec rm '{}' \;
 }
 
-fix_conf()
-{
+fix_conf() {
   sed -i 's/\(HandleSuspendKey=\)ignore/\1suspend/' /etc/systemd/logind.conf.d/do-not-suspend.conf
   sed -i 's/\(HandleHibernateKey=\)ignore/\1hibernate/' /etc/systemd/logind.conf.d/do-not-suspend.conf
   sed -i 's/\(HandleLidSwitch=\)ignore/\1suspend/' /etc/systemd/logind.conf.d/do-not-suspend.conf
@@ -23,6 +21,7 @@ fix_conf()
   sed -i 's/\(Storage=\)volatile/\1auto/' /etc/systemd/journald.conf.d/volatile-storage.conf
 
   sed -i 's/\(PermitRootLogin \)yes/\1no/g' /etc/ssh/sshd_config
+  systemctl disable sshd.service
 }
 
 clean_iso

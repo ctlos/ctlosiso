@@ -3,10 +3,6 @@
 script_path=$(readlink -f ${0%/*})
 work_dir=${script_path}/work/x86_64/airootfs
 
-chrooter(){
-   arch-chroot ${work_dir} /bin/bash -c "${1}"
-}
-
 echo "==== create settings.sh ===="
 
 cat <<LOL >${work_dir}/settings.sh
@@ -54,6 +50,10 @@ issue_sed
 # chmod +x cleaner.sh
 # mv cleaner.sh /usr/local/bin/
 LOL
+
+chrooter() {
+   arch-chroot ${work_dir} /bin/bash -c "${1}"
+}
 
 chmod +x ${work_dir}/settings.sh
 chrooter /settings.sh

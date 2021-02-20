@@ -20,11 +20,11 @@ yay -S git archiso mkinitcpio-archiso --noconfirm --needed
 
 - Пакеты: `packages.x86_64`
 
-В `pacman.conf` указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo/tree/dev), соответственно пакеты беруться и отсюда `x86_64`.
+В `pacman.conf` указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo/tree/master), соответственно пакеты беруться и отсюда `x86_64`.
 
 - Конфиги системы в `/airootfs` это будущий корень.
 - Конфиги пользователя в `/airootfs/etc/skel`.
-- Часть конфигов залетает в систему, через пакеты ctlos, например [ctlos-bspwm-skel](https://github.com/ctlos/ctlos-bspwm-skel)
+- Часть конфигов залетает в систему, через пакеты ctlos, [ctlos-skel](https://github.com/ctlos-skel)
 - Основной скрипт генерации `/airootfs/root/customize_airootfs.sh`.
 - Готовый образ и хэши создаются в данной директории `/out`.
 - Скрипт `mkarchiso` это немного измененный стандартный скрипт из `archiso`, добавлено выполнение скрипта `chroot.sh` перед сжатием `mksquashfs`.
@@ -45,7 +45,7 @@ chmod +x {autobuild.sh,chroot.sh,mkarchiso}
 sudo ./autobuild.sh xfce_1.10.0
 ```
 
-Получить удаленную ветку и переключиться на неё(не обязательно). Список веток меняется и не факт, что в них рабочий код.
+Получить удаленную ветку и переключиться на неё(не обязательно). Список веток меняется и не факт, что в них рабочий код. В `master` на момент коммита код рабочий.
 
 ```sh
 git checkout -b dev origin/dev

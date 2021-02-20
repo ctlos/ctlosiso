@@ -30,7 +30,7 @@ ethtool
 exfatprogs
 f2fs-tools
 # fsarchiver
-# gnu-netcat
+gnu-netcat
 gpm
 gptfdisk
 grub
@@ -191,12 +191,6 @@ libdvdread
 libdvdnav
 
 
-## prog lang
-# go
-# ruby
-# python2
-
-
 ## Virt Tools
 virtualbox-guest-dkms
 virtualbox-guest-utils
@@ -220,6 +214,7 @@ ttf-opensans
 ttf-ubuntu-font-family
 ttf-roboto
 ttf-roboto-mono
+noto-fonts-cjk
 noto-fonts-emoji
 
 
@@ -246,6 +241,7 @@ scrot
 slop
 htop
 ranger
+ueberzug
 rofi
 ripgrep
 syntax-highlighting
@@ -260,6 +256,7 @@ ffmpegthumbs
 # streamlink
 youtube-dl
 tor
+torsocks
 privoxy
 xdotool
 xsel
@@ -293,8 +290,9 @@ smplayer-skins
 smplayer-themes
 
 
-## ctlos repo aur
+## ctlos-aur
 yay-bin
+downgrade
 inxi
 fzf-extras
 oh-my-zsh-git
@@ -311,7 +309,7 @@ pamac-aur
 qogir-icon-theme-git
 
 qt5-styleplugins
-qgnomeplatform-git
+qgnomeplatform
 
 networkmanager-l2tp
 
@@ -319,16 +317,13 @@ networkmanager-l2tp
 calamares-net
 
 # ctlos pkg
-ctlcli
 ctlos-base-skel
 ctlos-keyring
 ctlos-mirrorlist
 ctlos-welcome
 ctlos-sddm-themes
-ctl-themes
-ui-themes
-ui-ico
-# ctlos-korla-icon
-# ctlos-grub-themes
+ctlos-wall
+ctlos-qogir
+ctlcli
 
 ctlos-xfce-skel

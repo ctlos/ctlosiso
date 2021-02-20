@@ -29,7 +29,7 @@ _root() {
 }
 
 _liveuser() {
-  glist="audio,log,network,scanner,storage,power,wheel"
+  glist="audio,disk,log,network,scanner,storage,power,wheel"
   if ! id $isouser 2>/dev/null; then
     useradd -m -p "" -c "Liveuser" -g users -G $glist -s /usr/bin/zsh $isouser
     echo "$isouser ALL=(ALL) ALL" >> /etc/sudoers
@@ -84,6 +84,7 @@ _serv() {
   systemctl enable NetworkManager.service
   # systemctl enable iwd.service
   systemctl enable reflector.service
+  systemctl enable sshd.service
   systemctl enable sddm.service
   systemctl set-default graphical.target
 }
