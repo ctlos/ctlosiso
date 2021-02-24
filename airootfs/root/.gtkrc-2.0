@@ -3,7 +3,7 @@
 
 gtk-theme-name="Arc-Darker"
 gtk-icon-theme-name="Papirus"
-gtk-font-name="Clear Sans Medium, Medium 9"
+gtk-font-name="Clear Sans Medium, Medium 10"
 gtk-cursor-theme-name="capitaine-cursors"
 gtk-cursor-theme-size=0
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
