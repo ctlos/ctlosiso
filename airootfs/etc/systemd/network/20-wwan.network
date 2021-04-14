@@ -1,12 +1,12 @@
 [Match]
-Type=wlan
+Type=wwan
 
 [Network]
 DHCP=yes
 IPv6PrivacyExtensions=yes
 
 [DHCPv4]
-RouteMetric=1024
+RouteMetric=2048
 
 [DHCPv6]
-RouteMetric=1024
+RouteMetric=2048

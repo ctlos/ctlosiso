@@ -7,4 +7,4 @@ Target = pacman-mirrorlist
 Description = Updating /etc/pacman.d/mirrorlist
 When = PostTransaction
 Depends = reflector
-Exec = /bin/sh -c "reflector --protocol https --latest 30 --sort rate --save /etc/pacman.d/mirrorl"
+Exec = /bin/sh -c "reflector -a 12 -l 15 -p https,http --sort rate --save /etc/pacman.d/mirrorlist"

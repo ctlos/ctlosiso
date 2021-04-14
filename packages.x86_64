@@ -5,8 +5,7 @@
 # sed '/^[[:blank:]]*#.*/d;s/#.*//;/^[[:blank:]]*$/d' packages.x86_64
 
 amd-ucode
-# appstream
-archlinux-appstream-data
+archinstall
 arch-install-scripts
 b43-fwcutter
 base
@@ -14,7 +13,7 @@ base-devel
 bind-tools
 broadcom-wl
 btrfs-progs
-# clonezilla
+clonezilla
 crda
 darkhttpd
 ddrescue
@@ -84,7 +83,6 @@ rsync
 sdparm
 sg3_utils
 smartmontools
-sudo
 syslinux
 systemd-resolvconf
 # tcpdump
@@ -166,9 +164,11 @@ networkmanager-openconnect
 networkmanager-openvpn
 networkmanager-pptp
 networkmanager-vpnc
+networkmanager-l2tp
 mobile-broadband-provider-info
 modemmanager
 geoip
+blueman
 
 
 ## sound
@@ -211,11 +211,11 @@ xdg-user-dirs-gtk
 ttf-font-awesome
 ttf-dejavu
 ttf-opensans
-ttf-ubuntu-font-family
-ttf-roboto
-ttf-roboto-mono
-noto-fonts-cjk
-noto-fonts-emoji
+# ttf-ubuntu-font-family
+# ttf-roboto
+# ttf-roboto-mono
+# noto-fonts-cjk
+# noto-fonts-emoji
 
 
 ## utils
@@ -231,8 +231,8 @@ bash-completion
 zsh-autosuggestions
 tmux
 pv
-curl
 git
+wget
 imagemagick
 neofetch
 numlockx
@@ -282,6 +282,7 @@ veracrypt
 # pepper-flash
 firefox
 firefox-i18n-ru
+firefox-ublock-origin
 # flashplugin
 telegram-desktop
 
@@ -294,13 +295,14 @@ smplayer-themes
 yay-bin
 downgrade
 inxi
+cava
 fzf-extras
+# ytfzf-git
+pipe-viewer-git
 oh-my-zsh-git
 zsh-fast-syntax-highlighting-git
 ttf-clear-sans
 nerd-fonts-hack
-otb-uw_ttyp0
-cava
 
 gotop-bin
 timeshift
@@ -311,19 +313,64 @@ qogir-icon-theme-git
 qt5-styleplugins
 qgnomeplatform
 
-networkmanager-l2tp
-
 ## calamares install
-calamares-net
+calamares-dev
 
-# ctlos pkg
-ctlos-base-skel
+## chaotic-aur
+chaotic-keyring
+chaotic-mirrorlist
+
+## ctlos pkg
+base-skel
+ctlos-system
 ctlos-keyring
 ctlos-mirrorlist
 ctlos-welcome
+ctlos-helper
 ctlos-sddm-themes
 ctlos-wall
 ctlos-qogir
 ctlcli
 
-ctlos-xfce-skel
+## xfce skel deps
+xfce-skel
+polkit-gnome
+alacarte
+catfish
+galculator
+gnome-multi-writer
+network-manager-applet
+xfce4-appfinder
+xfce4-battery-plugin
+xfce4-notifyd
+xfce4-panel
+xfce4-power-manager
+xfce4-pulseaudio-plugin
+xfce4-session
+xfce4-settings
+xfce4-terminal
+xfce4-whiskermenu-plugin
+xfce4-xkb-plugin
+xfce4-mpc-plugin
+xfce4-clipman-plugin
+xfce4-netload-plugin
+xfconf
+xfdesktop
+xfsprogs
+xfwm4
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
+tumbler
+file-roller
+flameshot
+leafpad
+pavucontrol
+viewnior
+djvulibre
+xreader
+xfce4-windowck-plugin
+skippy-xd-git
+multilockscreen-git
+xfce4-docklike-plugin-git

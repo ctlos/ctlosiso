@@ -7,6 +7,7 @@ del_vbox() {
   rm /etc/xdg/autostart/vboxclient.desktop
   pacman -Rsn virtualbox-guest-utils virtualbox-guest-dkms --noconfirm
   systemctl disable vbox-check.service
+  rm /etc/systemd/system/vbox-check.service
 }
 
 if [ $result = "oracle" ]; then

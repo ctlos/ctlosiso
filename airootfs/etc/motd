@@ -12,4 +12,5 @@
 
 LOL.
 For Wi-Fi, authenticate to the wireless network using the [35miwctl[0m utility.
-Ethernet and Wi-Fi connections using DHCP should work automatically.
+For mobile broadband (WWAN) modems, connect with the [35mmmcli[0m utility.
+Ethernet, WLAN and WWAN interfaces using DHCP should work automatically.

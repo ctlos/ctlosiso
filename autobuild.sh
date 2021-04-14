@@ -1,10 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # gpg --detach-sign ctlos.iso
 # gpg --verify ctlos.iso.sig ctlos.iso
 
+isode_ver=$1
+
 iso_name=ctlos
-iso_de=$1
 iso_version=$(date +%Y%m%d)
 script_path=$(realpath -- ${0%/*})
 
@@ -13,7 +14,11 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-img_name="${iso_name}_${iso_de}_${iso_version}.iso"
+archiso_ver=$(pacman -Sl | grep "\ archiso" | awk '{print $3}')
+sed -i "s/Archiso version:.*/Archiso version: $archiso_ver/" $script_path/README.md
+
+img_name="${iso_name}_${isode_ver}_${iso_version}.iso"
+sed -i "s/img_name=.*/img_name=\"$img_name\"/" $script_path/profiledef.sh
 
 #Build ISO File
 build_iso() {
@@ -23,18 +28,23 @@ build_iso() {
   pacman-key --populate
   pacman -Syy --quiet
 
-  source $script_path/mkarchiso -v $script_path
+  [[ $(grep chroot.sh $script_path/mkarchiso.sh) ]] || \
+  sed -i "/_mkairootfs_squashfs()/a [[ -e "$\{profile\}/chroot.sh" ]] && $\{profile\}/chroot.sh" $script_path/mkarchiso.sh
+
+  $script_path/mkarchiso.sh -v $script_path
 }
 
 # create md5sum, sha256, sig
 check_sums() {
-  cd out/
-  echo "create MD5, SHA-256 Checksum, sig"
-  # md5sum $img_name >> $img_name.md5.txt
-  shasum -a 256 $img_name >> $img_name.sha256.txt
-  # sudo -u ${SUDO_UID} gpg --detach-sign --no-armor $img_name
-  cd ..
-  chown -R "${SUDO_UID}:${SUDO_GID}" $script_path/out
+  if [[ -e "$script_path/out/$img_name" ]]; then
+    cd out/
+    echo "create MD5, SHA-256 Checksum, sig"
+    # md5sum $img_name >> $img_name.md5.txt
+    sha256sum $img_name >> $img_name.sha256.txt
+    # sudo -u ${SUDO_UID} gpg --detach-sign --no-armor $img_name
+    cd ..
+    chown -R "${SUDO_UID}:${SUDO_GID}" $script_path/out
+  fi
 }
 
 run_qemu() {
