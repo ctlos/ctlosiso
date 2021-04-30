@@ -4,7 +4,7 @@
 # gpg --verify ctlos.iso.sig ctlos.iso
 
 isode_ver=$1
-
+out_url="http://cloud.ctlos.ru/iso/xfce"
 iso_name=ctlos
 iso_version=$(date +%Y%m%d)
 script_path=$(realpath -- ${0%/*})
@@ -32,15 +32,17 @@ build_iso() {
   sed -i "/_mkairootfs_squashfs()/a [[ -e "$\{profile\}/chroot.sh" ]] && $\{profile\}/chroot.sh" $script_path/mkarchiso.sh
 
   $script_path/mkarchiso.sh -v $script_path
+
+  # zsyncmake -C -u ${out_url}/${img_name##*/} -o ${img_name}.zsync ${img_name}
 }
 
 # create md5sum, sha256, sig
 check_sums() {
   if [[ -e "$script_path/out/$img_name" ]]; then
     cd out/
-    echo "create MD5, SHA-256 Checksum, sig"
-    # md5sum $img_name >> $img_name.md5.txt
-    sha256sum $img_name >> $img_name.sha256.txt
+    echo "create MD5, SHA Checksum, sig"
+    # md5sum $img_name >> $img_name.md5
+    sha256sum $img_name >> $img_name.sha256
     # sudo -u ${SUDO_UID} gpg --detach-sign --no-armor $img_name
     cd ..
     chown -R "${SUDO_UID}:${SUDO_GID}" $script_path/out

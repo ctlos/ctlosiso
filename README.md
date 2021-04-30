@@ -6,7 +6,6 @@ Home: https://ctlos.github.io
 
 ## Создание(build) iso
 
-- [Подробная статья в Ctlos Wiki](https://ctlos.github.io/wiki/other/ctlosiso/)
 - [Wiki Arch Linux](https://wiki.archlinux.org/index.php/archiso)
 - [Archiso Repo](https://gitlab.archlinux.org/archlinux/archiso)
 
@@ -18,6 +17,12 @@ yay -S git archiso mkinitcpio-archiso --noconfirm --needed
 
 > Для сборки необходимо подключить локально [ctlos_repo](https://ctlos.github.io/wiki/install/ctlos-repo/), или изменить под себя pacman.conf и пакеты.
 
+Задействован [chaotic](https://aur.chaotic.cx/) репозиторий, проще всего его установить, через yay из aur.
+
+```bash
+yay -S chaotic-keyring chaotic-mirrorlist --noconfirm --needed
+```
+
 Логика установщика дополнена скриптами [ctlos-sh](https://github.com/ctlos/ctlos-sh) shellprocess. [Исходники calamares](https://github.com/ctlos/calamares), смотрите ветки.
 
 - Archiso version: 52-1
@@ -26,7 +31,7 @@ yay -S git archiso mkinitcpio-archiso --noconfirm --needed
 
 - Пакеты: `packages.x86_64`
 
-В `pacman.conf` указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo/tree/master), соответственно пакеты берутся и отсюда `x86_64`.
+В `pacman.conf`, не путать с системным `/etc/pacman.conf`, указан репозиторий [Ctlos repo](https://github.com/ctlos/ctlos_repo/tree/master), данный конфиг используется только при генерации iso, соответственно пакеты берутся с репозиториев указанных в данном файле.
 
 - Конфиги системы в `/airootfs` это будущий корень.
 - Конфиги пользователя в `/airootfs/etc/skel`.
