@@ -14,11 +14,17 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
+if [[ $(pacman -Q | grep archiso) ]]; then
+  echo "OK"
+else
+  pacman -S git archiso mkinitcpio-archiso --noconfirm --needed
+fi
+
 archiso_ver=$(pacman -Sl | grep "\ archiso" | awk '{print $3}')
 sed -i "s/Archiso version:.*/Archiso version: $archiso_ver/" $script_path/README.md
 
-img_name="${iso_name}_${isode_ver}_${iso_version}.iso"
-sed -i "s/img_name=.*/img_name=\"$img_name\"/" $script_path/profiledef.sh
+image_name="${iso_name}_${isode_ver}_${iso_version}.iso"
+sed -i "s/image_name=.*/image_name=\"$image_name\"/" $script_path/profiledef.sh
 
 #Build ISO File
 build_iso() {
@@ -33,7 +39,7 @@ build_iso() {
 
   $script_path/mkarchiso.sh -v $script_path
 
-  # zsyncmake -C -u ${out_url}/${img_name##*/} -o ${img_name}.zsync ${img_name}
+  # zsyncmake -C -u ${out_url}/${image_name##*/} -o ${image_name}.zsync ${image_name}
 }
 
 # create md5sum, sha256, sig
@@ -41,8 +47,8 @@ check_sums() {
   if [[ -e "$script_path/out/$img_name" ]]; then
     cd out/
     echo "create MD5, SHA Checksum, sig"
-    # md5sum $img_name >> $img_name.md5
-    sha256sum $img_name >> $img_name.sha256
+    # md5sum $image_name >> $image_name.md5
+    sha256sum $image_name >> $image_name.sha256
     # sudo -u ${SUDO_UID} gpg --detach-sign --no-armor $img_name
     cd ..
     chown -R "${SUDO_UID}:${SUDO_GID}" $script_path/out

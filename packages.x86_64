@@ -74,8 +74,10 @@ openssh
 partclone
 parted
 partimage
+pcsclite
 ppp
 pptpclient
+qemu-guest-agent
 reflector
 reiserfsprogs
 rp-pppoe
@@ -83,12 +85,16 @@ rsync
 sdparm
 sg3_utils
 smartmontools
+sof-firmware
 syslinux
 systemd-resolvconf
 # tcpdump
 # terminus-font
 testdisk
+tpm2-tss
+udftools
 usb_modeswitch
+usbmuxd
 usbutils
 vpnc
 wireless-regdb
@@ -192,7 +198,7 @@ libdvdnav
 
 
 ## Virt Tools
-virtualbox-guest-dkms
+# virtualbox-guest-dkms
 virtualbox-guest-utils
 
 

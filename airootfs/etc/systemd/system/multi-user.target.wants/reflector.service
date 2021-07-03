@@ -1,1 +1,1 @@
-/usr/lib/systemd/system/reflector.service
+/etc/systemd/system/reflector.service
