@@ -4,6 +4,7 @@ clean_iso() {
   local files_rm=(
     /var/lib/NetworkManager/NetworkManager.state
     /etc/systemd/system/{choose-mirror.service,pacman-init.service,etc-pacman.d-gnupg.mount}
+    /etc/systemd/system/multi-user.target.wants/{choose-mirror.service,pacman-init.service,reflector.service}
     /usr/local/bin/{choose-mirror,Installation_guide}
     /etc/initcpio
     /root/{.automated_script.sh,.zlogin}

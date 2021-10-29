@@ -198,6 +198,7 @@ libdvdnav
 
 
 ## Virt Tools
+open-vm-tools
 # virtualbox-guest-dkms
 virtualbox-guest-utils
 
@@ -209,7 +210,6 @@ qt5ct
 # kvantum-qt5
 arc-gtk-theme
 papirus-icon-theme
-capitaine-cursors
 xdg-user-dirs-gtk
 
 
@@ -260,7 +260,6 @@ micro
 mediainfo
 ffmpeg
 ffmpegthumbnailer
-ffmpegthumbs
 # streamlink
 youtube-dl
 tor
@@ -306,7 +305,7 @@ inxi
 cava
 fzf-extras
 # ytfzf-git
-pipe-viewer-git
+# pipe-viewer-git
 oh-my-zsh-git
 zsh-fast-syntax-highlighting-git
 ttf-clear-sans

@@ -25,6 +25,7 @@ sed -i "s/Archiso version:.*/Archiso version: $archiso_ver/" $script_path/README
 
 image_name="${iso_name}_${isode_ver}_${iso_version}.iso"
 sed -i "s/image_name=.*/image_name=\"$image_name\"/" $script_path/profiledef.sh
+sed -i "s/image_name=.*\.iso/image_name=\"$image_name/" $script_path/mkarchiso.sh
 
 #Build ISO File
 build_iso() {

@@ -49,10 +49,6 @@ _perm() {
   # find /home/$isouser/ -type f -iname "*.sh" -exec chmod +x {} \;
 }
 
-_root() {
-  usermod -s /usr/bin/zsh root
-}
-
 _liveuser() {
   glist="audio,disk,log,network,scanner,storage,power,wheel"
   if ! id $isouser 2>/dev/null; then
@@ -126,9 +122,8 @@ _serv() {
 
 _conf
 _perm
-_root
-_liveuser
-_font
+# _liveuser
+# _font
 _nm
 _key
 _drsed

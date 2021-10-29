@@ -25,7 +25,7 @@ yay -S chaotic-keyring chaotic-mirrorlist --noconfirm --needed
 
 Логика установщика дополнена скриптами [ctlos-sh](https://github.com/ctlos/ctlos-sh) shellprocess. [Исходники calamares](https://github.com/ctlos/calamares), смотрите ветки.
 
-- Archiso version: 56-1
+- Archiso version: 58-2
 
 Измените список пакетов.
 
