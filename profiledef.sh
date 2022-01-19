@@ -3,11 +3,12 @@
 
 iso_name="ctlos"
 iso_version="$(date +%Y%m%d)"
-image_name="ctlos_xfce_2.2.0_20211027.iso"
+image_name="ctlos_xfce_2.2.1_20220109.iso"
 iso_label="CTLOS_$(date +%Y%m)"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live CD"
 install_dir="arch"
+buildmodes=('iso')
 bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 'uefi-x64.systemd-boot.esp' 'uefi-x64.systemd-boot.eltorito')
 arch="x86_64"
 pacman_conf="pacman.conf"
@@ -22,5 +23,5 @@ file_permissions=(
   ["/usr/local/bin/cleaner.sh"]="0:0:755"
   ["/usr/local/bin/multilock.sh"]="0:0:755"
   ["/usr/local/bin/show_desktop"]="0:0:755"
-  ["/usr/local/bin/vbox-check"]="0:0:755"
+  ["/usr/local/bin/ctlos-system"]="0:0:755"
 )

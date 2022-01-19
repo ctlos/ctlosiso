@@ -47,7 +47,7 @@ build_iso() {
 check_sums() {
   if [[ -e "$script_path/out/$img_name" ]]; then
     cd out/
-    echo "create MD5, SHA Checksum, sig"
+    echo "create Checksum"
     # md5sum $image_name >> $image_name.md5
     sha256sum $image_name >> $image_name.sha256
     # sudo -u ${SUDO_UID} gpg --detach-sign --no-armor $img_name

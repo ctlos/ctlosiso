@@ -1,0 +1,10 @@
+[Unit]
+Description=ctlos system set
+Before=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/ctlos-system
+
+[Install]
+WantedBy=multi-user.target

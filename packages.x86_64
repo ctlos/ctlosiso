@@ -39,6 +39,7 @@ intel-ucode
 ipw2100-fw
 ipw2200-fw
 # irssi
+iw
 iwd
 jfsutils
 # lftp
@@ -46,6 +47,7 @@ linux
 # linux-atm
 linux-headers
 linux-firmware
+# livecd-sounds
 lsb-release
 lsscsi
 lvm2
@@ -78,6 +80,7 @@ pcsclite
 ppp
 pptpclient
 qemu-guest-agent
+# refind
 reflector
 reiserfsprogs
 rp-pppoe
@@ -86,6 +89,7 @@ sdparm
 sg3_utils
 smartmontools
 sof-firmware
+squashfs-tools
 syslinux
 systemd-resolvconf
 # tcpdump
@@ -134,12 +138,17 @@ xf86-video-ati
 xf86-video-dummy
 xf86-video-fbdev
 xf86-video-intel
-xf86-video-nouveau
 xf86-video-openchrome
 xf86-video-sisusb
 xf86-video-vesa
 xf86-video-vmware
 xf86-video-voodoo
+xf86-video-nouveau
+# nvidia non free
+# nvidia
+nvidia-dkms
+nvidia-utils
+nvidia-settings
 
 
 ## fs
@@ -313,6 +322,7 @@ nerd-fonts-hack
 
 gotop-bin
 timeshift
+archlinux-appstream-data-pamac
 pamac-aur
 
 qogir-icon-theme-git

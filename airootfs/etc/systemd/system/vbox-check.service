@@ -1,9 +1,0 @@
-[Unit]
-Description=checks if installed on virtual machine or not
-
-[Service]
-Type=oneshot
-ExecStart=/usr/local/bin/vbox-check
-
-[Install]
-WantedBy=multi-user.target

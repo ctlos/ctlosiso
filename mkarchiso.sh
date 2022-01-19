@@ -7,7 +7,8 @@ set -e -u
 # Control the environment
 umask 0022
 export LC_ALL="C"
-export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-"$(date +%s)"}"
+[[ -v SOURCE_DATE_EPOCH ]] || printf -v SOURCE_DATE_EPOCH '%(%s)T' -1
+export SOURCE_DATE_EPOCH
 
 # Set application name from the script's file name
 app_name="${0##*/}"
@@ -113,7 +114,7 @@ ENDUSAGETEXT
 # Shows configuration options.
 _show_config() {
     local build_date
-    build_date="$(date --utc --iso-8601=seconds -d "@${SOURCE_DATE_EPOCH}")"
+    printf -v build_date '%(%FT%R%z)T' "${SOURCE_DATE_EPOCH}"
     _msg_info "${app_name} configuration settings"
     _msg_info "             Architecture:   ${arch}"
     _msg_info "        Working directory:   ${work_dir}"
@@ -124,14 +125,14 @@ _show_config() {
     _msg_info "              Build modes:   ${buildmodes[*]}"
     _msg_info "                  GPG key:   ${gpg_key:-None}"
     _msg_info "               GPG signer:   ${gpg_sender:-None}"
-    _msg_info "Code signing certificates:   ${cert_list[*]}"
+    _msg_info "Code signing certificates:   ${cert_list[*]:-None}"
     _msg_info "                  Profile:   ${profile}"
     _msg_info "Pacman configuration file:   ${pacman_conf}"
     _msg_info "          Image file name:   ${image_name:-None}"
     _msg_info "         ISO volume label:   ${iso_label}"
     _msg_info "            ISO publisher:   ${iso_publisher}"
     _msg_info "          ISO application:   ${iso_application}"
-    _msg_info "               Boot modes:   ${bootmodes[*]}"
+    _msg_info "               Boot modes:   ${bootmodes[*]:-None}"
     _msg_info "            Packages File:   ${buildmode_packages}"
     _msg_info "                 Packages:   ${buildmode_pkg_list[*]}"
 }
@@ -164,13 +165,10 @@ _cleanup_pacstrap_dir() {
 # Create a squashfs image and place it in the ISO 9660 file system.
 # $@: options to pass to mksquashfs
 _run_mksquashfs() {
-    local image_path="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
+    local mksquashfs_options=() image_path="${isofs_dir}/${install_dir}/${arch}/airootfs.sfs"
     rm -f -- "${image_path}"
-    if [[ "${quiet}" == "y" ]]; then
-        mksquashfs "$@" "${image_path}" -noappend "${airootfs_image_tool_options[@]}" -no-progress > /dev/null
-    else
-        mksquashfs "$@" "${image_path}" -noappend "${airootfs_image_tool_options[@]}"
-    fi
+    [[ ! "${quiet}" == "y" ]] || mksquashfs_options+=('-no-progress' '-quiet')
+    mksquashfs "$@" "${image_path}" -noappend "${airootfs_image_tool_options[@]}" "${mksquashfs_options[@]}"
 }
 
 # Create an ext4 image containing the root file system and pack it inside a squashfs image.
@@ -216,16 +214,18 @@ _mkairootfs_squashfs() {
 
 # Create an EROFS image containing the root file system and saves it on the ISO 9660 file system.
 _mkairootfs_erofs() {
-    local fsuuid
+    local fsuuid mkfs_erofs_options=()
     [[ -e "${pacstrap_dir}" ]] || _msg_error "The path '${pacstrap_dir}' does not exist" 1
 
     install -d -m 0755 -- "${isofs_dir}/${install_dir}/${arch}"
     local image_path="${isofs_dir}/${install_dir}/${arch}/airootfs.erofs"
     rm -f -- "${image_path}"
+    [[ ! "${quiet}" == "y" ]] || mkfs_erofs_options+=('--quiet')
     # Generate reproducible file system UUID from SOURCE_DATE_EPOCH
     fsuuid="$(uuidgen --sha1 --namespace 93a870ff-8565-4cf3-a67b-f47299271a96 --name "${SOURCE_DATE_EPOCH}")"
+    mkfs_erofs_options+=('-U' "${fsuuid}" "${airootfs_image_tool_options[@]}")
     _msg_info "Creating EROFS image, this may take some time..."
-    mkfs.erofs -U "${fsuuid}" "${airootfs_image_tool_options[@]}" -- "${image_path}" "${pacstrap_dir}"
+    mkfs.erofs "${mkfs_erofs_options[@]}" -- "${image_path}" "${pacstrap_dir}"
     _msg_info "Done!"
 }
 
@@ -505,7 +505,13 @@ _make_efibootimg() {
     # https://lists.gnu.org/archive/html/grub-devel/2019-04/msg00099.html
     rm -f -- "${work_dir}/efiboot.img"
     _msg_info "Creating FAT image of size: ${imgsize} KiB..."
-    mkfs.fat -C -n ARCHISO_EFI "${work_dir}/efiboot.img" "${imgsize}"
+    if [[ "${quiet}" == "y" ]]; then
+        # mkfs.fat does not have a -q/--quiet option, so redirect stdout to /dev/null instead
+        # https://github.com/dosfstools/dosfstools/issues/103
+        mkfs.fat -C -n ARCHISO_EFI "${work_dir}/efiboot.img" "${imgsize}" > /dev/null
+    else
+        mkfs.fat -C -n ARCHISO_EFI "${work_dir}/efiboot.img" "${imgsize}"
+    fi
 
     # Create the default/fallback boot path in which a boot loaders will be placed later.
     mmd -i "${work_dir}/efiboot.img" ::/EFI ::/EFI/BOOT
@@ -698,7 +704,7 @@ _export_netboot_artifacts() {
     install -d -m 0755 "${out_dir}"
     cp -a -- "${isofs_dir}/${install_dir}/" "${out_dir}/"
     _msg_info "Done!"
-    du -h -- "${out_dir}/${install_dir}"
+    du -hs -- "${out_dir}/${install_dir}"
 }
 
 # sign build artifacts for netboot
@@ -742,7 +748,7 @@ _validate_requirements_airootfs_image_type_ext4+squashfs() {
 }
 
 _validate_requirements_airootfs_image_type_erofs() {
-    if ! command -v mkfs.erofs; then
+    if ! command -v mkfs.erofs &> /dev/null; then
         (( validation_error=validation_error+1 ))
         _msg_error "Validating '${airootfs_image_type}': mkfs.erofs is not available on this host. Install 'erofs-utils'!" 0
     fi
@@ -804,6 +810,22 @@ _validate_common_requirements_buildmode_iso_netboot() {
         _msg_error "Packages file '${packages}' does not exist." 0
     fi
 
+    # Check if the specified airootfs_image_type is supported
+    if typeset -f "_mkairootfs_${airootfs_image_type}" &> /dev/null; then
+        if typeset -f "_validate_requirements_airootfs_image_type_${airootfs_image_type}" &> /dev/null; then
+            "_validate_requirements_airootfs_image_type_${airootfs_image_type}"
+        else
+            _msg_warning "Function '_validate_requirements_airootfs_image_type_${airootfs_image_type}' does not exist. Validating the requirements of '${airootfs_image_type}' airootfs image type will not be possible."
+        fi
+    else
+        (( validation_error=validation_error+1 ))
+        _msg_error "Unsupported image type: '${airootfs_image_type}'" 0
+    fi
+}
+
+_validate_requirements_buildmode_iso() {
+    _validate_common_requirements_buildmode_iso_netboot
+    _validate_common_requirements_buildmode_all
     # Check if the specified bootmodes are supported
     if (( ${#bootmodes[@]} < 1 )); then
         (( validation_error=validation_error+1 ))
@@ -822,22 +844,6 @@ _validate_common_requirements_buildmode_iso_netboot() {
         fi
     done
 
-    # Check if the specified airootfs_image_type is supported
-    if typeset -f "_mkairootfs_${airootfs_image_type}" &> /dev/null; then
-        if typeset -f "_validate_requirements_airootfs_image_type_${airootfs_image_type}" &> /dev/null; then
-            "_validate_requirements_airootfs_image_type_${airootfs_image_type}"
-        else
-            _msg_warning "Function '_validate_requirements_airootfs_image_type_${airootfs_image_type}' does not exist. Validating the requirements of '${airootfs_image_type}' airootfs image type will not be possible."
-        fi
-    else
-        (( validation_error=validation_error+1 ))
-        _msg_error "Unsupported image type: '${airootfs_image_type}'" 0
-    fi
-}
-
-_validate_requirements_buildmode_iso() {
-    _validate_common_requirements_buildmode_iso_netboot
-    _validate_common_requirements_buildmode_all
     if ! command -v awk &> /dev/null; then
         (( validation_error=validation_error+1 ))
         _msg_error "Validating build mode '${_buildmode}': awk is not available on this host. Install 'awk'!" 0
@@ -989,12 +995,17 @@ _build_bootstrap_image() {
 
 # Build ISO
 _build_iso_image() {
-    local xorrisofs_options=()
+    local xorriso_options=() xorrisofs_options=()
     local bootmode
 
     [[ -d "${out_dir}" ]] || install -d -- "${out_dir}"
 
-    [[ "${quiet}" == "y" ]] && xorrisofs_options+=('-quiet')
+    if [[ "${quiet}" == "y" ]]; then
+        # The when xorriso is run in mkisofs compatibility mode (xorrisofs), the mkisofs option -quiet is interpreted
+        # too late (e.g. messages about SOURCE_DATE_EPOCH still get shown).
+        # Instead use native xorriso option to silence the output.
+        xorriso_options=('-report_about' 'SORRY' "${xorriso_options[@]}")
+    fi
 
     # Add required xorrisofs options for each boot mode
     for bootmode in "${bootmodes[@]}"; do
@@ -1003,7 +1014,7 @@ _build_iso_image() {
 
     rm -f -- "${out_dir}/${image_name}"
     _msg_info "Creating ISO image..."
-    xorriso -as mkisofs \
+    xorriso "${xorriso_options[@]}" -as mkisofs \
             -iso-level 3 \
             -full-iso9660-filenames \
             -joliet \
@@ -1227,7 +1238,11 @@ _build_iso_base() {
     _run_once _make_version
     _run_once _make_customize_airootfs
     _run_once _make_pkglist
-    _make_bootmodes
+    if [[ "${buildmode}" == 'netboot' ]]; then
+        _run_once _make_boot_on_iso9660
+    else
+        _make_bootmodes
+    fi
     _run_once _cleanup_pacstrap_dir
     _run_once _prepare_airootfs_image
 }
@@ -1267,7 +1282,7 @@ _build_buildmode_netboot() {
 
 # Build the ISO buildmode
 _build_buildmode_iso() {
-    local image_name="ctlos_xfce_2.2.0_20211027.iso"
+    local image_name="ctlos_xfce_2.2.1_20220109.iso"
     local run_once_mode="${buildmode}"
     _build_iso_base
     _run_once _build_iso_image

@@ -1,0 +1,36 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+  schedule:
+    - cron: "0 0 1 * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build bootia32.efi
+        run: docker run -e TZ=Europe/Minsk -v $(pwd):/build -w /build archlinux:base /bin/bash -c "pacman -Syu grub --noconfirm && bash build.sh"
+
+      - name: Update env
+        run: echo "BOOTIA_TAG=$(cat out/fslabel)" >> $GITHUB_ENV
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ env.BOOTIA_TAG }}
+          path: out/bootia32.efi
+
+      - name: Create release
+        if: ${{ github.event_name == 'schedule' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: out/bootia32.efi
+          tag_name: ${{ env.BOOTIA_TAG }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

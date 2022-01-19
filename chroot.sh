@@ -106,7 +106,7 @@ _serv() {
   systemctl enable haveged.service
   systemctl enable pacman-init.service
   systemctl enable choose-mirror.service
-  systemctl enable vbox-check.service
+  systemctl enable ctlos-system.service
   # systemctl enable avahi-daemon.service
   # systemctl enable systemd-networkd.service
   # systemctl enable systemd-resolved.service
@@ -129,8 +129,8 @@ _key
 _drsed
 # _serv
 
-# sed -i 's?GRUB_DISTRIBUTOR=.*?GRUB_DISTRIBUTOR=\"Ctlos\"?' /etc/default/grub
-# sed -i 's?\#GRUB_THEME=.*?GRUB_THEME=\/boot\/grub\/themes\/crimson\/theme.txt?g' /etc/default/grub
+# sed -i 's|GRUB_DISTRIBUTOR=.*|GRUB_DISTRIBUTOR=\"Ctlos\"|' /etc/default/grub
+# sed -i 's|\#GRUB_THEME=.*|GRUB_THEME=\/boot\/grub\/themes\/crimson\/theme.txt|g' /etc/default/grub
 # echo 'GRUB_DISABLE_SUBMENU=y' >> /etc/default/grub
 # wget https://github.com/ctlos/ctlos-sh/raw/master/cleaner.sh
 # chmod +x cleaner.sh
