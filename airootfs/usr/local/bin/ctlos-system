@@ -15,7 +15,7 @@ else
   del_vbox
 fi
 
-# driver=free or driver=nonfree
+# check kernel param driver=free or driver=nonfree
 kernel_cmdline(){
   for param in $(cat /proc/cmdline); do
     case "${param}" in

@@ -1282,7 +1282,7 @@ _build_buildmode_netboot() {
 
 # Build the ISO buildmode
 _build_buildmode_iso() {
-    local image_name="ctlos_xfce_2.2.1_20220109.iso"
+    local image_name="ctlos_xfce_2.3.0_20220501.iso"
     local run_once_mode="${buildmode}"
     _build_iso_base
     _run_once _build_iso_image

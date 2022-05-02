@@ -23,6 +23,7 @@ OSNAME="ctlos"
 _conf() {
   ln -sf /usr/share/zoneinfo/UTC /etc/localtime
   hwclock --systohc --utc
+  timedatectl set-ntp true
   sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen
   sed -i "s/#\(ru_RU\.UTF-8\)/\1/" /etc/locale.gen
   locale-gen
@@ -36,6 +37,7 @@ _conf() {
   export _EDITOR=nano
   echo "EDITOR=${_EDITOR}" >> /etc/environment
   echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
+  # echo "QT_STYLE_OVERRIDE=kvantum" >> /etc/environment
   sed -i '/User/s/^#\+//' /etc/sddm.conf
 }
 

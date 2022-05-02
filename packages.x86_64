@@ -14,6 +14,7 @@ bind-tools
 broadcom-wl
 btrfs-progs
 clonezilla
+cloud-init
 crda
 darkhttpd
 ddrescue
@@ -33,6 +34,7 @@ gnu-netcat
 gpm
 gptfdisk
 grub
+hyperv
 haveged
 hdparm
 intel-ucode
@@ -47,6 +49,7 @@ linux
 # linux-atm
 linux-headers
 linux-firmware
+linux-firmware-marvell
 # livecd-sounds
 lsb-release
 lsscsi
@@ -172,7 +175,6 @@ unrar
 # openresolv
 # nss-mdns
 # netctl
-dialog
 net-tools
 networkmanager
 networkmanager-openconnect
@@ -217,6 +219,7 @@ gtk-engines
 gtk-engine-murrine
 qt5ct
 # kvantum-qt5
+kvantum
 arc-gtk-theme
 papirus-icon-theme
 xdg-user-dirs-gtk
@@ -235,6 +238,7 @@ ttf-opensans
 
 ## utils
 gnome-keyring
+# dialog
 cronie
 chrpath
 expac
