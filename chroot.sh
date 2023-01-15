@@ -36,7 +36,7 @@ _conf() {
   echo "BROWSER=/usr/bin/${_BROWSER}" >> /etc/environment
   export _EDITOR=nano
   echo "EDITOR=${_EDITOR}" >> /etc/environment
-  echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
+  # echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
   # echo "QT_STYLE_OVERRIDE=kvantum" >> /etc/environment
   sed -i '/User/s/^#\+//' /etc/sddm.conf
 }
@@ -70,11 +70,11 @@ _nm() {
   echo "" >> /etc/NetworkManager/NetworkManager.conf
   echo "[main]" >> /etc/NetworkManager/NetworkManager.conf
   echo "dhcp=dhclient" >> /etc/NetworkManager/NetworkManager.conf
-  echo "dns=systemd-resolved" >> /etc/NetworkManager/NetworkManager.conf
+  # echo "dns=systemd-resolved" >> /etc/NetworkManager/NetworkManager.conf
 }
 
 _key() {
-  reflector -a 12 -l 15 -p https,http --sort rate --save /etc/pacman.d/mirrorlist
+  reflector -a 12 -l 10 -p https,http --sort rate --save /etc/pacman.d/mirrorlist
   pacman-key --init
   pacman-key --populate
   pacman -Syy --noconfirm
@@ -112,7 +112,7 @@ _serv() {
   # systemctl enable avahi-daemon.service
   # systemctl enable systemd-networkd.service
   # systemctl enable systemd-resolved.service
-  # systemctl enable systemd-timesyncd.service
+  systemctl enable systemd-timesyncd.service
   systemctl enable ModemManager.service
   systemctl -f enable NetworkManager.service
   # systemctl enable iwd.service

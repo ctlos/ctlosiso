@@ -20,7 +20,7 @@ else
   pacman -S git archiso mkinitcpio-archiso --noconfirm --needed
 fi
 
-archiso_ver=$(pacman -Sl | grep "\ archiso" | awk '{print $3}')
+archiso_ver=$(pacman -Sl | grep ' archiso' | awk '{print $3}')
 sed -i "s/Archiso version:.*/Archiso version: $archiso_ver/" $script_path/README.md
 
 image_name="${iso_name}_${isode_ver}_${iso_version}.iso"

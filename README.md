@@ -15,17 +15,9 @@ Home: https://ctlos.github.io
 yay -S git archiso mkinitcpio-archiso --noconfirm --needed
 ```
 
-> Для сборки необходимо подключить локально [ctlos_repo](https://ctlos.github.io/wiki/install/ctlos-repo/), или изменить под себя pacman.conf и пакеты.
-
-Задействован [chaotic](https://aur.chaotic.cx/) репозиторий, проще всего его установить, через yay из aur.
-
-```bash
-yay -S chaotic-keyring chaotic-mirrorlist --noconfirm --needed
-```
-
 Логика установщика дополнена скриптами [ctlos-sh](https://github.com/ctlos/ctlos-sh) shellprocess. [Исходники calamares](https://github.com/ctlos/calamares), смотрите ветки.
 
-- Archiso version: 63-1
+- Archiso version: 69-1
 
 Измените список пакетов.
 
@@ -48,7 +40,7 @@ git clone --depth=1 https://github.com/ctlos/ctlosiso
 cd ctlosiso
 
 # делаем скрипты исполняемыми
-chmod +x {autobuild.sh,chroot.sh,mkarchiso.sh}
+chmod +x *.sh
 
 # Передаем аргумент de/wm_версия, можно любой, иначе не отработает.
 sudo ./autobuild.sh xfce_1.10.0
@@ -67,6 +59,7 @@ git checkout -b dev origin/dev
 sudo systemctl --all --failed
 # log X ~/
 cat ~/.local/share/xorg/Xorg.1.log|grep EE
+cat ~/.local/share/xorg/Xorg.1.log|grep '(EE)\|(WW)\|error\|failed'
 # log X (или тут)
 cat /var/log/Xorg.0.log|grep EE
 # Ошибки текущей загрузки

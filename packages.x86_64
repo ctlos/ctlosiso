@@ -11,7 +11,7 @@ b43-fwcutter
 base
 base-devel
 bind-tools
-broadcom-wl
+broadcom-wl-dkms
 btrfs-progs
 clonezilla
 cloud-init
@@ -38,8 +38,6 @@ hyperv
 haveged
 hdparm
 intel-ucode
-ipw2100-fw
-ipw2200-fw
 # irssi
 iw
 iwd
@@ -104,6 +102,7 @@ usb_modeswitch
 usbmuxd
 usbutils
 vpnc
+which
 wireless-regdb
 wireless_tools
 wpa_supplicant
@@ -122,8 +121,13 @@ xorg-xinit
 xorg-xkill
 xorg-xrdb
 xorg-xinput
+xorg-xdpyinfo
+xorg-xrandr
+xorg-xbacklight
+xorg-xsetroot
 
 mesa
+mesa-utils
 mesa-vdpau
 intel-tbb
 libva
@@ -147,7 +151,7 @@ xf86-video-vesa
 xf86-video-vmware
 xf86-video-voodoo
 xf86-video-nouveau
-# nvidia non free
+## nvidia non free
 # nvidia
 nvidia-dkms
 nvidia-utils
@@ -185,11 +189,15 @@ networkmanager-l2tp
 mobile-broadband-provider-info
 modemmanager
 geoip
+
+bluez
+bluez-utils
 blueman
 
 
 ## sound
 alsa-firmware
+alsa-plugins
 alsa-utils
 gstreamer
 gstreamer-vaapi
@@ -210,6 +218,8 @@ libdvdnav
 
 ## Virt Tools
 open-vm-tools
+qemu-guest-agent
+spice-vdagent
 # virtualbox-guest-dkms
 virtualbox-guest-utils
 
@@ -218,17 +228,23 @@ virtualbox-guest-utils
 gtk-engines
 gtk-engine-murrine
 qt5ct
+qt6ct
 # kvantum-qt5
 kvantum
 arc-gtk-theme
 papirus-icon-theme
+
 xdg-user-dirs-gtk
+autorandr
+xdg-desktop-portal
+xdg-desktop-portal-gtk
 
 
 ## fonts
 ttf-font-awesome
 ttf-dejavu
 ttf-opensans
+ttf-bitstream-vera
 # ttf-ubuntu-font-family
 # ttf-roboto
 # ttf-roboto-mono
@@ -237,6 +253,7 @@ ttf-opensans
 
 
 ## utils
+accountsservice
 gnome-keyring
 # dialog
 cronie
@@ -269,7 +286,7 @@ mpd
 mpc
 ncmpcpp
 newsboat
-micro
+# micro
 mediainfo
 ffmpeg
 ffmpegthumbnailer
@@ -305,6 +322,7 @@ firefox-i18n-ru
 firefox-ublock-origin
 # flashplugin
 telegram-desktop
+qbittorrent
 
 smplayer
 smplayer-skins
@@ -329,17 +347,13 @@ timeshift
 archlinux-appstream-data-pamac
 pamac-aur
 
-qogir-icon-theme-git
+qogir-icon-theme
 
-qt5-styleplugins
-qgnomeplatform
+# qt5-styleplugins
+# qgnomeplatform
 
 ## calamares install
 calamares-dev
-
-## chaotic-aur
-chaotic-keyring
-chaotic-mirrorlist
 
 ## ctlos pkg
 base-skel
@@ -351,7 +365,7 @@ ctlos-helper
 ctlos-sddm-themes
 ctlos-wall
 ctlos-qogir
-ctlcli
+# ctlcli
 
 ## xfce skel deps
 xfce-skel
@@ -393,5 +407,5 @@ djvulibre
 xreader
 skippy-xd-git
 multilockscreen-git
-xfce4-windowck-plugin
-xfce4-docklike-plugin-git
+xfce4-windowck-plugin-git
+xfce4-docklike-plugin
