@@ -2,7 +2,7 @@
 
 iso_name="ctlos"
 iso_version="$(date +%Y%m%d)"
-image_name="ctlos_xfce_2.4.0_20230115.iso"
+image_name="ctlos_xfce_2.4.1_20230121.iso"
 iso_label="CTLOS_$(date +%Y%m)"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live CD"
