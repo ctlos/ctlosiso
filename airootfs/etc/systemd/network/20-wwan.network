@@ -1,12 +1,11 @@
 [Match]
-Type=wwan
+Name=ww*
 
 [Network]
 DHCP=yes
-IPv6PrivacyExtensions=yes
 
 [DHCPv4]
-RouteMetric=2048
+RouteMetric=700
 
-[DHCPv6]
-RouteMetric=2048
+[IPv6AcceptRA]
+RouteMetric=700

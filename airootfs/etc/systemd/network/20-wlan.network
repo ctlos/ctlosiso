@@ -1,13 +1,12 @@
 [Match]
-Name=en*
-Name=eth*
+Name=wl*
 
 [Network]
 DHCP=yes
 MulticastDNS=yes
 
 [DHCPv4]
-RouteMetric=100
+RouteMetric=600
 
 [IPv6AcceptRA]
-RouteMetric=100
+RouteMetric=600

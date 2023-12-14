@@ -149,6 +149,7 @@ xf86-video-openchrome
 xf86-video-sisusb
 xf86-video-vesa
 xf86-video-vmware
+xf86-video-qxl
 xf86-video-voodoo
 xf86-video-nouveau
 ## nvidia non free
@@ -217,11 +218,12 @@ libdvdnav
 
 
 ## Virt Tools
-open-vm-tools
 qemu-guest-agent
 spice-vdagent
 # virtualbox-guest-dkms
 virtualbox-guest-utils
+## VMware
+open-vm-tools
 
 
 ## theme, icons
@@ -281,7 +283,7 @@ ranger
 ueberzug
 rofi
 ripgrep
-syntax-highlighting
+syntax-highlighting5
 mpd
 mpc
 ncmpcpp
@@ -291,7 +293,7 @@ mediainfo
 ffmpeg
 ffmpegthumbnailer
 # streamlink
-youtube-dl
+yt-dlp
 tor
 torsocks
 privoxy
@@ -302,17 +304,17 @@ unclutter
 
 
 ## pkg dm
-sddm
-qt5-svg
-qt5-quickcontrols2
-qt5-graphicaleffects
+# sddm
+# qt5-svg
+# qt5-quickcontrols2
+# qt5-graphicaleffects
 
 ## software
 audacious
 gparted
 gufw
 mpv
-simplescreenrecorder
+# simplescreenrecorder
 keepassxc
 veracrypt
 # chromium
@@ -362,7 +364,7 @@ ctlos-keyring
 ctlos-mirrorlist
 ctlos-welcome
 ctlos-helper
-ctlos-sddm-themes
+# ctlos-sddm-themes
 ctlos-wall
 ctlos-qogir
 # ctlcli

@@ -9,5 +9,6 @@ audio:x:15:liveuser
 video:x:16:liveuser
 scanner:x:20:liveuser
 optical:x:22:liveuser
+nopasswdlogin:x:966:liveuser
 rfkill:x:983:liveuser
 users:x:985:
