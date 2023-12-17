@@ -7,11 +7,9 @@
 amd-ucode
 archinstall
 arch-install-scripts
-b43-fwcutter
 base
 base-devel
 bind-tools
-broadcom-wl-dkms
 btrfs-progs
 clonezilla
 cloud-init
@@ -71,7 +69,6 @@ nilfs-utils
 ntfs-3g
 nvme-cli
 openconnect
-openssh
 # openvpn
 # os-prober
 partclone
@@ -134,24 +131,26 @@ libva
 libva-mesa-driver
 libva-intel-driver
 libva-vdpau-driver
+xf86-input-libinput
 xf86-input-elographics
 xf86-input-evdev
-xf86-input-libinput
-# xf86-input-synaptics
+xf86-input-synaptics
 xf86-input-void
 xf86-input-vmmouse
-xf86-video-amdgpu
-xf86-video-ati
 xf86-video-dummy
 xf86-video-fbdev
-xf86-video-intel
 xf86-video-openchrome
 xf86-video-sisusb
 xf86-video-vesa
 xf86-video-vmware
 xf86-video-qxl
 xf86-video-voodoo
+
+xf86-video-ati
+xf86-video-amdgpu
+xf86-video-intel
 xf86-video-nouveau
+
 ## nvidia non free
 # nvidia
 nvidia-dkms
@@ -178,9 +177,13 @@ unrar
 ## wireless
 # avahi
 # openresolv
-# nss-mdns
 # netctl
-net-tools
+
+geoip
+b43-fwcutter
+broadcom-wl-dkms
+dnsutils
+modemmanager
 networkmanager
 networkmanager-openconnect
 networkmanager-openvpn
@@ -188,8 +191,9 @@ networkmanager-pptp
 networkmanager-vpnc
 networkmanager-l2tp
 mobile-broadband-provider-info
-modemmanager
-geoip
+nss-mdns
+net-tools
+openssh
 
 bluez
 bluez-utils
@@ -197,9 +201,11 @@ blueman
 
 
 ## sound
-alsa-firmware
-alsa-plugins
-alsa-utils
+# pulseaudio
+# pulseaudio-alsa
+# pulseaudio-bluetooth
+# pulseaudio-equalizer
+
 gstreamer
 gstreamer-vaapi
 gst-libav
@@ -207,14 +213,19 @@ gst-plugins-bad
 gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
-pulseaudio
-pulseaudio-alsa
-pulseaudio-bluetooth
-# pulseaudio-equalizer
 lib32-alsa-plugins
 libcdio
 libdvdread
 libdvdnav
+
+alsa-firmware
+alsa-plugins
+alsa-utils
+pipewire-pulse
+wireplumber
+pipewire-alsa
+pipewire-jack
+rtkit
 
 
 ## Virt Tools
@@ -247,11 +258,11 @@ ttf-font-awesome
 ttf-dejavu
 ttf-opensans
 ttf-bitstream-vera
-# ttf-ubuntu-font-family
-# ttf-roboto
-# ttf-roboto-mono
-# noto-fonts-cjk
-# noto-fonts-emoji
+ttf-ubuntu-font-family
+ttf-roboto
+ttf-roboto-mono
+noto-fonts-cjk
+noto-fonts-emoji
 
 
 ## utils
@@ -304,10 +315,10 @@ unclutter
 
 
 ## pkg dm
-# sddm
-# qt5-svg
-# qt5-quickcontrols2
-# qt5-graphicaleffects
+sddm
+qt5-svg
+qt5-quickcontrols2
+qt5-graphicaleffects
 
 ## software
 audacious
@@ -320,7 +331,7 @@ veracrypt
 # chromium
 # pepper-flash
 firefox
-firefox-i18n-ru
+# firefox-i18n-ru
 firefox-ublock-origin
 # flashplugin
 telegram-desktop
@@ -346,7 +357,7 @@ nerd-fonts-hack
 
 gotop-bin
 timeshift
-archlinux-appstream-data-pamac
+libpamac-aur
 pamac-aur
 
 qogir-icon-theme
@@ -364,7 +375,7 @@ ctlos-keyring
 ctlos-mirrorlist
 ctlos-welcome
 ctlos-helper
-# ctlos-sddm-themes
+ctlos-sddm-themes
 ctlos-wall
 ctlos-qogir
 # ctlcli

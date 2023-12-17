@@ -2,7 +2,7 @@
 
 iso_name="ctlos"
 iso_version="$(date +%Y%m%d)"
-image_name="ctlos_xfce_2.4.2_20231203.iso"
+image_name="ctlos_xfce_2.4.4_20231217.iso"
 iso_label="CTLOS_$(date +%Y%m)"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live CD"
@@ -20,6 +20,7 @@ file_permissions=(
   ["/etc/shadow"]="0:0:400"
   ["/root"]="0:0:750"
   ["/root/.automated_script.sh"]="0:0:755"
+  ["/etc/polkit-1"]="0:0:750"
   ["/etc/sudoers.d"]="0:0:750"
   ["/usr/local/bin/cleaner.sh"]="0:0:755"
   ["/usr/local/bin/multilock.sh"]="0:0:755"
