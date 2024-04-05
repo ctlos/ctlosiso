@@ -9,26 +9,34 @@ archinstall
 arch-install-scripts
 base
 base-devel
+bcachefs-tools
 bind-tools
+bolt
+brltty
 btrfs-progs
 clonezilla
 cloud-init
 crda
+cryptsetup
 darkhttpd
 ddrescue
 dhclient
 # dhcpcd
 diffutils
+dmidecode
 dmraid
 dnsmasq
 dosfstools
+e2fsprogs
 edk2-shell
 efibootmgr
 ethtool
 exfatprogs
 f2fs-tools
+fatresize
 # fsarchiver
 gnu-netcat
+gpart
 gpm
 gptfdisk
 grub
@@ -40,7 +48,10 @@ intel-ucode
 iw
 iwd
 jfsutils
+ldns
 # lftp
+libfido2
+libusb-compat
 linux
 # linux-atm
 linux-headers
@@ -56,6 +67,7 @@ lvm2
 # mc
 # mdadm
 memtest86+
+memtest86+-efi
 mkinitcpio
 mkinitcpio-archiso
 mkinitcpio-nfs-utils
@@ -67,7 +79,9 @@ nfs-utils
 nilfs-utils
 # nmap
 ntfs-3g
+ntp
 nvme-cli
+open-iscsi
 openconnect
 # openvpn
 # os-prober
@@ -139,7 +153,6 @@ xf86-input-void
 xf86-input-vmmouse
 xf86-video-dummy
 xf86-video-fbdev
-xf86-video-openchrome
 xf86-video-sisusb
 xf86-video-vesa
 xf86-video-vmware
@@ -242,7 +255,7 @@ gtk-engines
 gtk-engine-murrine
 qt5ct
 qt6ct
-# kvantum-qt5
+kvantum-qt5
 kvantum
 arc-gtk-theme
 papirus-icon-theme
@@ -299,7 +312,7 @@ mpd
 mpc
 ncmpcpp
 newsboat
-# micro
+micro
 mediainfo
 ffmpeg
 ffmpegthumbnailer

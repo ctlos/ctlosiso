@@ -3,16 +3,24 @@
 # gpg --detach-sign ctlos.iso
 # gpg --verify ctlos.iso.sig ctlos.iso
 
-isode_ver=$1
-out_url="http://cloud.ctlos.ru/iso/xfce"
-iso_name=ctlos
-iso_version=$(date +%Y%m%d)
-script_path=$(realpath -- ${0%/*})
+
+
+if [[ "$1" == "" ]]; then
+    echo "Missing parameter! ISO_VER";
+    echo "sudo ./autobuild.sh v1.10.0";
+    exit 1;
+fi
 
 if [[ $EUID -ne 0 ]]; then
   echo "This script must be run as root"
   exit 1
 fi
+
+iso_ver=$1
+out_url="http://cloud.ctlos.ru/iso/xfce"
+iso_name=ctlos
+iso_version=$(date +%Y%m%d)
+script_path=$(realpath -- ${0%/*})
 
 if [[ $(pacman -Q | grep archiso) ]]; then
   echo "OK"
@@ -22,8 +30,9 @@ fi
 
 archiso_ver=$(pacman -Sl | grep ' archiso' | awk '{print $3}')
 sed -i "s/Archiso version:.*/Archiso version: $archiso_ver/" $script_path/README.md
+sed -i "s/TAG_NAME=.*/TAG_NAME=$iso_ver/" $script_path/rel.sh
 
-image_name="${iso_name}_${isode_ver}_${iso_version}.iso"
+image_name="${iso_name}_${iso_ver}_${iso_version}.iso"
 sed -i "s/image_name=.*/image_name=\"$image_name\"/" $script_path/profiledef.sh
 sed -i "s/image_name=.*\.iso/image_name=\"$image_name/" $script_path/mkarchiso.sh
 

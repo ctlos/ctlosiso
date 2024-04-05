@@ -3,6 +3,7 @@
 Home: https://ctlos.github.io
 
 [![GitHub All Releases](https://img.shields.io/github/downloads/ctlos/ctlosiso/total.svg)](https://ctlos.github.io/get)
+[![Download Ctlos Linux](https://img.shields.io/sourceforge/dt/ctlos.svg)](https://sourceforge.net/projects/ctlos/files/latest/download)
 
 ## Создание(build) iso
 
@@ -17,7 +18,7 @@ yay -S git archiso mkinitcpio-archiso --noconfirm --needed
 
 Логика установщика дополнена скриптами [ctlos-sh](https://github.com/ctlos/ctlos-sh) shellprocess. [Исходники calamares](https://github.com/ctlos/calamares), смотрите ветки.
 
-- Archiso version: 73-1
+- Archiso version: 76-1
 
 Измените список пакетов.
 
@@ -42,8 +43,8 @@ cd ctlosiso
 # делаем скрипты исполняемыми
 chmod +x *.sh
 
-# Передаем аргумент de/wm_версия, можно любой, иначе не отработает.
-sudo ./autobuild.sh xfce_1.10.0
+# Передаем аргумент, версия, можно любой, иначе не отработает.
+sudo ./autobuild.sh v1.10.0
 ```
 
 Получить удаленную ветку и переключиться на неё(не обязательно). Список веток меняется и не факт, что в них рабочий код. В `master` на момент коммита код рабочий.

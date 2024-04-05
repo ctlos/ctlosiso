@@ -36,6 +36,7 @@ _conf() {
   echo "BROWSER=/usr/bin/${_BROWSER}" >> /etc/environment
   export _EDITOR=nano
   echo "EDITOR=${_EDITOR}" >> /etc/environment
+  echo "GTK_THEME=Ctlos-Dark" >> /etc/environment
   # echo "QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment
   # echo "QT_STYLE_OVERRIDE=kvantum" >> /etc/environment
   sed -i '/User/s/^#\+//' /etc/sddm.conf
