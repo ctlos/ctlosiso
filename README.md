@@ -66,3 +66,11 @@ cat /var/log/Xorg.0.log|grep EE
 # Ошибки текущей загрузки
 sudo journalctl -xb -0 -p 3
 ```
+
+## ipfs-deploy
+
+https://github.com/ipfs-shipyard/ipfs-deploy
+
+```bash
+ipd -u filebase -p pinata -d cloudflare out
+```
