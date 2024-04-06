@@ -3,7 +3,7 @@
 Home: https://ctlos.github.io
 
 [![GitHub All Releases](https://img.shields.io/github/downloads/ctlos/ctlosiso/total.svg)](https://ctlos.github.io/get)
-[![Download Ctlos Linux](https://img.shields.io/sourceforge/dt/ctlos.svg)](https://sourceforge.net/projects/ctlos/files/latest/download)
+[![Download Ctlos Linux](https://img.shields.io/sourceforge/dt/ctlos.svg?logo=sourceforge)](https://sourceforge.net/projects/ctlos/files/latest/download)
 
 ## Создание(build) iso
 
