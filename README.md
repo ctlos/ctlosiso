@@ -2,8 +2,8 @@
 
 Home: https://ctlos.github.io
 
-[![GitHub All Releases](https://img.shields.io/github/downloads/ctlos/ctlosiso/total.svg)](https://ctlos.github.io/get)
-[![Download Ctlos Linux](https://img.shields.io/sourceforge/dt/ctlos.svg?logo=sourceforge)](https://sourceforge.net/projects/ctlos/files/latest/download)
+[![GitHub All Releases](https://img.shields.io/github/downloads/ctlos/ctlosiso/total.svg?logo=github)](https://ctlos.github.io/get)
+[![Download Ctlos Linux](https://img.shields.io/sourceforge/dt/ctlos.svg?logo=sourceforge)](https://ctlos.github.io/get)
 
 ## Создание(build) iso
 
@@ -72,5 +72,5 @@ sudo journalctl -xb -0 -p 3
 https://github.com/ipfs-shipyard/ipfs-deploy
 
 ```bash
-ipd -u filebase -p pinata -d cloudflare out
+ipd -u filebase -d cloudflare out
 ```
