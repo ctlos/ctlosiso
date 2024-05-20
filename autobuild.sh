@@ -36,6 +36,8 @@ image_name="${iso_name}_${iso_ver}_${iso_version}.iso"
 sed -i "s/image_name=.*/image_name=\"$image_name\"/" $script_path/profiledef.sh
 sed -i "s/image_name=.*\.iso/image_name=\"$image_name/" $script_path/mkarchiso.sh
 
+sed -i "s/Ctlos version:.*/Ctlos version: $iso_ver/" $script_path/airootfs/etc/version
+
 #Build ISO File
 build_iso() {
   pacman -Scc --noconfirm --quiet

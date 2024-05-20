@@ -137,7 +137,8 @@ xorg-xrandr
 xorg-xbacklight
 xorg-xsetroot
 
-mesa
+mesa-amber
+# mesa
 mesa-utils
 mesa-vdpau
 intel-tbb
@@ -166,9 +167,9 @@ xf86-video-nouveau
 
 ## nvidia non free
 # nvidia
-nvidia-dkms
-nvidia-utils
-nvidia-settings
+# nvidia-dkms
+# nvidia-utils
+# nvidia-settings
 
 
 ## fs
@@ -423,6 +424,7 @@ thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
+webp-pixbuf-loader
 tumbler
 file-roller
 flameshot

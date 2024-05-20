@@ -2033,7 +2033,7 @@ _build_buildmode_netboot() {
 
 # Build the ISO buildmode
 _build_buildmode_iso() {
-    local image_name="ctlos_xfce_2.4.5_20240403.iso"
+    local image_name="ctlos_v2.4.6_20240520.iso"
     local run_once_mode="${buildmode}"
     efibootimg="${work_dir}/efiboot.img"
     _build_iso_base

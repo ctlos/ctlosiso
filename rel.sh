@@ -5,7 +5,7 @@
 #     exit 1;
 # fi
 
-TAG_NAME=v2.4.5
+TAG_NAME=v2.4.6
 
 git tag ${TAG_NAME}
 git push --tags
