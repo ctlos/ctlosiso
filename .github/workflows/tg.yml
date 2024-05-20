@@ -13,7 +13,7 @@ on:
       - created
   push:
     branches:
-      - main
+      - master
 
 jobs:
   tg_alert:
