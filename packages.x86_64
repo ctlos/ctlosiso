@@ -35,7 +35,7 @@ exfatprogs
 f2fs-tools
 fatresize
 # fsarchiver
-gnu-netcat
+# gnu-netcat
 gpart
 gpm
 gptfdisk
@@ -64,7 +64,7 @@ lvm2
 # lynx
 # man-db
 # man-pages
-# mc
+mc
 # mdadm
 memtest86+
 memtest86+-efi
@@ -94,7 +94,6 @@ pptpclient
 qemu-guest-agent
 # refind
 reflector
-reiserfsprogs
 rp-pppoe
 rsync
 sdparm
@@ -137,15 +136,15 @@ xorg-xrandr
 xorg-xbacklight
 xorg-xsetroot
 
-mesa-amber
-# mesa
+# mesa-amber
+mesa
 mesa-utils
 mesa-vdpau
 intel-tbb
 libva
 libva-mesa-driver
 libva-intel-driver
-libva-vdpau-driver
+# libva-vdpau-driver
 xf86-input-libinput
 xf86-input-elographics
 xf86-input-evdev
@@ -186,6 +185,7 @@ gzip
 p7zip
 unzip
 unrar
+util-linux
 
 
 ## wireless
@@ -368,6 +368,9 @@ oh-my-zsh-git
 zsh-fast-syntax-highlighting-git
 ttf-clear-sans
 nerd-fonts-hack
+betterlockscreen
+# multilockscreen-git
+localsend-bin
 
 gotop-bin
 timeshift
@@ -434,6 +437,5 @@ viewnior
 djvulibre
 xreader
 skippy-xd-git
-multilockscreen-git
 xfce4-windowck-plugin-git
 xfce4-docklike-plugin

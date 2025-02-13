@@ -13,12 +13,12 @@ Home: https://ctlos.github.io
 Установить пакеты для сборки.
 
 ```bash
-yay -S git archiso mkinitcpio-archiso --noconfirm --needed
+yay -S git grub archiso mkinitcpio-archiso --noconfirm --needed
 ```
 
 Логика установщика дополнена скриптами [ctlos-sh](https://github.com/ctlos/ctlos-sh) shellprocess. [Исходники calamares](https://github.com/ctlos/calamares), смотрите ветки.
 
-- Archiso version: 77-1
+- Archiso version: 82-1
 
 Измените список пакетов.
 

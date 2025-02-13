@@ -33,6 +33,7 @@ arch=""
 pacman_conf=""
 packages=""
 bootstrap_packages=""
+bootstrap_parent=""
 pacstrap_dir=""
 search_filename=""
 declare -i rm_work_dir=0
@@ -201,8 +202,7 @@ _mkairootfs_ext4+squashfs() {
     )
     [[ ! "${quiet}" == "y" ]] || mkfs_ext4_options+=('-q')
     rm -f -- "${pacstrap_dir}.img"
-    E2FSPROGS_FAKE_TIME="${SOURCE_DATE_EPOCH}" mkfs.ext4 "${mkfs_ext4_options[@]}" -- "${pacstrap_dir}.img" 32G
-    tune2fs -c 0 -i 0 -- "${pacstrap_dir}.img" >/dev/null
+    mkfs.ext4 "${mkfs_ext4_options[@]}" -- "${pacstrap_dir}.img" 32G
     _msg_info "Done!"
 
     install -d -m 0755 -- "${isofs_dir}/${install_dir}/${arch}"
@@ -224,16 +224,14 @@ _mkairootfs_squashfs() {
 
 # Create an EROFS image containing the root file system and saves it on the ISO 9660 file system.
 _mkairootfs_erofs() {
-    local fsuuid mkfs_erofs_options=()
+    local mkfs_erofs_options=()
     [[ -e "${pacstrap_dir}" ]] || _msg_error "The path '${pacstrap_dir}' does not exist" 1
 
     install -d -m 0755 -- "${isofs_dir}/${install_dir}/${arch}"
     local image_path="${isofs_dir}/${install_dir}/${arch}/airootfs.erofs"
     rm -f -- "${image_path}"
     [[ ! "${quiet}" == "y" ]] || mkfs_erofs_options+=('--quiet')
-    # Generate reproducible file system UUID from SOURCE_DATE_EPOCH
-    fsuuid="$(uuidgen --sha1 --namespace 93a870ff-8565-4cf3-a67b-f47299271a96 --name "${SOURCE_DATE_EPOCH}")"
-    mkfs_erofs_options+=('-U' "${fsuuid}" "${airootfs_image_tool_options[@]}")
+    mkfs_erofs_options+=('-U' '00000000-0000-0000-0000-000000000000' "${airootfs_image_tool_options[@]}")
     _msg_info "Creating EROFS image, this may take some time..."
     mkfs.erofs "${mkfs_erofs_options[@]}" -- "${image_path}" "${pacstrap_dir}"
     _msg_info "Done!"
@@ -527,19 +525,23 @@ _make_boot_on_fat() {
 _make_efibootimg() {
     local imgsize_kib="0"
     local imgsize_bytes=${1}
+    local mkfs_fat_opts=(-C -n ARCHISO_EFI)
 
-    if (( imgsize_bytes < 2*1024*1024 )); then
-        _msg_info "Validating '${bootmode}': efiboot.img size is ${imgsize_bytes} bytes is less than 2 MiB! Bumping up to 2 MiB"
-        imgsize_bytes=$((2*1024*1024))
-    fi
-
-    # Convert from bytes to KiB and round up to the next full MiB with an additional MiB for reserved sectors.
+    # Convert from bytes to KiB and round up to the next full MiB with an additional 8 MiB for reserved sectors, file
+    # and directory entries and to allow adding custom files when repacking the ISO.
     imgsize_kib="$(
         awk 'function ceil(x){return int(x)+(x>int(x))}
             function byte_to_kib(x){return x/1024}
             function mib_to_kib(x){return x*1024}
-            END {print mib_to_kib(ceil((byte_to_kib($1)+1024)/1024))}' <<<"${imgsize_bytes}"
+            END {print mib_to_kib(ceil((byte_to_kib($1)+8192)/1024))}' <<<"${imgsize_bytes}"
     )"
+
+    # Use FAT32 as early as possible. mkfs.fat selects FAT32 if the size ≥ 512 MiB, but a FAT32 file system can already
+    # be created at 36 MiB size (assuming 512 byte logical sector size).
+    if (( imgsize_kib >= 36864 )); then
+        mkfs_fat_opts+=(-F 32)
+    fi
+
     # The FAT image must be created with mkfs.fat not mformat, as some systems have issues with mformat made images:
     # https://lists.gnu.org/archive/html/grub-devel/2019-04/msg00099.html
     rm -f -- "${efibootimg}"
@@ -547,23 +549,23 @@ _make_efibootimg() {
     if [[ "${quiet}" == "y" ]]; then
         # mkfs.fat does not have a -q/--quiet option, so redirect stdout to /dev/null instead
         # https://github.com/dosfstools/dosfstools/issues/103
-        mkfs.fat -C -n ARCHISO_EFI "${efibootimg}" "${imgsize_kib}" >/dev/null
+        mkfs.fat "${mkfs_fat_opts[@]}" "${efibootimg}" "${imgsize_kib}" >/dev/null
     else
-        mkfs.fat -C -n ARCHISO_EFI "${efibootimg}" "${imgsize_kib}"
+        mkfs.fat "${mkfs_fat_opts[@]}" "${efibootimg}" "${imgsize_kib}"
     fi
 
     # Create the default/fallback boot path in which a boot loaders will be placed later.
     mmd -i "${efibootimg}" ::/EFI ::/EFI/BOOT
 }
 
-# Check if initramfs files contain early_cpio
-_check_if_initramfs_has_early_cpio() {
+# Check if initramfs files contain microcode update files
+_check_if_initramfs_has_ucode() {
     local initrd
 
     for initrd in $(compgen -G "${pacstrap_dir}"'/boot/initramfs-*.img'); do
-        if ! bsdtar -tf "$initrd" early_cpio &>/dev/null; then
+        if ! bsdtar -tf "$initrd" 'early_cpio' 'kernel/x86/microcode/*.bin' &>/dev/null; then
             need_external_ucodes=1
-            _msg_info "Initramfs file does not contain 'early_cpio'. External microcode initramfs images will be copied."
+            _msg_info "Initramfs file does not contain microcode update files. External microcode initramfs images will be copied."
             return
         fi
     done
@@ -849,13 +851,16 @@ _make_common_bootmode_systemd-boot() {
     # shellcheck disable=SC2076
     if [[ " ${bootmodes[*]} " =~ ' uefi-x64.systemd-boot.esp ' || " ${bootmodes[*]} " =~ ' uefi-x64.systemd-boot.eltorito ' ]]; then
         efiboot_files+=("${pacstrap_dir}/usr/lib/systemd/boot/efi/systemd-bootx64.efi"
-                        "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi")
+                        "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi"
+                        "${pacstrap_dir}/boot/memtest86+/memtest.efi"
+                        "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt")
     fi
     # shellcheck disable=SC2076
     if [[ " ${bootmodes[*]} " =~ ' uefi-ia32.systemd-boot.esp ' || " ${bootmodes[*]} " =~ ' uefi-ia32.systemd-boot.eltorito ' ]]; then
         efiboot_files+=("${pacstrap_dir}/usr/lib/systemd/boot/efi/systemd-bootia32.efi"
                         "${pacstrap_dir}/usr/share/edk2-shell/ia32/Shell_Full.efi")
     fi
+
     efiboot_files+=("${work_dir}/loader/"
                     "${pacstrap_dir}/boot/vmlinuz-"*
                     "${pacstrap_dir}/boot/initramfs-"*".img"
@@ -913,6 +918,15 @@ _make_bootmode_uefi-x64.systemd-boot.esp() {
             "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" ::/shellx64.efi
     fi
 
+    # Copy Memtest86+
+    if [[ -e "${pacstrap_dir}/boot/memtest86+/memtest.efi" ]]; then
+        mmd -i "${efibootimg}" ::/boot ::/boot/memtest86+
+        mcopy -i "${efibootimg}" \
+            "${pacstrap_dir}/boot/memtest86+/memtest.efi" ::/boot/memtest86+/
+        mcopy -i "${efibootimg}" \
+            "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt" ::/boot/memtest86+/LICENSE
+    fi
+
     # Copy kernel and initramfs to FAT image.
     # systemd-boot can only access files from the EFI system partition it was launched from.
     _run_once _make_boot_on_fat
@@ -946,6 +960,13 @@ _make_bootmode_uefi-x64.systemd-boot.eltorito() {
     # shellx64.efi is picked up automatically when on /
     if [[ -e "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" ]]; then
         install -m 0644 -- "${pacstrap_dir}/usr/share/edk2-shell/x64/Shell_Full.efi" "${isofs_dir}/shellx64.efi"
+    fi
+
+    # Copy Memtest86+
+    if [[ -e "${pacstrap_dir}/boot/memtest86+/memtest.efi" ]]; then
+        install -d -m 0755 -- "${isofs_dir}/boot/memtest86+/"
+        install -m 0644 -- "${pacstrap_dir}/boot/memtest86+/memtest.efi" "${isofs_dir}/boot/memtest86+/memtest.efi"
+        install -m 0644 -- "${pacstrap_dir}/usr/share/licenses/spdx/GPL-2.0-only.txt" "${isofs_dir}/boot/memtest86+/LICENSE"
     fi
 
     _msg_info "Done!"
@@ -1099,6 +1120,11 @@ _validate_requirements_bootmode_uefi-x64.systemd-boot.esp() {
         _msg_error "Validating '${bootmode}': cannot be used with bootmode uefi-x64.grub.esp!" 0
     fi
     _validate_requirements_common_systemd-boot
+
+    # shellcheck disable=SC2076
+    if [[ ! " ${pkg_list[*]} " =~ ' memtest86+-efi ' ]]; then
+        _msg_info "Validating '${bootmode}': 'memtest86+-efi' is not in the package list. Memory testing will not be available from systemd-boot."
+    fi
 }
 
 _validate_requirements_bootmode_uefi-x64.systemd-boot.eltorito() {
@@ -1127,7 +1153,7 @@ _validate_requirements_bootmode_uefi-ia32.systemd-boot.eltorito() {
     fi
 
     # uefi-ia32.systemd-boot.eltorito has the exact same requirements as uefi-ia32.systemd-boot.esp
-    _validate_requirements_bootmode_uefi-x64.systemd-boot.esp
+    _validate_requirements_bootmode_uefi-ia32.systemd-boot.esp
 }
 
 _validate_requirements_bootmode_uefi-ia32.grub.esp() {
@@ -1362,7 +1388,7 @@ _validate_requirements_buildmode_bootstrap() {
     # Check if the compressor is installed
     if (( ${#bootstrap_tarball_compression[@]} )); then
         case "${bootstrap_tarball_compression[0]}" in
-            'bzip'|'gzip'|'lrzip'|'lzip'|'lzop'|'zstd'|'zstdmt')
+            'bzip'|'gzip'|'lrzip'|'lzip'|'lzop'|'xz'|'zstd'|'zstdmt')
                 if ! command -v "${bootstrap_tarball_compression[0]}" &>/dev/null; then
                     (( validation_error=validation_error+1 ))
                     _msg_error "Validating build mode '${_buildmode}': '${bootstrap_tarball_compression[0]}' is not available on this host. Install '${bootstrap_tarball_compression[0]/zstdmt/zstd}'!" 0
@@ -1660,37 +1686,20 @@ _add_xorrisofs_options_uefi-x64.grub.eltorito() {
 
 # Build bootstrap image
 _build_bootstrap_image() {
-    local tarball_ext
-
     # Set default tarball compression to uncompressed
     if (( ! "${#bootstrap_tarball_compression[@]}" )); then
         bootstrap_tarball_compression=('cat')
     fi
 
-    # Set tarball extension
-    case "${bootstrap_tarball_compression[0]}" in
-        'cat') tarball_ext='' ;;
-        'bzip') tarball_ext='.b2z' ;;
-        'gzip') tarball_ext='.gz' ;;
-        'lrzip') tarball_ext='.lrz' ;;
-        'lzip') tarball_ext='.lz' ;;
-        'lzop') tarball_ext='.lzo' ;;
-        'zstd'|'zstdmt') tarball_ext='.zst' ;;
-        *) _msg_error 'Unsupported compression!' 1 ;;
-    esac
-
-    local _bootstrap_parent
-    _bootstrap_parent="$(dirname -- "${pacstrap_dir}")"
-
     [[ -d "${out_dir}" ]] || install -d -- "${out_dir}"
 
-    cd -- "${_bootstrap_parent}"
+    cd -- "${bootstrap_parent}"
 
     _msg_info "Creating bootstrap image..."
-    rm -f -- "${out_dir:?}/${image_name:?}${tarball_ext}"
-    bsdtar -cf - "root.${arch}" | "${bootstrap_tarball_compression[@]}" >"${out_dir}/${image_name}${tarball_ext}"
+    rm -f -- "${out_dir:?}/${image_name:?}"
+    bsdtar -cf - "root.${arch}" "pkglist.${arch}.txt" | "${bootstrap_tarball_compression[@]}" >"${out_dir}/${image_name}"
     _msg_info "Done!"
-    du -h -- "${out_dir}/${image_name}${tarball_ext}"
+    du -h -- "${out_dir}/${image_name}"
     cd -- "${OLDPWD}"
 }
 
@@ -1717,6 +1726,11 @@ _build_iso_image() {
     for bootmode in "${bootmodes[@]}"; do
         typeset -f "_add_xorrisofs_options_${bootmode}" &>/dev/null && "_add_xorrisofs_options_${bootmode}"
     done
+
+    # Remove 300 KiB padding needed for CDs if the ISO exceeds the max size of a CD
+    if (( $(du -s --apparent-size -B1M "${isofs_dir}/" | awk '{ print $1 }') > 900 )); then
+        xorrisofs_options+=('-no-pad')
+    fi
 
     rm -f -- "${out_dir}/${image_name}"
     _msg_info "Creating ISO image..."
@@ -1938,7 +1952,7 @@ _make_pkglist() {
     _msg_info "Creating a list of installed packages on live-enviroment..."
     case "${buildmode}" in
         "bootstrap")
-            pacman -Q --sysroot "${pacstrap_dir}" >"${pacstrap_dir}/pkglist.${arch}.txt"
+            pacman -Q --sysroot "${pacstrap_dir}" >"${bootstrap_parent}/pkglist.${arch}.txt"
             ;;
         "iso"|"netboot")
             install -d -m 0755 -- "${isofs_dir}/${install_dir}"
@@ -1981,7 +1995,7 @@ _build_iso_base() {
     _run_once _make_version
     _run_once _make_customize_airootfs
     _run_once _make_pkglist
-    _run_once _check_if_initramfs_has_early_cpio
+    _run_once _check_if_initramfs_has_ucode
     if [[ "${buildmode}" == 'netboot' ]]; then
         _run_once _make_boot_on_iso9660
     else
@@ -2001,8 +2015,20 @@ _build_buildmode_bootstrap() {
 
     # Set up essential directory paths
     pacstrap_dir="${work_dir}/${arch}/bootstrap/root.${arch}"
+    bootstrap_parent="$(dirname -- "${pacstrap_dir}")"
     [[ -d "${work_dir}" ]] || install -d -- "${work_dir}"
     install -d -m 0755 -o 0 -g 0 -- "${pacstrap_dir}"
+
+    # Set tarball extension
+    case "${bootstrap_tarball_compression[0]}" in
+        'bzip') image_name="${image_name}.b2z" ;;
+        'gzip') image_name="${image_name}.gz" ;;
+        'lrzip') image_name="${image_name}.lrz" ;;
+        'lzip') image_name="${image_name}.lz" ;;
+        'lzop') image_name="${image_name}.lzo" ;;
+        'xz') image_name="${image_name}.xz" ;;
+        'zstd'|'zstdmt') image_name="${image_name}.zst" ;;
+    esac
 
     [[ "${quiet}" == "y" ]] || _show_config
     _run_once _make_pacman_conf
@@ -2033,7 +2059,7 @@ _build_buildmode_netboot() {
 
 # Build the ISO buildmode
 _build_buildmode_iso() {
-    local image_name="ctlos_v2.4.6_20240520.iso"
+    local image_name="ctlos_v2.4.7_20250213.iso"
     local run_once_mode="${buildmode}"
     efibootimg="${work_dir}/efiboot.img"
     _build_iso_base

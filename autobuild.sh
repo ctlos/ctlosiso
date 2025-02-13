@@ -7,7 +7,7 @@
 
 if [[ "$1" == "" ]]; then
     echo "Missing parameter! ISO_VER";
-    echo "sudo ./autobuild.sh v1.10.0";
+    echo "sudo ./autobuild.sh vX.X.X";
     exit 1;
 fi
 
@@ -25,7 +25,7 @@ script_path=$(realpath -- ${0%/*})
 if [[ $(pacman -Q | grep archiso) ]]; then
   echo "OK"
 else
-  pacman -S git archiso mkinitcpio-archiso --noconfirm --needed
+  pacman -S git grub archiso mkinitcpio-archiso --noconfirm --needed
 fi
 
 archiso_ver=$(pacman -Sl | grep ' archiso' | awk '{print $3}')
