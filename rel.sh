@@ -5,17 +5,17 @@
 #     exit 1;
 # fi
 
-TAG_NAME=v2.4.7
+TAG_NAME=v2.4.9
 
 ### release sf
 REPO_SF=ctlos@web.sourceforge.net:/home/pfs/project/ctlos
 SCRIPT_PATH=$(realpath -- ${0%/*})
 ISO_PATH=$SCRIPT_PATH/out
 
-git tag ${TAG_NAME} -F ${ISO_PATH}/README.md
-git push --tags
-
 cp -r $SCRIPT_PATH/rel.md ${ISO_PATH}/README.md
 sed -i "s/TAG_NAME/$TAG_NAME/" ${ISO_PATH}/README.md
+
+git tag ${TAG_NAME} -F ${ISO_PATH}/README.md
+git push --tags
 
 rsync -cauvCLP --delete-excluded --delete "${ISO_PATH}/" "${REPO_SF}/${TAG_NAME}/"

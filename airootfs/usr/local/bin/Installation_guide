@@ -2,4 +2,4 @@
 #
 # arch guide
 
-exec lynx 'https://wiki.archlinux.org/title/Installation_guide'
+exec xdg-open 'https://wiki.archlinux.org/title/Installation_guide'

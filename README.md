@@ -18,7 +18,7 @@ yay -S git grub archiso mkinitcpio-archiso --noconfirm --needed
 
 Логика установщика дополнена скриптами [ctlos-sh](https://github.com/ctlos/ctlos-sh) shellprocess. [Исходники calamares](https://github.com/ctlos/calamares), смотрите ветки.
 
-- Archiso version: 82-1
+- Archiso version: 87-1
 
 Измените список пакетов.
 
@@ -72,5 +72,6 @@ sudo journalctl -xb -0 -p 3
 https://github.com/ipfs-shipyard/ipfs-deploy
 
 ```bash
+# node v20.18.3
 ipd -u filebase -d cloudflare out
 ```

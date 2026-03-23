@@ -117,6 +117,7 @@ wireless-regdb
 wireless_tools
 wpa_supplicant
 wvdial
+xdg-utils
 xfsprogs
 xl2tpd
 zsh
@@ -139,7 +140,7 @@ xorg-xsetroot
 # mesa-amber
 mesa
 mesa-utils
-mesa-vdpau
+# mesa-vdpau
 intel-tbb
 libva
 libva-mesa-driver
@@ -154,10 +155,10 @@ xf86-input-vmmouse
 xf86-video-dummy
 xf86-video-fbdev
 xf86-video-sisusb
-xf86-video-vesa
-xf86-video-vmware
 xf86-video-qxl
 xf86-video-voodoo
+xf86-video-vesa
+# xf86-video-vmware
 
 xf86-video-ati
 xf86-video-amdgpu
@@ -167,6 +168,7 @@ xf86-video-nouveau
 ## nvidia non free
 # nvidia
 # nvidia-dkms
+# nvidia-open
 # nvidia-utils
 # nvidia-settings
 
@@ -221,7 +223,7 @@ blueman
 # pulseaudio-equalizer
 
 gstreamer
-gstreamer-vaapi
+gst-plugin-va
 gst-libav
 gst-plugins-bad
 gst-plugins-base
@@ -248,17 +250,17 @@ spice-vdagent
 # virtualbox-guest-dkms
 virtualbox-guest-utils
 ## VMware
-open-vm-tools
+# open-vm-tools
 
 
 ## theme, icons
-gtk-engines
-gtk-engine-murrine
+# gtk-engines
+# gtk-engine-murrine
 qt5ct
 qt6ct
 kvantum-qt5
 kvantum
-arc-gtk-theme
+arc-gtk-theme-git
 papirus-icon-theme
 
 xdg-user-dirs-gtk
@@ -275,6 +277,7 @@ ttf-bitstream-vera
 ttf-ubuntu-font-family
 ttf-roboto
 ttf-roboto-mono
+ttf-hack-nerd
 noto-fonts-cjk
 noto-fonts-emoji
 
@@ -287,7 +290,7 @@ cronie
 chrpath
 expac
 wmctrl
-gtk2-perl
+# gtk2-perl
 perl-file-desktopentry
 intltool
 bash-completion
@@ -298,7 +301,7 @@ git
 wget
 imagemagick
 tldr
-neofetch
+fastfetch
 numlockx
 w3m
 scrot
@@ -365,9 +368,8 @@ fzf-extras
 # ytfzf-git
 # pipe-viewer-git
 oh-my-zsh-git
-zsh-fast-syntax-highlighting-git
+zsh-fast-syntax-highlighting
 ttf-clear-sans
-nerd-fonts-hack
 betterlockscreen
 # multilockscreen-git
 localsend-bin
@@ -391,14 +393,15 @@ ctlos-system
 ctlos-keyring
 ctlos-mirrorlist
 ctlos-welcome
-ctlos-helper
 ctlos-sddm-themes
 ctlos-wall
 ctlos-qogir
+# ctlos-helper
 # ctlcli
+xfce-skel
+skippy-xd-git
 
 ## xfce skel deps
-xfce-skel
 polkit-gnome
 alacarte
 catfish
@@ -423,6 +426,8 @@ xfconf
 xfdesktop
 xfsprogs
 xfwm4
+xfce4-docklike-plugin
+xfce4-windowck-plugin
 thunar
 thunar-archive-plugin
 thunar-media-tags-plugin
@@ -431,11 +436,8 @@ webp-pixbuf-loader
 tumbler
 file-roller
 flameshot
-leafpad
-pavucontrol
+mousepad
+pavucontrol-qt
 viewnior
 djvulibre
 xreader
-skippy-xd-git
-xfce4-windowck-plugin-git
-xfce4-docklike-plugin

@@ -1,21 +1,77 @@
 #!/bin/bash
-#
-del_vbox() {
-  systemctl disable vboxservice.service
-  rm /etc/xdg/autostart/vboxclient.desktop
-  pacman -Rsn virtualbox-guest-utils virtualbox-guest-dkms --noconfirm
+
+check_pacman_lock() {
+  seconds=0
+  while [ -e "/var/lib/pacman/db.lck" ]; do
+    echo -e "Pacman is not ready. Retrying in 5 seconds..."
+    sleep 5
+    seconds=$((seconds + 5))
+    if [[ "$seconds" -ge 30 ]]; then
+      echo -e "Removing stale pacman lock file."
+      rm -f /var/lib/pacman/db.lck
+      break
+    fi
+  done
 }
 
-result=$(systemd-detect-virt)
-if [[ $result == "oracle" ]]; then
-  systemctl enable --now vboxservice.service
-elif [[ $result == "vmware" ]]; then
-  del_vbox
-else
-  del_vbox
-fi
+## check virtualization
+remove_vmware() {
+  echo -e "Cleaning up VMware packages..."
+  rm -f /etc/xdg/autostart/vmware-user.desktop
+  pacman -Qi open-vm-tools &>/dev/null && {
+    systemctl disable vmware-vmblock-fuse.service vmtoolsd.service
+    pacman -Rns open-vm-tools --noconfirm
+  }
+  pacman -Qi xf86-video-vmware &>/dev/null && {
+    pacman -Rns xf86-video-vmware --noconfirm
+  }
+  rm -f /etc/systemd/system/multi-user.target.wants/vmtoolsd.service
+}
 
-# check kernel param driver=free or driver=nonfree
+remove_qemu() {
+  echo -e "Cleaning up QEMU guest agent..."
+  pacman -Qi qemu-guest-agent &>/dev/null && {
+    systemctl disable qemu-guest-agent.service
+    pacman -Rns qemu-guest-agent --noconfirm
+  }
+  pacman -Qi spice-vdagent &>/dev/null && {
+    pacman -Rns spice-vdagent --noconfirm
+  }
+}
+
+remove_vbox() {
+  echo -e "Cleaning up VirtualBox guest utils..."
+  for pkg in virtualbox-guest-utils virtualbox-guest-utils-nox; do
+    pacman -Qi "$pkg" &>/dev/null && {
+      systemctl disable vboxservice.service
+      pacman -Rns "$pkg" --noconfirm
+    }
+  done
+}
+
+remove_all_virt() {
+  remove_vmware
+  remove_vbox
+  remove_qemu
+  rm -f /etc/systemd/system/multi-user.target.wants/virtual-machine-check.service
+}
+
+virtual_machine_cleanup() {
+  check_pacman_lock
+  result=$(systemd-detect-virt)
+  echo -e "Detected virtualization: $result"
+  case "$result" in
+    oracle) remove_vmware; remove_qemu ;;
+    kvm)    remove_vmware; remove_vbox ;;
+    vmware) remove_vbox; remove_qemu ;;
+    none)   remove_all_virt ;;
+    *)      echo -e "Unknown virtualization: $result. Skipping cleanup." ;;
+  esac
+}
+virtual_machine_cleanup
+
+
+## check kernel param driver=free or driver=nonfree
 kernel_cmdline(){
   for param in $(cat /proc/cmdline); do
     case "${param}" in
@@ -32,10 +88,10 @@ get_driver(){
 }
 # free = remove nvidia
 res_driver=$(get_driver)
-if [[ $res_driver == "free" ]]; then
+if [[ $res_driver != "nonfree" ]]; then
   pacman -Rns --noconfirm nvidia-dkms nvidia-utils nvidia-settings
-  modprobe nouveau
 fi
+
 
 del_service() {
   systemctl disable ctlos-system.service
