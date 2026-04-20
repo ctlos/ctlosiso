@@ -5,7 +5,7 @@
 #     exit 1;
 # fi
 
-TAG_NAME=v2.4.9
+TAG_NAME=v2.5.0
 
 ### release sf
 REPO_SF=ctlos@web.sourceforge.net:/home/pfs/project/ctlos

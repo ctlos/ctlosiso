@@ -1,0 +1,3 @@
+[org.gnome.login-screen]
+enable-smartcard-authentication=false
+logo='/usr/share/icons/ctlos.svg'

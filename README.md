@@ -18,7 +18,7 @@ yay -S git grub archiso mkinitcpio-archiso --noconfirm --needed
 
 Логика установщика дополнена скриптами [ctlos-sh](https://github.com/ctlos/ctlos-sh) shellprocess. [Исходники calamares](https://github.com/ctlos/calamares), смотрите ветки.
 
-- Archiso version: 87-1
+- Archiso version: 88-1
 
 Измените список пакетов.
 

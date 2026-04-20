@@ -1818,7 +1818,7 @@ _build_buildmode_netboot() {
 
 # Build the ISO buildmode
 _build_buildmode_iso() {
-    local image_name="ctlos_v2.4.9_20260323.iso"
+    local image_name="ctlos_v2.5.0_20260419.iso"
     local run_once_mode="${buildmode}"
     efibootimg="${work_dir}/efiboot.img"
     _build_iso_base

@@ -2,7 +2,7 @@
 
 iso_name="ctlos"
 iso_version="$(date +%Y%m%d)"
-image_name="ctlos_v2.4.9_20260323.iso"
+image_name="ctlos_v2.5.0_20260419.iso"
 iso_label="CTLOS_$(date +%Y%m)"
 iso_publisher="Ctlos Linux <https://ctlos.github.io>"
 iso_application="Ctlos Linux Live CD"

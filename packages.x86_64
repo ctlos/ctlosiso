@@ -177,7 +177,6 @@ xf86-video-nouveau
 gvfs
 gvfs-afc
 gvfs-goa
-gvfs-google
 gvfs-gphoto2
 gvfs-mtp
 gvfs-nfs
@@ -213,6 +212,8 @@ openssh
 
 bluez
 bluez-utils
+bluez-hid2hci
+bluez-libs
 blueman
 
 
@@ -283,6 +284,7 @@ noto-fonts-emoji
 
 
 ## utils
+zram-generator
 accountsservice
 gnome-keyring
 # dialog
@@ -374,10 +376,10 @@ betterlockscreen
 # multilockscreen-git
 localsend-bin
 
-gotop-bin
 timeshift
 libpamac-aur
 pamac-aur
+bottom
 
 qogir-icon-theme
 
